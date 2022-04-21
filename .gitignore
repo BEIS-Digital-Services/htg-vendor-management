@@ -1,0 +1,17 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Beis.HelpToGrow.Backend/bin/Debug/netcoreapp3.1
+/Beis.HelpToGrow.Backend/obj
+/Beis.HelpToGrow.Backend/volumes/postgres-data
+/Beis.HelpToGrow.Infrastructure/obj
+/Beis.HelpToGrow.Web/bin/Debug/netcoreapp3.1
+/Beis.HelpToGrow.Web/obj
+/Beis.HelpToGrow.Api/obj
+/.vs/Beis.HelpToGrow/v16
+/.vs/Beis.HelpToGrow/DesignTimeBuild
+/Beis.HelpToGrow.Api/bin/Debug/netcoreapp3.1
+/Beis.HelpToGrow.Infrastructure/bin/Debug/netcoreapp3.1
+bin
+obj

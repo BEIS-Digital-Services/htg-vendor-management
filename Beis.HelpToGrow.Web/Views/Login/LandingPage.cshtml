@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Landing Page";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Set up your Help to Grow: Digital account</h1>
+        <p class="govuk-body">You need to create an account so that you can:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>update and complete your product information</li>
+            <li>add&nbsp;and manage users</li>
+        </ul>
+
+        <form method="get" asp-area="MicrosoftIdentity" asp-controller="H2GAccount" asp-action="SignIn">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start
+            </button>
+        </form>
+    </div>
+</div>

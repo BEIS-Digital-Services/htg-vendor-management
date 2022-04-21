@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Help and guidance - Technical solutions";
+}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+      <partial name="_HelpAndGuidanceNavigation" />
+  </div>
+  
+  <div class="govuk-grid-column-three-quarters">
+    <h1 class="govuk-heading-l">Help and guidance</h1>
+
+    <section id="section-technical-solutions">
+      <h2 class="govuk-heading-m">Technical solutions</h2>
+
+      <h3 class="govuk-heading-s">Phase 1: Planning your API configuration</h3>
+      <p class="govuk-body">To manage the process for redemption of grant tokens, Application Programming Interfaces (APIs) will be used to pass information between Help to Grow: Digital and your website. Your organisation will be required to configure three APIs to manage redemption of grant tokens.</p>
+      
+      <h4 class="govuk-heading-s">Information for your software developer</h4>
+      <p class="govuk-body">You will receive a separate Vender Developer Guidance detailing API specifications and Swagger documentation. If you need to engage a third-party develop to configure this for you, you can share the document. You will also receive your access code and stub URLs with access to the Vendor Portal.</p>
+      <p class="govuk-body">The three APIs are: </p>
+      
+      <h4 class="govuk-heading-s">1. Voucher Check API</h4>
+      <p class="govuk-body">When your customer visits the redemption link, grant token details will be provided to this API. The API can authorise that the customer can redeem the grant token and discount. </p>
+
+      <h4 class="govuk-heading-s">2. Redeem Update API</h4>
+      <p class="govuk-body">When your customer completes their transaction, this API will mark the grant token as used.</p> 
+
+      <h4 class="govuk-heading-s">3. Reconciliation API</h3>
+      <p class="govuk-body">You will need to call this API daily to report all Help to Grow: Digital eligible sales to the grant administrator. </p>
+    </section>
+  </div>
+</div>

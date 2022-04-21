@@ -1,0 +1,238 @@
+﻿/** GovUK Task list pattern **/
+
+.app-task-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (min-width: 40.0625em) {
+    .app-task-list {
+        min-width: 550px;
+    }
+}
+
+.app-task-list__section {
+    display: table;
+    font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 700;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+}
+
+@media print {
+    .app-task-list__section {
+        font-family: sans-serif;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .app-task-list__section {
+        font-size: 24px;
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+}
+
+@media print {
+    .app-task-list__section {
+        font-size: 18pt;
+        line-height: 1.15;
+    }
+}
+
+.app-task-list__section-number {
+    display: table-cell;
+}
+
+@media (min-width: 40.0625em) {
+    .app-task-list__section-number {
+        min-width: 30px;
+        padding-right: 0;
+    }
+}
+
+.app-task-list__items {
+    font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 40px;
+    list-style: none;
+    padding-left: 0;
+}
+
+@media print {
+    .app-task-list__items {
+        font-family: sans-serif;
+    }
+}
+
+@media (min-width: 40.0625em) {
+    .app-task-list__items {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height: 1.31579;
+    }
+}
+
+@media print {
+    .app-task-list__items {
+        font-size: 14pt;
+        line-height: 1.15;
+    }
+}
+
+.app-task-list__item {
+    border-bottom: 1px solid #b1b4b6;
+    margin-bottom: 0 !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .app-task-list__item:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .app-task-list__item:first-child {
+        border-top: 1px solid #b1b4b6;
+    }
+
+.app-task-list__task-name {
+    display: block;
+}
+
+@media (min-width: 28.125em) {
+    .app-task-list__task-name {
+        float: left;
+    }
+}
+
+.app-task-list__tag,
+.app-task-list__task-completed {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+@media (min-width: 28.125em) {
+    .app-task-list__tag,
+    .app-task-list__task-completed {
+        float: right;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/** Help to Grow Branding Styles **/
+
+/** Help to Grow color pallete **/
+.beis-\!-color--white {
+    color: #fff;
+}
+
+.beis-\!-color--treasury-bermuda {
+    color: #7aebc9;
+}
+
+.beis-\!-color--sea-yellow {
+    color: #ffb000;
+}
+
+.beis-\!-color--lucky-point {
+    color: #1c1c78;
+}
+
+.beis-\!-color--mirage {
+    color: #1e1a34;
+}
+
+.beis-\!-color--black {
+    color: #000;
+}
+
+/** Help to Grow Branding Style Overrides **/
+
+.govuk-header__container {
+    border-bottom: 10px solid #ffb000;
+}
+
+.govuk-checkboxes__label:before {
+    border-radius: 5px !important;
+}
+
+/** Application Styles **/
+
+.beis-htg-logo {
+    max-width: 400px;
+}
+
+.beis-sign-out-link {
+    float: right;
+    margin: 15px 0;
+}
+
+.beis-\!-float-right {
+    float: right;
+}
+
+.beis-\!-display-inline-block {
+    display: inline-block;
+}
+
+.beis__account-home-menu-left {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    padding: 20px;
+    display: block;
+    margin: 0;
+    color: #fff;
+    background-color: #1d70b8;
+    text-align: center
+}
+
+.beis__account-home-menu-right {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.11111;
+    padding: 20px;
+    display: block;
+    margin: 0;
+    background-color: #b1b4b6;
+    text-align: center
+}
+
+.beis-\!-width-full {
+    width: 100%;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.beis-expand-textarea {
+    flex: 1;
+}
+
+.beis-full-textarea {
+    height: 100% !important;
+    width: 100% !important;
+}

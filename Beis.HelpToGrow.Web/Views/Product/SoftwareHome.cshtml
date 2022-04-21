@@ -1,0 +1,211 @@
+﻿@using Beis.HelpToGrow.Web.Constants
+@model SoftwareHomeViewModel
+@{
+    ViewData["Title"] = @Model.ProductName;
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.HomeIndexGet)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <strong class="govuk-tag govuk-tag--grey beis-!-float-right govuk-!-margin-top-1">
+            @{
+                var enumProductStatus = (ProductStatus)@Model.ProductStatus;
+                <label>@enumProductStatus.DisplayName()</label>
+            }
+        </strong>
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+            @Model.ProductName
+            <span class="govuk-caption-l">@Model.ProductTypeName</span>
+        </h1>
+
+        <ol class="app-task-list">
+
+            <li>
+                <h2 class="app-task-list__section">
+                    Voucher redemption link (required)
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                            <ul class="govuk-list">
+                                <li>We need this so that customers can visit your website to redeem their tokens.</li>
+                            </ul>
+                            <a class="govuk-link" asp-route="@RouteNameConstants.RedemptionUrlGet" asp-route-id="@Model.ProductId">
+                                Create redemption URL
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section">
+                    Pricing information (required)
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <span class="app-task-list__task-name">
+                            <ul class="govuk-list">
+                                <li>We need to know this so that customers understand the pricing structure, commitments, free trials, discounts and any additional costs.</li>
+                            </ul>
+                            <a class="govuk-link" asp-route="@RouteNameConstants.ProductPricingGet" asp-route-id="@Model.ProductId">
+                                View pricing information
+                            </a>
+                        </span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section">
+                    SKU ID (required)
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                            <ul class="govuk-list">
+                                <li>We need this to help track your product sales using Help to Grow: Digital Tokens.</li>
+                            </ul>
+                            <a class="govuk-link" asp-route="@RouteNameConstants.SkuGet" asp-route-id="@Model.ProductId">
+                                Add SKU ID
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="app-task-list__section">
+                    Product logo (optional)
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                            <ul class="govuk-list">
+                                <li>This will appear on your product page and will help users identify your product and brand. You do not have to add a logo.</li>
+                            </ul>
+                            <a class="govuk-link" asp-route="@RouteNameConstants.ProductLogoGet" asp-route-id="@Model.ProductId">
+                                Add a product logo
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-5 govuk-!-margin-bottom-5" role="presentation" tabindex="-1">
+
+        <p class="govuk-body">Please ensure that you fill in all sections marked <b>NOT COMPLETE</b>.</p>
+
+        <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                The information you enter and approve in these screens will be published on the Help to Grow: Digital website. Do not include anything that you do not want to be seen publicly.
+            </strong>
+        </div>
+
+        <ol class="app-task-list">
+            <li>
+                <h2 class="app-task-list__section">
+                    Product information
+                </h2>
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                            <a class="govuk-link" asp-route="@RouteNameConstants.ProductSummaryGet" asp-route-id="@Model.ProductId">
+                                Product summary
+                            </a>
+                        </div>
+                        @if (string.IsNullOrWhiteSpace(Model.DraftProductDescription))
+                        {
+                            <strong class="govuk-tag app-task-list__tag">Not Complete</strong>
+                        }
+                        else
+                        {
+                            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Complete</strong>
+                        }
+                    </li>
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                            <a class="govuk-link" asp-route="@RouteNameConstants.ProductCapabilitiesGet" asp-route-id="@Model.ProductId">
+                                Product capabilities
+                            </a>
+                        </div>
+                        @if (Model.HasCapabilities)
+                        {
+                            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Complete</strong>
+                        }
+                        else
+                        {
+                            <strong class="govuk-tag app-task-list__tag">Not Complete</strong>
+                        }
+                    </li>
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                                <a class="govuk-link" asp-route="@RouteNameConstants.ProductSupportGet" asp-route-id="@Model.ProductId">
+                                Product support details
+                            </a>
+                        </div>
+                        @if (!Model.HasProductSupport)
+                        {
+                            <strong class="govuk-tag app-task-list__tag">Not Complete</strong>
+                        }
+                        else
+                        {
+                            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Complete</strong>
+                        }
+                    </li>
+                    <li class="app-task-list__item">
+                        <div class="app-task-list__task-name">
+                                <a class="govuk-link" asp-route="@RouteNameConstants.PlatformDetailsGet" asp-route-id="@Model.ProductId">
+                                Deployment platform, compatibility and reviews
+                            </a>
+                        </div>
+                        @if (!Model.HasPlatformDetails)
+                        {
+                            <strong class="govuk-tag app-task-list__tag">Not Complete</strong>
+                        }
+                        else
+                        {
+                            <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Complete</strong>
+                        }
+                    </li>
+                </ul>
+            </li>
+
+            @if (Model.ProductStatus != ProductStatus.InReview)
+            {
+                <li>
+                    <h2 class="app-task-list__section">
+                        Review and submit
+                    </h2>
+                    <ul class="app-task-list__items">
+                        <li class="app-task-list__item">
+                            @if (!Model.CanSubmitForReview)
+                            {
+                                <div class="app-task-list__task-name">
+                                    Review and submit product information
+                                </div>
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">Cannot start yet</strong>
+                            }
+                            else
+                            {
+                                <div class="app-task-list__task-name">
+                                    <a class="govuk-link" asp-route="@RouteNameConstants.ProductSubmitReviewDetailsGet" asp-route-id="@Model.ProductId">
+                                        Review and submit product information
+                                    </a>
+                                </div>
+                                <strong class="govuk-tag app-task-list__tag">Start</strong>
+                            }
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ol>
+    </div>
+</div>

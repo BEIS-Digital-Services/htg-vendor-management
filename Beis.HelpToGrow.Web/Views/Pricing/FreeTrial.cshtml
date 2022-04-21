@@ -1,0 +1,66 @@
+@using Beis.HelpToGrow.Web.Constants
+@model Beis.HelpToGrow.Web.Models.Pricing.FreeTrialViewModel
+@{
+    ViewData["Title"] = "Free trial";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.PricingHomeGet, new { id = Model.ProductId, productPriceId = Model.ProductPriceId }, @Context.Request.Scheme)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <span class="govuk-caption-l">@Model.ProductName</span>
+        <h1 class="govuk-heading-l">Free trial</h1>
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Is there a free trial?</th>
+                    <td class="govuk-table__cell">
+                        @if (@Model.FreeTrialFlag)
+                        {
+                            @Html.Raw("Yes")
+                        }
+                        else
+                        {
+                            @Html.Raw("No")
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="govuk-table">
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Trial period</th>
+                    <th scope="col" class="govuk-table__header">Advanced payment</th>
+                    <th scope="col" class="govuk-table__header">After free trial expires</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">@Model.FreeTrialTermNo  @Model.FreeTrialTermUnit</td>
+                    <td class="govuk-table__cell">
+                        @if (@Model.FreeTrialPaymentUpfront)
+                        {
+                            @Html.Raw("Yes")
+                        }
+                        else
+                        {
+                            @Html.Raw("No")
+                        }
+                    </td>
+                    <td class="govuk-table__cell">@Model.FreeTrialEndActionDescription</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

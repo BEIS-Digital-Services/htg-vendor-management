@@ -1,0 +1,60 @@
+﻿@using Beis.HelpToGrow.Web.Constants
+@model ProductLogoViewModel
+@{
+    ViewData["Title"] = "Product Logo";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post" enctype="multipart/form-data">
+            @*<input type="hidden" id="UserId" name="UserId" value="@Model.UserId" />*@
+            <input type="hidden" id="ProductId" name="ProductId" value="@Model.ProductId" />
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Product logo
+                            <span class="govuk-caption-l">@Model.ProductName</span>
+                            <input type="hidden" id="ProductName" name="ProductName" value="@Model.ProductName" />
+                        </h1>
+                    </legend>
+                    @if (!string.IsNullOrWhiteSpace(Model.ProductLogo))
+                    {
+                        <img src="@Model.ProductLogo" class="govuk-!-margin-top-3 govuk-!-margin-bottom-3" alt="@Model.ProductLogo.Substring(@Model.ProductLogo.LastIndexOf("/")+1)">
+                        <input type="hidden" id="ProductLogo" name="ProductLogo" value="@Model.ProductLogo" />
+                    }
+
+                    <p class="govuk-body">This will appear next to your product information.</p>
+                    <p class="govuk-body">The logo should be:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>a JPEG, GIF or BMP</li>
+                        <li>up to a maximum file size of 250Kb</li>
+                        <li>up to a maximum of  110 x 110 pixels</li>
+                    </ul>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-visually-hidden" for="file">Choose logo file</label>
+                        <div class="@String.Format("govuk-form-group {0}", !ViewData.ModelState.IsValid ? "govuk-form-group--error" : string.Empty)">
+                            <span id="name-of-error-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>
+                                @Html.ValidationMessageFor(x => x.File)
+                            </span>
+
+                            <input class="govuk-file-upload" type="file" name="file" id="file"/>
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <button type="submit" class="govuk-button" data-module="govuk-button">Save and return</button>
+        </form>
+
+    </div>
+</div>
