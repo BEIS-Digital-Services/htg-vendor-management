@@ -5,15 +5,16 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:3.1-alpine AS base
 # Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
-RUN apk add openssh \
-     && echo "root:Docker!" | chpasswd
+#RUN apk add openssh \
+ #    && echo "root:Docker!" | chpasswd
 
 # Copy the sshd_config file to the /etc/ssh/ directory
-COPY sshd_config /etc/ssh/
+#COPY sshd_config /etc/ssh/
 
-RUN /usr/bin/ssh-keygen -A
+#RUN /usr/bin/ssh-keygen -A
 
-EXPOSE 80 443 2222
+#EXPOSE 80 443 2222
+EXPOSE 80 443
 
 WORKDIR /app
 
@@ -33,6 +34,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-CMD /usr/sbin/sshd -D -p 2222 & dotnet Beis.HelpToGrow.Web.dll
+# CMD /usr/sbin/sshd -D -p 2222 & dotnet Beis.HelpToGrow.Web.dll
 
-# ENTRYPOINT ["dotnet", "Beis.HelpToGrow.Web.dll"]
+ENTRYPOINT ["dotnet", "Beis.HelpToGrow.Web.dll"]
