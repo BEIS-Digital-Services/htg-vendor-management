@@ -30,7 +30,7 @@ namespace Beis.HelpToGrow.Web
         public Startup(IConfiguration configuration, bool callMockNotifyApi = false)
         {
             _configuration = configuration;
-            AutoLogoutDurationInSeconds = _configuration.GetValue("AppSettings:AutoLogoutDurationInMinutes", 0) * 60;
+            AutoLogoutDurationInSeconds = _configuration.GetValue("AutoLogoutDurationInMinutes", 0) * 60;
             _callMockNotifyApi = callMockNotifyApi;
         }
 
