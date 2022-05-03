@@ -46,16 +46,16 @@
 		<Content Remove="wwwroot\images\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Beis.HelpToGrow.Core\Beis.VendorManagement.Repositories.csproj" />
+	  <ProjectReference Include="..\Beis.VendorManagement.Repositories\Beis.VendorManagement.Repositories.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Reference Include="Beis.Htg.VendorSme.Database">
-	    <HintPath>..\Beis.HelpToGrow.Core\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
+	    <HintPath>..\Beis.VendorManagement.Repositories\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
   <ItemGroup>
 	  <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-		  <_Parameter1>Beis.HelpToGrow.Tests</_Parameter1>
+		  <_Parameter1>Beis.VendorManagement.Web.Tests</_Parameter1>
 	  </AssemblyAttribute>
   </ItemGroup>
 </Project>

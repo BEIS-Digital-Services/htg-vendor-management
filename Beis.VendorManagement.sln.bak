@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.VendorManagement.Repos
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.VendorManagement.Web", "Beis.VendorManagement.Web\Beis.VendorManagement.Web.csproj", "{F32FF819-D8EA-41DC-ABAF-2F44A1F072AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.VendorManagement.Web.Tests", "Beis.VendorManagement.Web.Tests\Beis.VendorManagement.Web.Tests.csproj", "{EC8C0C28-3BEB-432A-8FFB-AF4807F2FF07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beis.VendorManagement.Web.Tests", "Beis.VendorManagement.Tests\Beis.VendorManagement.Web.Tests.csproj", "{EC8C0C28-3BEB-432A-8FFB-AF4807F2FF07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

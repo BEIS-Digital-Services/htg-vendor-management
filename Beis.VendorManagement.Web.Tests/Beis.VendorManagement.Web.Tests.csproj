@@ -39,12 +39,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Beis.HelpToGrow.Web\Beis.VendorManagement.Web.csproj" />
+    <ProjectReference Include="..\Beis.VendorManagement.Web\Beis.VendorManagement.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Beis.Htg.VendorSme.Database">
-      <HintPath>..\Beis.HelpToGrow.Core\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
+      <HintPath>..\Beis.VendorManagement.Repositories\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
     </Reference>
   </ItemGroup>
 
