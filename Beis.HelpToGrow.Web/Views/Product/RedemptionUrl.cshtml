@@ -1,5 +1,5 @@
-﻿@using Beis.HelpToGrow.Web.Constants
-@model RedemptionUrlViewModel
+﻿@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.RedemptionUrlViewModel
 @{
     ViewData["Title"] = "Redemption URL";
 }
@@ -15,7 +15,6 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form class="form" autocomplete="off" method="post">
-            @*<input type="hidden" id="userId" name="userId" value="@Model.UserId" />*@
             @Html.HiddenFor(Model => Model.ProductId)
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">

@@ -1,10 +1,9 @@
-﻿namespace Beis.HelpToGrow.Web.Validators
+﻿using Beis.VendorManagement.Web.Models;
+using FluentValidation;
+using System.Linq;
+
+namespace Beis.VendorManagement.Web.Validators
 {
-    using System.Linq;
-
-    using Beis.HelpToGrow.Web.Models;
-    using FluentValidation;
-
     public class IpAddressValidator : AbstractValidator<RangesViewModel>
     {
         public IpAddressValidator()

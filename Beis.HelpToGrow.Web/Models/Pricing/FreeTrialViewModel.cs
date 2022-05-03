@@ -1,4 +1,4 @@
-﻿namespace Beis.HelpToGrow.Web.Models.Pricing
+﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
     public class FreeTrialViewModel
     {

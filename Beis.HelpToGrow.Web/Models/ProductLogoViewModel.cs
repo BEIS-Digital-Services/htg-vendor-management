@@ -1,8 +1,8 @@
-﻿namespace Beis.HelpToGrow.Web.Models
-{
-    using Microsoft.AspNetCore.Http;
-    using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
+namespace Beis.VendorManagement.Web.Models
+{
     public class ProductLogoViewModel
     {
         public long ProductId { get; set; }

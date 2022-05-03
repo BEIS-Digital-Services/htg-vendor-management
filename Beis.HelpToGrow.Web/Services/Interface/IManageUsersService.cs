@@ -1,8 +1,8 @@
-﻿using Beis.HelpToGrow.Web.Models;
+﻿using Beis.VendorManagement.Web.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Services.Interface
+namespace Beis.VendorManagement.Web.Services.Interface
 {
     public interface IManageUsersService
     {

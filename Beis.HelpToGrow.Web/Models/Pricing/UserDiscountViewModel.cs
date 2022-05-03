@@ -1,17 +1,17 @@
-﻿namespace Beis.HelpToGrow.Web.Models
+﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
     public class UserDiscountViewModel
     {
-        public long? product_price_id { get; set; }
+        public long? ProductPriceId { get; set; }
 
-        public int max_licenses { get; set; }
+        public int MaxLicenses { get; set; }
 
-        public int min_licenses { get; set; }
+        public int MinLicenses { get; set; }
 
-        public decimal discount_price { get; set; }
+        public decimal DiscountPrice { get; set; }
         
-        public decimal discount_percentage { get; set; }
+        public decimal DiscountPercentage { get; set; }
         
-        public string discount_sku { get; set; }
+        public string DiscountSku { get; set; }
     }
 }

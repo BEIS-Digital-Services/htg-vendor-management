@@ -1,12 +1,10 @@
-﻿using Beis.HelpToGrow.Core.Repositories;
-using Beis.HelpToGrow.Core.Repositories.Interface;
-using Beis.HelpToGrow.Core.Repositories.Interface.Pricing;
-using Beis.HelpToGrow.Core.Repositories.Pricing;
-using Beis.HelpToGrow.Web.Handlers.ManageUsers;
-using Beis.HelpToGrow.Web.Handlers.ProductSubmit;
-using Beis.HelpToGrow.Web.Options;
-using Beis.HelpToGrow.Web.Services;
-using Beis.HelpToGrow.Web.Services.Interface;
+﻿using Beis.VendorManagement.Repositories;
+using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Handlers.ManageUsers;
+using Beis.VendorManagement.Web.Handlers.ProductSubmit;
+using Beis.VendorManagement.Web.Options;
+using Beis.VendorManagement.Web.Services;
+using Beis.VendorManagement.Web.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -15,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Notify.Interfaces;
 
-namespace Beis.HelpToGrow.Web.Extensions
+namespace Beis.VendorManagement.Web.Extensions
 {
     internal static class ServiceCollectionExtensions
     {

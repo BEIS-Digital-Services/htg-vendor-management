@@ -1,5 +1,5 @@
-﻿using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Services.Interface;
+﻿using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Services.Interface;
 using Microsoft.Extensions.Options;
 using Notify.Client;
 using Notify.Interfaces;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Services
+namespace Beis.VendorManagement.Web.Services
 {
     public class NotifyService : INotifyService
     {

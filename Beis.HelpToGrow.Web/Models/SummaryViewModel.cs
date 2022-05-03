@@ -1,4 +1,6 @@
-﻿namespace Beis.HelpToGrow.Web.Models
+﻿using Beis.VendorManagement.Web.Models.Enums;
+
+namespace Beis.VendorManagement.Web.Models
 {
     public class SummaryViewModel
     {

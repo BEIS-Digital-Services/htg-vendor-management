@@ -1,5 +1,5 @@
-﻿@using Beis.HelpToGrow.Web.Constants
-@model ProductSubmitReviewDetailsViewModel
+﻿@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.ProductSubmitReviewDetailsViewModel
 @{
     ViewData["Title"] = "Review details to submit";
 }
@@ -178,7 +178,6 @@
             <p class="govuk-body">All the information you have provided will then be publicly available once the Help to Grow: Digital scheme is live.</p>
 
             <input type="hidden" asp-for="@Model.ProductId" />
-            @*<input type="hidden" asp-for="@Model.UserId" />*@
             <button class="govuk-button" data-module="govuk-button">Submit</button>
         </div>
     </form>

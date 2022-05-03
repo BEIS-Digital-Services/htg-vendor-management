@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Beis.HelpToGrow.Web.Models
+namespace Beis.VendorManagement.Web.Models.Enums
 {
     public static class EnumExtensions
     {

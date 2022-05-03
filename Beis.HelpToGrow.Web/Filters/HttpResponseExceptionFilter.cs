@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace Beis.HelpToGrow.Web.Filters
+namespace Beis.VendorManagement.Web.Filters
 {
     public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
     {

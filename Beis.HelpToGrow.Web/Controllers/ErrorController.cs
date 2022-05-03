@@ -1,5 +1,5 @@
-﻿using Beis.HelpToGrow.Web.Constants;
-using Beis.HelpToGrow.Web.Models;
+﻿using Beis.VendorManagement.Web.Constants;
+using Beis.VendorManagement.Web.Models;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Diagnostics;
 
-namespace Beis.HelpToGrow.Web.Controllers
+namespace Beis.VendorManagement.Web.Controllers
 {
     public class ErrorController : Controller
     {

@@ -1,7 +1,7 @@
-﻿namespace Beis.HelpToGrow.Web.Models
-{
-    using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
+namespace Beis.VendorManagement.Web.Models
+{
     public class VendorCompanyViewModel
     {
         public VendorCompanyViewModel()

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Beis.VendorManagement.Web.Models;
+using FluentValidation;
+using System.Text.RegularExpressions;
 
-namespace Beis.HelpToGrow.Web.Validators
+namespace Beis.VendorManagement.Web.Validators
 {
-    using System.Text.RegularExpressions;
-    
-    using Beis.HelpToGrow.Web.Models;
-    using FluentValidation;
-
     public class ProductRedemptionUrlValidator : AbstractValidator<RedemptionUrlViewModel>
     {
         public ProductRedemptionUrlValidator()

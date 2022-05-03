@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Beis.HelpToGrow.Web
+namespace Beis.VendorManagement.Web
 {
     [ExcludeFromCodeCoverage]
     public class Program

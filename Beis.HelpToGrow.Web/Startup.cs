@@ -1,6 +1,6 @@
-﻿using Beis.HelpToGrow.Web.Extensions;
-using Beis.HelpToGrow.Web.Filters;
-using Beis.Htg.VendorSme.Database;
+﻿using Beis.Htg.VendorSme.Database;
+using Beis.VendorManagement.Web.Extensions;
+using Beis.VendorManagement.Web.Filters;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -20,7 +20,7 @@ using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web
+namespace Beis.VendorManagement.Web
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
-﻿using Beis.HelpToGrow.Core.Repositories.Interface;
-using Beis.HelpToGrow.Web.Models;
-using Beis.Htg.VendorSme.Database.Models;
+﻿using Beis.Htg.VendorSme.Database.Models;
+using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Models;
 using MediatR;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Handlers.Home
+namespace Beis.VendorManagement.Web.Handlers.Home
 {
     public class IndexGetHandler : IRequestHandler<IndexGetHandler.Context, Optional<IndexGetHandler.Result>>
     {

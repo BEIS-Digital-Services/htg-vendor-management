@@ -1,10 +1,9 @@
-﻿namespace Beis.HelpToGrow.Web.Validators
-{
-    using System.Text.RegularExpressions;
-    
-    using Beis.HelpToGrow.Web.Models;
-    using FluentValidation;
+﻿using Beis.VendorManagement.Web.Models;
+using FluentValidation;
+using System.Text.RegularExpressions;
 
+namespace Beis.VendorManagement.Web.Validators
+{
     public class ProductSummaryValidator : AbstractValidator<SummaryViewModel>
     {
         public ProductSummaryValidator()

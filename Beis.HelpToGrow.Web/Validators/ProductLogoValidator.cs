@@ -1,13 +1,12 @@
-﻿namespace Beis.HelpToGrow.Web.Validators
-{
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    
-    using Beis.HelpToGrow.Web.Models;
-    using FluentValidation;
-    using Microsoft.AspNetCore.Http;
+﻿using Beis.VendorManagement.Web.Models;
+using FluentValidation;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
+namespace Beis.VendorManagement.Web.Validators
+{
     public class ProductLogoValidator : AbstractValidator<ProductLogoViewModel>
     {
         private const int MaxLogoSizeInKb = 250;

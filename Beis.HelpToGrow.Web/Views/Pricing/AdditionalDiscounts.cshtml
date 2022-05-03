@@ -1,5 +1,5 @@
-@using Beis.HelpToGrow.Web.Constants
-@model Beis.HelpToGrow.Web.Models.Pricing.AdditionalDiscountsViewModel;
+@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.Pricing.AdditionalDiscountsViewModel;
 @{
     ViewData["Title"] = "Additional discounts";
 }
@@ -142,7 +142,7 @@
                     {
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell">
-                                @if (userDiscount.product_price_id != null)
+                                @if (userDiscount.ProductPriceId != null)
                                 {
                                     @Html.Raw("Yes")
                                 }
@@ -151,10 +151,10 @@
                                     @Html.Raw("No")
                                 }
                             </td>
-                            <td class="govuk-table__cell">@userDiscount.min_licenses min - @userDiscount.max_licenses max</td>
-                            <td class="govuk-table__cell">@($"{@userDiscount.discount_price:0.00}")</td>
-                            <td class="govuk-table__cell">@($"{@userDiscount.discount_percentage:0.00}")</td>
-                            <td class="govuk-table__cell">@userDiscount.discount_sku</td>
+                            <td class="govuk-table__cell">@userDiscount.MinLicenses min - @userDiscount.MaxLicenses max</td>
+                            <td class="govuk-table__cell">@($"{@userDiscount.DiscountPrice:0.00}")</td>
+                            <td class="govuk-table__cell">@($"{@userDiscount.DiscountPercentage:0.00}")</td>
+                            <td class="govuk-table__cell">@userDiscount.DiscountSku</td>
                         </tr>
                     }
                 }

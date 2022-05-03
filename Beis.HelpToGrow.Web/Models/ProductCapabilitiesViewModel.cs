@@ -1,9 +1,9 @@
-﻿namespace Beis.HelpToGrow.Web.Models
+﻿using Beis.VendorManagement.Web.Models.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+
+namespace Beis.VendorManagement.Web.Models
 {
-    using System.Collections.Generic;
-    
-    using Microsoft.AspNetCore.Mvc.Rendering;
-    
     public class ProductCapabilitiesViewModel
     {
         public long ProductId { get; set; }

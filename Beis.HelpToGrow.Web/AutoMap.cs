@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Models.Pricing;
 using Beis.Htg.VendorSme.Database.Models;
+using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Models.Enums;
+using Beis.VendorManagement.Web.Models.Pricing;
 
-namespace Beis.HelpToGrow.Web
+namespace Beis.VendorManagement.Web
 {
     public class AutoMap : Profile
     {
@@ -44,7 +45,12 @@ namespace Beis.HelpToGrow.Web
             CreateMap<vendor_company_user, UserViewModel>().ReverseMap();
 
             CreateMap<user_discount, UserDiscountViewModel>()
-                .ForMember(d => d.discount_sku, s => s.MapFrom(s => !string.IsNullOrWhiteSpace(s.discount_sku) ? s.discount_sku : "n/a"))
+                .ForMember(d => d.ProductPriceId, s => s.MapFrom(s => s.product_price_id))
+                .ForMember(d => d.DiscountPercentage, s => s.MapFrom(s => s.discount_percentage))
+                .ForMember(d => d.DiscountPrice, s => s.MapFrom(s => s.discount_price))
+                .ForMember(d => d.MaxLicenses, s => s.MapFrom(s => s.max_licenses))
+                .ForMember(d => d.MinLicenses, s => s.MapFrom(s => s.min_licenses))
+                .ForMember(d => d.DiscountSku, s => s.MapFrom(s => !string.IsNullOrWhiteSpace(s.discount_sku) ? s.discount_sku : "n/a"))
                 .ReverseMap();
 
             CreateMap<ProductLogoViewModel, product>().ReverseMap()

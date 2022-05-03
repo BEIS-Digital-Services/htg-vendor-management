@@ -1,5 +1,6 @@
-﻿@using Beis.HelpToGrow.Web.Constants
-@model ProductSupportViewModel;
+﻿@using Beis.VendorManagement.Web.Constants
+@using Beis.VendorManagement.Web.Models.Enums
+@model Beis.VendorManagement.Web.Models.ProductSupportViewModel;
 
 @{
     ViewData["Title"] = "Product Support";
@@ -16,7 +17,6 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form class="form" method="post">
-            @*<input type="hidden" id="userId" name="userId" value="@Model.UserId" />*@
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset" aria-describedby="product-details-hint">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">

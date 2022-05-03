@@ -1,8 +1,8 @@
-﻿using Beis.HelpToGrow.Web.Constants;
+﻿using Beis.VendorManagement.Web.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Beis.HelpToGrow.Web.Controllers
+namespace Beis.VendorManagement.Web.Controllers
 {
     [Authorize]
     public class HelpAndGuidanceController : Controller

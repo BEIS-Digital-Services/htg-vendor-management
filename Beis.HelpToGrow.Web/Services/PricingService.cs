@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
-using Beis.HelpToGrow.Core.Repositories.Interface;
-using Beis.HelpToGrow.Core.Repositories.Interface.Pricing;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Models.Pricing;
-using Beis.HelpToGrow.Web.Services.Interface;
+using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Models.Pricing;
+using Beis.VendorManagement.Web.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Services
+namespace Beis.VendorManagement.Web.Services
 {
     public class PricingService : IPricingService
     {

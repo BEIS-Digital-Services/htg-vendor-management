@@ -1,7 +1,7 @@
-﻿namespace Beis.HelpToGrow.Web.Models
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Beis.VendorManagement.Web.Models
+{
     public class ProductSubmitReviewDetailsViewModel
     {
         public long ProductId { get; set; }

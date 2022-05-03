@@ -1,6 +1,6 @@
-﻿using Beis.HelpToGrow.Core.Repositories.Interface;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Options;
+﻿using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Options;
 using MediatR;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Options;
@@ -8,7 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Handlers.Product
+namespace Beis.VendorManagement.Web.Handlers.Product
 {
     public class ProductLogoGetHandler : IRequestHandler<ProductLogoGetHandler.Context, Optional<ProductLogoViewModel>>
     {

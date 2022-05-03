@@ -1,4 +1,4 @@
-﻿namespace Beis.HelpToGrow.Web.Constants
+﻿namespace Beis.VendorManagement.Web.Constants
 {
     internal static class ApplicationConstants
     {

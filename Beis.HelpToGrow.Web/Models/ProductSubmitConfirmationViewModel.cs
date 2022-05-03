@@ -1,4 +1,4 @@
-﻿namespace Beis.HelpToGrow.Web.Models
+﻿namespace Beis.VendorManagement.Web.Models
 {
     public class ProductSubmitConfirmationViewModel
     {

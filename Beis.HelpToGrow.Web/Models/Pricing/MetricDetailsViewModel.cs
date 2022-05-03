@@ -1,7 +1,7 @@
-﻿namespace Beis.HelpToGrow.Web.Models.Pricing
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Beis.VendorManagement.Web.Models.Pricing
+{
     public class MetricDetailsViewModel
     {
         public long ProductPriceId { get; set; }

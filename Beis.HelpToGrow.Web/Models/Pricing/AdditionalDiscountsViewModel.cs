@@ -1,8 +1,8 @@
-﻿namespace Beis.HelpToGrow.Web.Models.Pricing
-{
-    using System.Linq;
-    using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 
+namespace Beis.VendorManagement.Web.Models.Pricing
+{
     public class AdditionalDiscountsViewModel
     {
         public AdditionalDiscountsViewModel()

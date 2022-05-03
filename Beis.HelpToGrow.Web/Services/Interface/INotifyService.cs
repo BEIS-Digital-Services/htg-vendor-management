@@ -1,10 +1,9 @@
-﻿namespace Beis.HelpToGrow.Web.Services.Interface
+﻿using Beis.VendorManagement.Web.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Beis.VendorManagement.Web.Services.Interface
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Beis.HelpToGrow.Web.Models;
-
     public interface INotifyService
     {
         Task SendEmailNotification(long userId, IList<VendorCompanyUserViewModel> emailPendingUsers, string templateId);

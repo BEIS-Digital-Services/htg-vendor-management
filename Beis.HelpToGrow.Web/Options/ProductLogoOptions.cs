@@ -1,4 +1,4 @@
-﻿namespace Beis.HelpToGrow.Web.Options
+﻿namespace Beis.VendorManagement.Web.Options
 {
     public class ProductLogoOptions
     {

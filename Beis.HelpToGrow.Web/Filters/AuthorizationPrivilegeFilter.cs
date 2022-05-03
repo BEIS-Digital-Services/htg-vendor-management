@@ -1,6 +1,6 @@
-﻿using Beis.HelpToGrow.Web.Constants;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Services.Interface;
+﻿using Beis.VendorManagement.Web.Constants;
+using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Filters
+namespace Beis.VendorManagement.Web.Filters
 {
     public class AuthorizationPrivilegeFilter : IAsyncActionFilter
     {

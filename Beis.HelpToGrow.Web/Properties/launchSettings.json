@@ -8,14 +8,6 @@
     }
   },
   "profiles": {
-    "WebApp_OpenIDConnect_DotNet": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:44309/;http://localhost:7288"
-    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
@@ -24,7 +16,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "Beis.HelpToGrow.Web": {
+    "Beis.VendorManagement.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

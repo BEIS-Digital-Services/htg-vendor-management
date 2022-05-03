@@ -1,14 +1,14 @@
-﻿using Beis.HelpToGrow.Web.Constants;
-using Beis.HelpToGrow.Web.Handlers.Product;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Services.Interface;
+﻿using Beis.VendorManagement.Web.Constants;
+using Beis.VendorManagement.Web.Handlers.Product;
+using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Services.Interface;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Controllers
+namespace Beis.VendorManagement.Web.Controllers
 {
     [Authorize]
     public class ProductController : Controller

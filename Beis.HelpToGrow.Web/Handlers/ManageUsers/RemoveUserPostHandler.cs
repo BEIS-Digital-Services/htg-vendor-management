@@ -1,13 +1,13 @@
-﻿using Beis.HelpToGrow.Core.Repositories.Interface;
-using Beis.HelpToGrow.Web.Models;
-using Beis.HelpToGrow.Web.Services.Interface;
+﻿using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Models;
+using Beis.VendorManagement.Web.Services.Interface;
 using MediatR;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Beis.HelpToGrow.Web.Handlers.ManageUsers
+namespace Beis.VendorManagement.Web.Handlers.ManageUsers
 {
     public class RemoveUserPostHandler : IRequestHandler<RemoveUserPostHandler.Context>
     {

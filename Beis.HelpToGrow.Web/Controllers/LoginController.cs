@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Beis.HelpToGrow.Web.Controllers
+namespace Beis.VendorManagement.Web.Controllers
 {
     public class LoginController : Controller
     {

@@ -1,9 +1,8 @@
-﻿namespace Beis.HelpToGrow.Web.Services.Interface
+﻿using Beis.VendorManagement.Web.Models;
+using System.Threading.Tasks;
+
+namespace Beis.VendorManagement.Web.Services.Interface
 {
-    using System.Threading.Tasks;
-
-    using Beis.HelpToGrow.Web.Models;
-
     public interface IProductService
     {
         Task<bool> UpdateRedemptionUrl(RedemptionUrlViewModel redemptionUrlViewModel, string adb2CId);

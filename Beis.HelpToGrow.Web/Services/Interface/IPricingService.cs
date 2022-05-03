@@ -1,11 +1,8 @@
-﻿namespace Beis.HelpToGrow.Web.Services.Interface
+﻿using Beis.VendorManagement.Web.Models.Pricing;
+using System.Threading.Tasks;
+
+namespace Beis.VendorManagement.Web.Services.Interface
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    
-    using Beis.HelpToGrow.Web.Models;
-    using Beis.HelpToGrow.Web.Models.Pricing;
-    
     public interface IPricingService
     {
         Task<ProductPriceDetailsViewModel> GetAllProductPrices(long productId, string adb2CId);

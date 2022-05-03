@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Beis.HelpToGrow.Web.Controllers
+namespace Beis.VendorManagement.Web.Controllers
 {
     [AllowAnonymous]
     [Area("MicrosoftIdentity")]
