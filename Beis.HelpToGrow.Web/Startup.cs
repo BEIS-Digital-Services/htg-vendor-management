@@ -157,7 +157,7 @@ namespace Beis.HelpToGrow.Web
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
 
                 Nonce = Guid.NewGuid().ToString();
-                var allowedScripts = string.Join(" ", _configuration.GetSection("AllowedScripts").Get<string[]>());
+                var allowedScripts = string.Join(" ", _configuration.GetSection("AllowedScripts").Value.Split(','));
                 context.Response.Headers.Add("Content-Security-Policy", $"script-src 'self' 'unsafe-eval' 'nonce-{Nonce}' {allowedScripts}");
 
                 context.Response.Headers.Add("X-Xss-Protection", "1; mode=block");
