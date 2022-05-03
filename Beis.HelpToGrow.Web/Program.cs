@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics.CodeAnalysis;
 
@@ -17,6 +18,13 @@ namespace Beis.HelpToGrow.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).ConfigureAppConfiguration(configBuilder =>
+                {
+                    var connectionString = configBuilder.Build().GetConnectionString("AppConfig");
+                    if (connectionString != null)
+                    {
+                        configBuilder.AddAzureAppConfiguration(connectionString);
+                    }
                 });
     }
 }

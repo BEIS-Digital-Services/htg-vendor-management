@@ -24,15 +24,12 @@
 	<PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.12" />
 	<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="5.0.1" />
+	<PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.0.0" />
 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
-	
-	<ItemGroup>
-		<None Include="appsettings.json" CopyToPublishDirectory="Always" />
-	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Views\ActivateAccount\" />
 		<None Remove="Views\ManageUsers\" />
