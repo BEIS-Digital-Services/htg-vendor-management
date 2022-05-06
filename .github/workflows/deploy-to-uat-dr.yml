@@ -1,4 +1,4 @@
-name:  CI deploy UAT-DR
+name:  CI Deploy Uat-DR
 
 on:
   workflow_dispatch:

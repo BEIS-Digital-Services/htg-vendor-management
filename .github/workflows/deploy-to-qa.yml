@@ -1,4 +1,4 @@
-name: CI deploy QA
+name: CI Deploy Qa
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ env:
 
 jobs:
   build-qa:
-    if: github.actor == 'JamesChristianson' || github.actor == 'emailtokvk' || github.actor == 'thomaslkp123'
+    if: github.actor == 'JamesChristianson' || github.actor == 'emailtokvk' || github.actor == 'thomaslkp123' || github.actor == 'rajchala'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
