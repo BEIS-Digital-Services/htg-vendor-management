@@ -1,0 +1,64 @@
+﻿@using Beis.VendorManagement.Web.Constants
+@using Beis.VendorManagement.Web.Models.Enums
+@model Beis.VendorManagement.Web.Models.PlatformDetailsViewModel;
+
+@{
+    ViewData["Title"] = "Platform Details";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post" autocomplete="off">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" aria-describedby="product-details-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-5">
+                            Deployment platform, compatibility and reviews
+                            <span class="govuk-caption-l">@Model.ProductName</span>
+                        </h1>
+                    </legend>
+
+                    <input type="hidden" asp-for="@Model.ProductId" />
+                    @Html.Label("name", Model.SettingsProductFiltersCategory.ItemName, new { @class = "govuk-label" })
+                    @for (int j = 0; j < Model.SettingsProductFiltersCategory.SettingsProductFilters.Count; j++)
+                    {
+                        @Html.Raw("<div class='govuk-form-group'><div class='govuk-checkboxes' data-module='govuk-checkboxes'><div class='govuk-checkboxes__item'>")
+                        <input type="hidden" asp-for="@Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Value" />
+                        <input asp-for="@Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Selected" class="govuk-checkboxes__input @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" />
+                        @Html.Label("name", @Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Text, new { @class = "formgovuk-label govuk-checkboxes__label" })
+                        @Html.Raw("</div></div></div>")
+                    }
+
+                    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1000">
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="OtherCompatibility">Compatibility with other systems</label>
+                            <div id="compatibility-other-systems-hint" class="govuk-hint">
+                                Tell us how your product accelerates integration with other vendor solutions. For example: connectors; open API; marketplace apps (ISP/ISV).
+                            </div>
+                            <textarea id="OtherCompatibility" class="govuk-textarea govuk-js-character-count govuk-!-width-three-quarters @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" asp-for="OtherCompatibility" maxlength="1000" rows="10"></textarea>
+                        </div>
+                        <div id="OtherCompatibility-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                            You can enter up to 1000 characters
+                        </div>
+                    </div>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="ReviewUrl">
+                            Review link
+                        </label>
+                        <div class="govuk-hint">This review can be from Capterra, G2, Getapp, Software Suggests, Trust Radius or Finance Online</div>
+                        <input id="ReviewUrl" class="govuk-input govuk-!-width-three-quarters @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" asp-for="ReviewUrl" type="text">
+                    </div>
+                </fieldset>
+            </div>
+            <button class="govuk-button @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" data-module="govuk-button">Save and return</button>
+        </form>
+    </div>
+</div>

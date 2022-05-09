@@ -1,0 +1,164 @@
+@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.Pricing.AdditionalDiscountsViewModel;
+@{
+    ViewData["Title"] = "Additional discounts";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.PricingHomeGet, new { id = Model.ProductId, productPriceId = Model.ProductPriceId }, @Context.Request.Scheme)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <span class="govuk-caption-l">@Model.ProductName</span>
+        <h1 class="govuk-heading-l">Additional discounts</h1>
+
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Are there additional discounts?</th>
+                    <td class="govuk-table__cell">
+                        @if (!Model.HasPricing && Model.ContractDurationDiscountFlag)
+                        {
+                            @Html.Raw("Yes")
+                        }
+                        else
+                        {
+                            @Html.Raw("No")
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Discounts based on contract duration</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Are discounts based<br> on contract duration?</th>
+                    <th scope="col" class="govuk-table__header">Duration</th>
+                    <th scope="col" class="govuk-table__header">Discount as £</th>
+                    <th scope="col" class="govuk-table__header">Discount as %</th>
+                    <th scope="col" class="govuk-table__header">Discount application</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    @if (!Model.HasPricing)
+                    {
+                        <td class="govuk-table__cell" colspan="5">
+                            @Html.Raw("No data available")
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="govuk-table__cell">
+                            @if (Model.ContractDurationDiscountFlag)
+                            {
+                                @Html.Raw("Yes")
+                            }
+                            else
+                            {
+                                @Html.Raw("No")
+                            }
+                        </td>
+                        <td class="govuk-table__cell">@Model.ContractDurationDiscountUnit</td>
+                        <td class="govuk-table__cell">@($"{Model.ContractDurationDiscount:0.00}")</td>
+                        <td class="govuk-table__cell">@($"{Model.ContractDurationDiscountPercentage:0.00}")</td>
+                        <td class="govuk-table__cell">@Model.ContractDurationDiscountDescription</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Discounts based on payment terms</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Are discounts based<br> on payment terms?</th>
+                    <th scope="col" class="govuk-table__header">Duration</th>
+                    <th scope="col" class="govuk-table__header">Discount as £</th>
+                    <th scope="col" class="govuk-table__header">Discount as %</th>
+                    <th scope="col" class="govuk-table__header">Discount application</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    @if (!Model.HasPricing)
+                    {
+                        <td class="govuk-table__cell" colspan="5">
+                            @Html.Raw("No data available")
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="govuk-table__cell">
+                            @if (Model.PaymentTermsDiscountFlag)
+                            {
+                                @Html.Raw("Yes")
+                            }
+                            else
+                            {
+                                @Html.Raw("No")
+                            }
+                        </td>
+                        <td class="govuk-table__cell">@(Model.PaymentTermsDiscountUnit)</td>
+                        <td class="govuk-table__cell">@($"{Model.PaymentTermsDiscount:0.00}")</td>
+                        <td class="govuk-table__cell">@($"{Model.PaymentTermsDiscountPercentage:0.00}")</td>
+                        <td class="govuk-table__cell">@Model.PaymentTermsDiscountDescription</td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">Discounts based on user licences</caption>
+            <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Are discounts based<br> on user licences?</th>
+                    <th scope="col" class="govuk-table__header">Number of licences</th>
+                    <th scope="col" class="govuk-table__header">Discount as £</th>
+                    <th scope="col" class="govuk-table__header">Discount as %</th>
+                    <th scope="col" class="govuk-table__header">SKU ID</th>
+                </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                @if (!Model.UserDiscounts.Any())
+                {
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            @Html.Raw("No data available")
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var userDiscount in Model.UserDiscounts)
+                    {
+                        <tr class="govuk-table__row">
+                            <td class="govuk-table__cell">
+                                @if (userDiscount.ProductPriceId != null)
+                                {
+                                    @Html.Raw("Yes")
+                                }
+                                else
+                                {
+                                    @Html.Raw("No")
+                                }
+                            </td>
+                            <td class="govuk-table__cell">@userDiscount.MinLicenses min - @userDiscount.MaxLicenses max</td>
+                            <td class="govuk-table__cell">@($"{@userDiscount.DiscountPrice:0.00}")</td>
+                            <td class="govuk-table__cell">@($"{@userDiscount.DiscountPercentage:0.00}")</td>
+                            <td class="govuk-table__cell">@userDiscount.DiscountSku</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

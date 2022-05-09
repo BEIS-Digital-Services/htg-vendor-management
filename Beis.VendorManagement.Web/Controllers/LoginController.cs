@@ -1,0 +1,12 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Beis.VendorManagement.Web.Controllers
+{
+    public class LoginController : Controller
+    {
+        public IActionResult LandingPage()
+        {
+            return View();
+        }
+    }
+}

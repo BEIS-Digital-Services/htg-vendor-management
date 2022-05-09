@@ -1,0 +1,58 @@
+﻿@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.VendorCompanyUserViewModel
+
+@{
+    ViewData["Title"] = "Terms and conditions and Privacy consent";
+}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Your consent</h1>
+
+        <p class="govuk-body">
+            You need to read and agree to the
+            @Html.RouteLink("Terms of Use", RouteNameConstants.TermsOfUseGet, null, new { target = "_blank", @class = "govuk-link" })
+            and
+            @Html.RouteLink("privacy policy", RouteNameConstants.PrivacyPolicyGet, null, new { target = "_blank", @class = "govuk-link" }).
+
+        <p>
+            @using (Html.BeginRouteForm(RouteNameConstants.TermsAndConditionsPost, 
+                new { id = Model.Adb2CId, hasTermsChecked = Model.HasTermsChecked, hasPrivacyPolicyChecked = Model.HasPrivacyPolicyChecked }, FormMethod.Post))
+            {
+                <div class="@String.Format("{0}", Model.ShowErrorMessage ? "govuk-form-group govuk-form-group--error" : "")">
+                    @if (Model.ShowErrorMessage)
+                    {
+                    <span id="name-of-error-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Check both boxes to continue
+                    </span>
+                    }
+
+                     <div class="govuk-form-group">
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                @Html.CheckBoxFor(m => m.HasTermsChecked, new { id = "HasTermsChecked", @class = "govuk-checkboxes__input" })
+                                <label class="govuk-label govuk-checkboxes__label" for="@nameof(Model.HasTermsChecked)">
+                                    I agree to the terms of use for Help to Grow: Digital
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="govuk-form-group">
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                @Html.CheckBoxFor(m => m.HasPrivacyPolicyChecked, new { id = "HasPrivacyPolicyChecked", @class = "govuk-checkboxes__input" })
+                                <label class="govuk-label govuk-checkboxes__label" for="@nameof(Model.HasPrivacyPolicyChecked)">
+                                    I consent to the data privacy policy for Help to Grow: Digital
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            
+                <button type="submit" class="govuk-button">
+                    Continue
+                </button>
+            }
+</div>
+</div>

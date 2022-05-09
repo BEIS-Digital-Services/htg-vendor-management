@@ -1,0 +1,71 @@
+﻿@model Beis.VendorManagement.Web.Models.VendorCompanyViewModel
+
+@{
+    ViewData["Title"] = "Check company details";
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Check your company details</h1>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Company name
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    @Model?.VendorCompanyName
+                </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Company number
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    @Model?.RegistrationId
+                </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                    Registered office
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    @Model?.VendorCompanyAddress1<br>
+                    @Model?.VendorCompanyCity<br>
+                    @Model?.VendorCompanyPostcode
+                </dd>
+            </div>
+      </dl>
+    </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <p class="govuk-body">If these details are incorrect, email  <a href="mailto:vendors.helptogrow@beis.gov.uk" class="govuk-link">vendors.helptogrow@beis.gov.uk</a></p>
+
+        @using (Html.BeginForm("CheckCompanyDetails", "ActivateAccount", new { id = Model.PrimaryUserId, hasUserAuthorised = Model.HasUserAuthorised }, FormMethod.Post))
+        {
+            <div class="@String.Format("govuk-form-group {0}", Model.ShowErrorMessage ? "govuk-form-group--error" : "")">
+
+            @if (Model.ShowErrorMessage)
+            {
+                <span id="name-of-error-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Confirm that you are authorised to register this company for Help to Grow: Digital
+                </span>
+            }
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+
+                        @Html.CheckBoxFor(m => m.HasUserAuthorised, new { id = "HasUserAuthorised", @class = "govuk-checkboxes__input" })
+                        <label class="govuk-label govuk-checkboxes__label" for="@nameof(Model.HasUserAuthorised)">
+                            I confirm that I am authorised to register this company for Help to Grow: Digital
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" name="ContinueToTerms" class="govuk-button" id="ContinueToTerms" value="Continue" />
+        }
+    </div>
+</div>

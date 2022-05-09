@@ -1,0 +1,49 @@
+﻿@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.RangesViewModel
+
+@{
+    ViewData["Title"] = "IP Addresses";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.HomeIndexGet)">
+    Back
+</a>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Adb2CId)
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            IP Addresses
+                        </h1>
+                    </legend>
+
+                    <p class="govuk-body">This helps us ensure that any updates or requests are really coming from your company.</p>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="@nameof(Model.IpAddresses)">
+                            Enter the IP addresses (please separate multiple IP addresses using a semi colon ";").
+                        </label>
+
+                        <span id="name-of-error-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>
+                            @Html.ValidationMessageFor(x => x.IpAddresses)
+                        </span>
+
+                        @Html.TextAreaFor(m => m.IpAddresses, new { id = "IpAddresses", @class = "govuk-input govuk-!-width-three-quarters" })
+                    </div>
+                </fieldset>
+            </div>
+            <input class="btn btn-primary govuk-button" type="submit" value="Save" />
+        </div>
+    </div>
+}

@@ -1,0 +1,88 @@
+﻿@using Beis.VendorManagement.Web.Constants
+@using Beis.VendorManagement.Web.Models.Enums
+@model Beis.VendorManagement.Web.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "User details";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+@using (Html.BeginRouteForm(RouteNameConstants.UserPost, FormMethod.Post))
+{
+    @if (Model.BackPage == BackPagesEnum.ManageUsers)
+    {
+        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.ManageUsersHomeGet, default, @Context.Request.Scheme)">
+            Back
+        </a>
+    }
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            <input type="hidden" name="UserId" value="@Model.UserId"/>
+                            <input type="hidden" name="CompanyId" value="@Model.CompanyId"/>
+                            @if (Model.UserId == 0)
+                            {
+                                <span>
+                                    Add user
+                                </span>
+                            }
+                            else
+                            {
+                                <span>
+                                    Edit user
+                                </span>
+                            }
+                        </h1>
+                    </legend>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="@nameof(Model.FullName)">
+                            Full name
+                        </label>
+                        <div class="@String.Format("govuk-form-group {0}", ViewBag.ShowFullNameError != null && ViewBag.ShowFullNameError ? "govuk-form-group--error" : "")">
+                            @if (ViewBag.ShowFullNameError != null && ViewBag.ShowFullNameError)
+                            {
+                                <span id="name-of-error-error" class="govuk-error-message">
+                                    <span class="govuk-visually-hidden">Error:</span>
+                                    @Html.ValidationMessageFor(model => model.FullName)
+                                </span>
+                            }
+                            @Html.TextBoxFor(m => m.FullName, new { id = "FullName", autocomplete = "off", @class = "govuk-input govuk-!-width-three-quarters" })
+                        </div>
+                    </div>
+                    <div class="govuk-form-group">
+                        @if (Model.UserId == 0)
+                        {
+                            <label class="govuk-label" for="@nameof(Model.Email)">
+                                Work email
+                            </label>
+                            <div class="@String.Format("govuk-form-group {0}", ViewBag.ShowEmailError != null && ViewBag.ShowEmailError ? "govuk-form-group--error" : "")">
+                                @if (ViewBag.ShowEmailError != null && ViewBag.ShowEmailError)
+                                {
+                                    <span id="name-of-error-error" class="govuk-error-message">
+                                        <span class="govuk-visually-hidden">Error:</span>
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                    </span>
+                                }
+                                @Html.TextBoxFor(m => m.Email, new { id = "Email", autocomplete = "off", @class = "govuk-input govuk-!-width-three-quarters" })
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="govuk-label" for="email"> Work email: @Model.Email</p>
+                            @Html.HiddenFor(m => m.Email);
+                        }
+                    </div>
+                </fieldset>
+            </div>
+            <input class="btn btn-primary govuk-button" type="submit" value="Confirm" />
+        </div>
+    </div>
+}

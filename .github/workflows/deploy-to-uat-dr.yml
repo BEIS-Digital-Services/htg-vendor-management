@@ -1,4 +1,4 @@
-name:  CI deploy UAT-DR
+name:  CI Deploy Uat-DR
 
 on:
   workflow_dispatch:
@@ -44,7 +44,7 @@ jobs:
         username: ${{ secrets.REGISTRY_UAT_USERNAME }}
         password: ${{ secrets.REGISTRY_UAT_PASSWORD }}
     - run: |
-        docker build . -t ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.AZURE_WEBAPP_NAME }}:${{ github.sha }} -t ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.AZURE_WEBAPP_NAME }}:latest --file Beis.HelpToGrow.Web/Dockerfile
+        docker build . -t ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.AZURE_WEBAPP_NAME }}:${{ github.sha }} -t ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.AZURE_WEBAPP_NAME }}:latest --file Beis.VendorManagement.Web/Dockerfile
         docker push ${{ env.REGISTRY_LOGIN_SERVER }}/${{ env.AZURE_WEBAPP_NAME }} --all-tags
     - name: 'Deploy to App Service'
       uses: azure/webapps-deploy@v2

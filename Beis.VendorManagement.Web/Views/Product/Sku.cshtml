@@ -1,0 +1,40 @@
+﻿@using Beis.VendorManagement.Web.Constants
+@model Beis.VendorManagement.Web.Models.SkuViewModel
+@{
+    ViewData["Title"] = "SKU ID";
+}
+
+@section Authentication {
+    <partial name="_Authentication" />
+}
+
+<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
+    Back
+</a>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" autocomplete="off" method="post">
+            @Html.HiddenFor(Model => Model.ProductId)
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-5">
+                            SKU ID
+                            <span class="govuk-caption-l">@Model.ProductName</span>
+                        </h1>
+                    </legend>
+                    <p class="govuk-body">We need this to help track your product sales using Help to Grow: Digital Tokens.</p>
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="ProductSku">
+                            SKU ID
+                        </label>
+                        <input class="govuk-input govuk-!-width-three-quarters" asp-for="ProductSku" id="ProductSku">
+                    </div>
+                </fieldset>
+            </div>
+            <button class="govuk-button" data-module="govuk-button">Save and return</button>
+        </form>
+
+    </div>
+</div>
