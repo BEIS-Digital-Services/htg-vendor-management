@@ -26,7 +26,6 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> ProductSummary(int id)
         {
             var summaryViewModel = await _productService.GetProduct<SummaryViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            summaryViewModel.Adb2CId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(summaryViewModel);
         }
 
@@ -38,7 +37,7 @@ namespace Beis.VendorManagement.Web.Controllers
                 return View(summaryViewModel);
             }
 
-            await _productService.UpdateSummary(summaryViewModel, summaryViewModel.Adb2CId);
+            await _productService.UpdateSummary(summaryViewModel, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             return RedirectToRoute(RouteNameConstants.SoftwareHomeGet, new { id = summaryViewModel.ProductId });
         }
 
