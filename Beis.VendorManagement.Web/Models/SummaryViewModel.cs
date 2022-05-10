@@ -10,8 +10,6 @@ namespace Beis.VendorManagement.Web.Models
 
         public string DraftProductDescription { get; set; }
 
-        public string Adb2CId { get; set; }
-
         public ProductStatus ProductStatus { get; set; }
     }
 }

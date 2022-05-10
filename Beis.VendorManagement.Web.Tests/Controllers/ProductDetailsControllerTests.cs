@@ -113,7 +113,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             SetupProducts();
 
             // Act
-            var result = await _sut.ProductSummary(new SummaryViewModel { ProductId = 1, ProductName = "product1", DraftProductDescription = "draft1", Adb2CId = Adb2CId1 }) as RedirectToRouteResult;
+            var result = await _sut.ProductSummary(new SummaryViewModel { ProductId = 1, ProductName = "product1", DraftProductDescription = "draft1" }) as RedirectToRouteResult;
 
             // Assert
             AssertForDbUpdates(result);
