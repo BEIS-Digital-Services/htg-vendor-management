@@ -1,16 +1,18 @@
 ﻿@using Beis.VendorManagement.Web.Constants
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model BaseViewModel
-
 <!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 
 <head>
     <!-- Google Analytic -->
     <script src="~/js/googleAnalyticsManager.js" asp-append-version="true"></script>
-    <script nonce="@Startup.Nonce">
-        tagOptions.contentKey = "@Model.ContentKey";
-    </script>
+    @{ var baseViewModel = Model as BaseViewModel; }
+    @if (baseViewModel?.ContentKey != null)
+    {
+        <script nonce="@Startup.Nonce">
+            tagOptions.contentKey = "@baseViewModel.ContentKey";
+        </script>
+    }
     <!-- End Google Analytic -->
 
     <meta charset="utf-8">
