@@ -2,7 +2,7 @@
 
 namespace Beis.VendorManagement.Web.Models
 {
-    public class AccountHomeViewModel
+    public class AccountHomeViewModel : BaseViewModel
     {
         public IList<ProductCategoryViewModel> Products { get; set; }
         

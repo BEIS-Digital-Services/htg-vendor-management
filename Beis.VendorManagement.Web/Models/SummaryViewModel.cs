@@ -2,7 +2,7 @@
 
 namespace Beis.VendorManagement.Web.Models
 {
-    public class SummaryViewModel
+    public class SummaryViewModel : BaseViewModel
     {
         public long ProductId { get; set; }
 

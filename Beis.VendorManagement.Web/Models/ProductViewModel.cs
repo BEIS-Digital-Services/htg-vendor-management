@@ -2,7 +2,7 @@
 
 namespace Beis.VendorManagement.Web.Models
 {
-    public class ProductViewModel
+    public class ProductViewModel : BaseViewModel
     {
         [Key]
         [Required]

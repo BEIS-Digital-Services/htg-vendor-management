@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models
 {
-    public class ProductCapabilitiesModel
+    public class ProductCapabilitiesModel : BaseViewModel
     {
         public long ProductId { get; set; }
 

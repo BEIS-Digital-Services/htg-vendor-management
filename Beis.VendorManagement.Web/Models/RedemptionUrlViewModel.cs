@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models
 {
-    public class RedemptionUrlViewModel
+    public class RedemptionUrlViewModel : BaseViewModel
     {
         public long ProductId { get; set; }
 

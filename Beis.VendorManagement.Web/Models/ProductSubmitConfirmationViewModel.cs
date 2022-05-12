@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models
 {
-    public class ProductSubmitConfirmationViewModel
+    public class ProductSubmitConfirmationViewModel : BaseViewModel
     {
         public long ProductId { get; set; }
 

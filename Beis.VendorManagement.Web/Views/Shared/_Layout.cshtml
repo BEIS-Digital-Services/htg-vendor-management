@@ -1,14 +1,17 @@
 ﻿@using Beis.VendorManagement.Web.Constants
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@using Beis.VendorManagement.Web
+@model BaseViewModel
 
 <!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 
 <head>
-    <!-- Google Tag Manager -->
-    <script async="true" src="~/js/googleTagManager.js" asp-append-version="true"></script>
-    <!-- End Google Tag Manager -->
+    <!-- Google Analytic -->
+    <script src="~/js/googleAnalyticsManager.js" asp-append-version="true"></script>
+    <script nonce="@Startup.Nonce">
+        tagOptions.contentKey = "@Model.ContentKey";
+    </script>
+    <!-- End Google Analytic -->
 
     <meta charset="utf-8">
     <title>@ViewData["Title"]</title>

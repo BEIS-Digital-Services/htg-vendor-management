@@ -2,7 +2,7 @@
 
 namespace Beis.VendorManagement.Web.Models
 {
-    public class VendorCompanyViewModel
+    public class VendorCompanyViewModel : BaseViewModel
     {
         public VendorCompanyViewModel()
         {
