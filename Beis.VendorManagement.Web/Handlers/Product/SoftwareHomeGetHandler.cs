@@ -67,7 +67,7 @@ namespace Beis.VendorManagement.Web.Handlers.Product
         private async Task<bool> HasCapabilities(product product)
         {
             var existingProductCapabilities = await _productCapabilitiesRepository.GetProductCapabilitiesFilters(product.product_id);
-            return existingProductCapabilities.Any() || product.other_capabilities != null;
+            return existingProductCapabilities.Any() || !string.IsNullOrWhiteSpace(product.other_capabilities);
         }
 
         private async Task<bool> CheckForPlatformDetails(long productId)
