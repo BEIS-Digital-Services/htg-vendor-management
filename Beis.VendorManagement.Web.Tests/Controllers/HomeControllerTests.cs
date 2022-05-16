@@ -127,7 +127,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.Products.Any(r => !string.IsNullOrWhiteSpace(r.TypeName)).Should().BeTrue();
             MockHtgVendorSmeDbContext.Verify(r => r.vendor_companies.Update(It.IsAny<vendor_company>()), Times.Once);
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Exactly(2));
-            //MockHttpContext.Verify(r => r.Session.Set(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Exactly(2));
+            model.ContentKey.Should().Be("Home-Index");
         }
 
         [Fact]
@@ -151,7 +151,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(model);
             MockHtgVendorSmeDbContext.Verify(r => r.vendor_companies.Update(It.IsAny<vendor_company>()), Times.Once);
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Once);
-            //MockHttpContext.Verify(r => r.Session.Set(It.IsAny<string>(), It.IsAny<byte[]>()), Times.Exactly(2));
+            model.ContentKey.Should().Be("Home-Index");
         }
 
         [Theory]
@@ -172,6 +172,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             var model = result.Model as RangesViewModel;
             Assert.NotNull(model);
             string.IsNullOrWhiteSpace(model.IpAddresses).Should().Be(expected);
+            model.ContentKey.Should().Be("Home-Ranges");
         }
 
         [Fact]

@@ -84,6 +84,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
                 });
             }
 
+            productSupportViewModel.ContentKey = $"Product-ProductSupport-{productSupportViewModel.ProductName}";
             return productSupportViewModel;
         }
 

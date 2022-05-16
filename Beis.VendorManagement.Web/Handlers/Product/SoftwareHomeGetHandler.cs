@@ -55,7 +55,8 @@ namespace Beis.VendorManagement.Web.Handlers.Product
                 ProductTypeName = (await _settingsProductTypesRepository.GetSettingsProductTypes())?.Where(x => x.id == product.product_type).First().item_name,
                 HasCapabilities = await HasCapabilities(product),
                 HasProductSupport = await CheckForProductSupport(product.product_id),
-                HasPlatformDetails = await CheckForPlatformDetails(product.product_id)
+                HasPlatformDetails = await CheckForPlatformDetails(product.product_id),
+                ContentKey = $"Product-SoftwareHome-{product.product_name}"
             };
 
             softwareHome.CanSubmitForReview = softwareHome.HasCapabilities

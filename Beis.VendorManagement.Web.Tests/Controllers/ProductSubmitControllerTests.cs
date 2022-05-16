@@ -153,6 +153,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.Email.Should().NotBeNullOrWhiteSpace();
             model.ProductId.Should().BeGreaterThan(0);
+            model.ContentKey.Should().Contain("Product-ProductSubmitConfirmation-");
         }
 
         private static void AssertGetProductSubmitReviewDetails(ViewResult result)
@@ -168,6 +169,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductCapabilities.Any().Should().BeTrue();
             model.ProductLogo.Should().NotBeNullOrWhiteSpace();
             model.DraftOtherCompatibility.Should().NotBeNullOrWhiteSpace();
+            model.ContentKey.Should().Contain("Product-ProductSubmitReviewDetails-");
         }
     }
 }

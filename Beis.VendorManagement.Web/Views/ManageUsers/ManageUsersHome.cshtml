@@ -1,5 +1,5 @@
 ﻿@using Beis.VendorManagement.Web.Constants
-@model IEnumerable<Beis.VendorManagement.Web.Models.VendorCompanyUserViewModel>
+@model ManageUsersHomeViewModel
 @{
     ViewData["Title"] = "Manage Users Home";
 }
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody class="govuk-table__body">
-                    @foreach (var user in Model)
+                    @foreach (var user in Model.Users)
                     {
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">

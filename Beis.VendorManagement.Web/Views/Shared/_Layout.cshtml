@@ -6,11 +6,14 @@
 <head>
     <!-- Google Analytic -->
     <script src="~/js/googleAnalyticsManager.js" asp-append-version="true"></script>
-    @{ var baseViewModel = Model as BaseViewModel; }
-    @if (baseViewModel?.ContentKey != null)
+    @{
+        var baseViewModel = Model as BaseViewModel;
+        var contentKey = baseViewModel?.ContentKey ?? ViewData["ContentKey"]?.ToString();
+    }
+    @if (contentKey != null)
     {
         <script nonce="@Startup.Nonce">
-            tagOptions.contentKey = "@baseViewModel.ContentKey";
+            tagOptions.contentKey = "@contentKey";
         </script>
     }
     <!-- End Google Analytic -->

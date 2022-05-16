@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class MinimumCommitmentViewModel
+    public class MinimumCommitmentViewModel : BaseViewModel
     {
         public int ProductPriceId { get; set; }
 

@@ -74,7 +74,8 @@ namespace Beis.VendorManagement.Web.Handlers.Home
                     CompanyId = company.vendorid,
                     CompanyName = company.vendor_company_name,
                     Adb2CId = user.adb2c,
-                    ApiKey = accessSecret
+                    ApiKey = accessSecret,
+                    ContentKey = "Home-Index"
                 }
             };
         }

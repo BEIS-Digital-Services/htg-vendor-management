@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class DiscountPeriodViewModel
+    public class DiscountPeriodViewModel : BaseViewModel
     {
         public int ProductPriceId { get; set; }
         

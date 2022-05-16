@@ -91,6 +91,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.VendorCompanyPostcode.Should().NotBeNullOrWhiteSpace();
             model.PrimaryUserId.Should().BeGreaterThan(0);
             model.ShowErrorMessage.Should().BeFalse();
+            model.ContentKey.Should().Be("ActivateAccount-CheckCompanyDetails");
         }
 
         [Fact]
@@ -146,6 +147,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(result);
             var model = result.Model as VendorCompanyUserViewModel;
             Assert.NotNull(model);
+            model.ContentKey.Should().Be("ActivateAccount-TermsAndConditions");
         }
 
         [Fact]

@@ -41,6 +41,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(model);
             model.RequestId.Should().NotBeNullOrWhiteSpace();
             model.ShowRequestId.Should().BeTrue();
+            model.ContentKey.Should().Be("Error");
         }
 
         [Theory]

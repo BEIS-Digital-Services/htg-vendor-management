@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class FreeTrialViewModel
+    public class FreeTrialViewModel : BaseViewModel
     {
         public long ProductPriceId { get; set; }
 

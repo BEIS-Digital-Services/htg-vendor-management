@@ -42,6 +42,7 @@ namespace Beis.VendorManagement.Web.Handlers.Product
                     $"{request.Scheme}://{request.Host}{_options.LogoPath}{product.product_logo.Substring(product.product_logo.LastIndexOf(@"\", StringComparison.OrdinalIgnoreCase) + 1)}";
             }
 
+            productLogoViewModel.ContentKey = $"Product-ProductLogo-{productLogoViewModel.ProductName}";
             return productLogoViewModel;
         }
 

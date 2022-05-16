@@ -66,6 +66,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(model);
             model.FullName.Should().NotBeNullOrWhiteSpace();
             model.UserId.Should().BeGreaterThan(0);
+            model.ContentKey.Should().Be("ManageUsers-PrimaryUserChange");
         }
 
         [Fact]
@@ -159,10 +160,13 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
 
             // Assert
             Assert.NotNull(result);
-            var model = result.Model as List<VendorCompanyUserViewModel>;
+            var model = result.Model as ManageUsersHomeViewModel;
             Assert.NotNull(model);
-            model.Any().Should().BeTrue();
-            model.Single(r => r.PrimaryContact).PrimaryContact.Should().BeTrue();
+            var users = model.Users.ToList();
+            Assert.NotNull(users);
+            users.Any().Should().BeTrue();
+            users.Single(r => r.PrimaryContact).PrimaryContact.Should().BeTrue();
+            model.ContentKey.Should().Be("ManageUsers-ManageUsersHome");
         }
 
         [Fact]
@@ -181,6 +185,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.UserId.Should().BeGreaterThan(0);
             model.FullName.Should().NotBeNullOrWhiteSpace();
             model.HasToBeRemoved.Should().BeTrue();
+            model.ContentKey.Should().Be("ManageUsers-RemoveUser");
         }
 
         [Fact]
@@ -250,6 +255,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.FullName.Should().BeNullOrWhiteSpace();
             model.CompanyId.Should().BeGreaterThan(0);
             model.BackPage.Should().Be(BackPagesEnum.ManageUsers);
+            model.ContentKey.Should().Be("ManageUsers-User-Add");
         }
 
         [Fact]
@@ -268,6 +274,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.UserId.Should().BeGreaterThan(0);
             model.FullName.Should().NotBeNullOrWhiteSpace();
             model.CompanyId.Should().BeGreaterThan(0);
+            model.ContentKey.Should().Be("ManageUsers-User-Edit");
         }
 
         [Fact]

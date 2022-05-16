@@ -102,6 +102,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
 
             await AddOtherItems(productSubmitReviewDetails, request.ProductId);
 
+            productSubmitReviewDetails.ContentKey = $"Product-ProductSubmitReviewDetails-{productSubmitReviewDetails.ProductName}";
             return productSubmitReviewDetails;
         }
 

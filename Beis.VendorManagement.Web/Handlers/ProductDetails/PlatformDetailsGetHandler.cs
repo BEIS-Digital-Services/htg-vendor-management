@@ -87,6 +87,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
                 };
             }
 
+            platformDetailsVM.ContentKey = $"Product-PlatformDetails-{platformDetailsVM.ProductName}";
             return platformDetailsVM;
         }
 

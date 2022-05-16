@@ -52,7 +52,8 @@ namespace Beis.VendorManagement.Web.Controllers
             var rangesViewModel = new RangesViewModel
             {
                 Adb2CId = loggedInAdb2CId,
-                IpAddresses = company?.IpAddresses
+                IpAddresses = company?.IpAddresses,
+                ContentKey = "Home-Ranges"
             };
 
             return View(rangesViewModel);

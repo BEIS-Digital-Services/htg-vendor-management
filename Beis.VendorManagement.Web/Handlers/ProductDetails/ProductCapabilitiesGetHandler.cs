@@ -68,6 +68,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
             }
 
             productCapabilitiesViewModel.SettingsProductCapabilitiesList = lstItems;
+            productCapabilitiesViewModel.ContentKey = $"Product-ProductCapabilities-{productCapabilitiesViewModel.ProductName}";
             return productCapabilitiesViewModel;
         }
 
