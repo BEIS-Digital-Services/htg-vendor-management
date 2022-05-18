@@ -8,7 +8,7 @@
     <script src="~/js/googleAnalyticsManager.js" asp-append-version="true"></script>
     @{
         var baseViewModel = Model as BaseViewModel;
-        var contentKey = baseViewModel?.ContentKey ?? ViewData["ContentKey"]?.ToString();
+        var contentKey = baseViewModel?.ContentKey ?? ViewData["ContentKey"]?.ToString() ?? ViewData["Title"]?.ToString();
     }
     @if (contentKey != null)
     {
