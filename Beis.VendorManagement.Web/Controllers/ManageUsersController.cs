@@ -45,14 +45,14 @@ namespace Beis.VendorManagement.Web.Controllers
                 {
                     BackPage = pagesEnum,
                     CompanyId = loggedInUser.CompanyId,
-                    ContentKey = "ManageUsers-User-Add"
-            });
+                    ContentKey = AnalyticConstants.ManageUsersAdd
+                });
             }
             
             var existingUser = await _manageUsersService.GetUser(userId);
             if (existingUser != null)
             {
-                existingUser.ContentKey = "ManageUsers-User-Edit";
+                existingUser.ContentKey = AnalyticConstants.ManageUsersEdit;
                 return View(existingUser);
             }
 
@@ -88,7 +88,7 @@ namespace Beis.VendorManagement.Web.Controllers
             var existingUser = await _manageUsersService.GetUser(userId);
             if (existingUser != null)
             {
-                existingUser.ContentKey = "ManageUsers-RemoveUser";
+                existingUser.ContentKey = AnalyticConstants.ManageUsersRemove;
                 return View(existingUser);
             }
 

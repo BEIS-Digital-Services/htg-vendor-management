@@ -227,7 +227,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.RedemptionUrl.Should().NotBeNullOrWhiteSpace();
             model.ProductId.Should().BeGreaterThan(0);
             model.ShowValidationError.Should().BeFalse();
-            model.ContentKey.Should().Contain("Product-RedemptionUrl-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductRedemptionUrl);
         }
 
         [Fact]
@@ -247,7 +247,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             var model = result.Model as RedemptionUrlViewModel;
             Assert.NotNull(model);
             model.ShowValidationError.Should().BeTrue();
-            model.ContentKey.Should().Contain("Product-RedemptionUrl-error-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductRedemptionUrlError);
         }
 
         [Fact]
@@ -296,7 +296,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.ProductSku.Should().NotBeNullOrWhiteSpace();
             model.ProductId.Should().BeGreaterThan(0);
-            model.ContentKey.Should().Contain("Product-Sku-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductSku);
         }
 
         [Fact]
@@ -328,7 +328,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             // Assert
             var model = AssertGetProductLogo(result);
             model.ProductLogo.Should().NotBeNullOrWhiteSpace();
-            model.ContentKey.Should().Contain("Product-ProductLogo-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductLogo);
         }
 
         [Theory]
@@ -348,7 +348,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             // Assert
             var model = AssertGetProductLogo(result);
             model.ProductLogo.Should().BeNullOrWhiteSpace();
-            model.ContentKey.Should().Contain("Product-ProductLogo-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductLogo);
         }
 
         [Fact]
@@ -367,7 +367,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             var model = result.Model as ProductLogoViewModel;
             Assert.NotNull(model);
             model.File.Should().BeNull();
-            model.ContentKey.Should().Contain("Product-ProductLogo-error-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductLogoError);
         }
 
         [Fact]
@@ -403,7 +403,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.HasProductSupport.Should().Be(hasProductSupport);
             model.HasPlatformDetails.Should().Be(hasPlatformDetails);
             model.CanSubmitForReview.Should().Be(canSubmitForReview);
-            model.ContentKey.Should().Contain("Product-SoftwareHome-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductSoftwareHome);
         }
 
         private static ProductLogoViewModel AssertGetProductLogo(ViewResult result)

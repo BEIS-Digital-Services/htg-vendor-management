@@ -146,7 +146,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.SettingsProductCapabilitiesList.Any(r => r.Selected).Should().BeTrue();
             model.SettingsProductCapabilitiesList.All(r => r.Text.Length > 0).Should().BeTrue();
             model.SettingsProductCapabilitiesList.All(r => r.Value.Length > 0).Should().BeTrue();
-            model.ContentKey.Should().Contain("Product-ProductCapabilities-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductCapabilities);
         }
 
         [Fact]
@@ -495,7 +495,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.ProductStatus.Should().BeOneOf(ProductStatus.Approved, ProductStatus.InReview, ProductStatus.Incomplete, ProductStatus.NotInScheme);
             model.SettingsProductFiltersCategories.Any().Should().Be(expectedSettingProductFiltersCategory);
-            model.ContentKey.Should().Contain("Product-ProductSupport-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductSupport);
 
             return model;
         }
@@ -508,7 +508,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductId.Should().BeGreaterThan(0);
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.ProductStatus.Should().BeOneOf(ProductStatus.Approved, ProductStatus.InReview, ProductStatus.Incomplete, ProductStatus.NotInScheme);
-            model.ContentKey.Should().Contain("Product-PlatformDetails-");
+            model.ContentKey.Should().Contain(AnalyticConstants.ProductPlatformDetails);
 
             return model;
         }

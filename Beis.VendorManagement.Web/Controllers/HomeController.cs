@@ -53,7 +53,7 @@ namespace Beis.VendorManagement.Web.Controllers
             {
                 Adb2CId = loggedInAdb2CId,
                 IpAddresses = company?.IpAddresses,
-                ContentKey = "Home-Ranges"
+                ContentKey = AnalyticConstants.HomeRanges
             };
 
             return View(rangesViewModel);

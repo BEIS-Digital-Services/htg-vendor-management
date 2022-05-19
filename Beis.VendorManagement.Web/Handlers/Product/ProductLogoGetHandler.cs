@@ -1,4 +1,5 @@
 ﻿using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Constants;
 using Beis.VendorManagement.Web.Models;
 using Beis.VendorManagement.Web.Options;
 using MediatR;
@@ -42,7 +43,7 @@ namespace Beis.VendorManagement.Web.Handlers.Product
                     $"{request.Scheme}://{request.Host}{_options.LogoPath}{product.product_logo.Substring(product.product_logo.LastIndexOf(@"\", StringComparison.OrdinalIgnoreCase) + 1)}";
             }
 
-            productLogoViewModel.ContentKey = $"Product-ProductLogo-{productLogoViewModel.ProductName}";
+            productLogoViewModel.ContentKey = $"{AnalyticConstants.ProductLogo}{productLogoViewModel.ProductName}";
             return productLogoViewModel;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Constants;
 using Beis.VendorManagement.Web.Models;
 using Beis.VendorManagement.Web.Models.Enums;
 using MediatR;
@@ -68,7 +69,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
             }
 
             productCapabilitiesViewModel.SettingsProductCapabilitiesList = lstItems;
-            productCapabilitiesViewModel.ContentKey = $"Product-ProductCapabilities-{productCapabilitiesViewModel.ProductName}";
+            productCapabilitiesViewModel.ContentKey = $"{AnalyticConstants.ProductCapabilities}{productCapabilitiesViewModel.ProductName}";
             return productCapabilitiesViewModel;
         }
 

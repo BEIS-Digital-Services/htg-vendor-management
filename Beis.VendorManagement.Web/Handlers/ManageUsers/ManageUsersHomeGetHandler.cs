@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Beis.VendorManagement.Web.Constants;
 
 namespace Beis.VendorManagement.Web.Handlers.ManageUsers
 {
@@ -32,7 +33,7 @@ namespace Beis.VendorManagement.Web.Handlers.ManageUsers
             var model = new ManageUsersHomeViewModel
             {
                 Users = usersVm,
-                ContentKey = "ManageUsers-ManageUsersHome"
+                ContentKey = AnalyticConstants.ManageUsersManageUsersHome
             };
 
             return model;

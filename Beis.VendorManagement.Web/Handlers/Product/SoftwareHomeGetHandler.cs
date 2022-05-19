@@ -1,5 +1,6 @@
 ﻿using Beis.Htg.VendorSme.Database.Models;
 using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Constants;
 using Beis.VendorManagement.Web.Models;
 using Beis.VendorManagement.Web.Models.Enums;
 using MediatR;
@@ -56,7 +57,7 @@ namespace Beis.VendorManagement.Web.Handlers.Product
                 HasCapabilities = await HasCapabilities(product),
                 HasProductSupport = await CheckForProductSupport(product.product_id),
                 HasPlatformDetails = await CheckForPlatformDetails(product.product_id),
-                ContentKey = $"Product-SoftwareHome-{product.product_name}"
+                ContentKey = $"{AnalyticConstants.ProductSoftwareHome}{product.product_name}"
             };
 
             softwareHome.CanSubmitForReview = softwareHome.HasCapabilities

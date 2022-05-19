@@ -31,7 +31,7 @@ namespace Beis.VendorManagement.Web.Controllers
                 ProductName = await _productService.GetProductName(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value)
             };
 
-            pricingHome.ContentKey = $"Pricing-Home-{pricingHome.ProductName}";
+            pricingHome.ContentKey = $"{AnalyticConstants.PricingHome}{pricingHome.ProductName}";
             return View(pricingHome);
         }
 
@@ -39,7 +39,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> Metric(int id, long productPriceId)
         {
             var metricDetails = await _pricingService.GetMetricDetails(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            metricDetails.ContentKey = $"Pricing-Metric-{metricDetails.ProductName}";
+            metricDetails.ContentKey = $"{AnalyticConstants.PricingMetric}{metricDetails.ProductName}";
             return View(metricDetails);
         }
 
@@ -47,7 +47,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> MinimumCommitment(int id, long productPriceId)
         {
             var minimumCommitment = await _pricingService.GetMinimumCommitment(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            minimumCommitment.ContentKey = $"Pricing-MinimumCommitment-{minimumCommitment.ProductName}";
+            minimumCommitment.ContentKey = $"{AnalyticConstants.PricingMinimumCommitment}{minimumCommitment.ProductName}";
             return View(minimumCommitment);
         }
 
@@ -55,7 +55,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> FreeTrial(int id, long productPriceId)
         {
             var freeTrial = await _pricingService.GetFreeTrial(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            freeTrial.ContentKey = $"Pricing-FreeTrial-{freeTrial.ProductName}";
+            freeTrial.ContentKey = $"{AnalyticConstants.PricingFreeTrial}{freeTrial.ProductName}";
             return View(freeTrial);
         }
 
@@ -63,7 +63,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> DiscountPeriod(int id, long productPriceId)
         {
             var discountPeriod = await _pricingService.GetDiscountPeriod(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            discountPeriod.ContentKey = $"Pricing-DiscountPeriod-{discountPeriod.ProductName}";
+            discountPeriod.ContentKey = $"{AnalyticConstants.PricingDiscountPeriod}{discountPeriod.ProductName}";
             return View(discountPeriod);
         }
 
@@ -71,7 +71,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> AdditionalDiscounts(int id, long productPriceId)
         {
             var additionalDiscounts = await _pricingService.GetAdditionalDiscountsForPriceId(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            additionalDiscounts.ContentKey = $"Pricing-AdditionalDiscounts-{additionalDiscounts.ProductName}";
+            additionalDiscounts.ContentKey = $"{AnalyticConstants.PricingAdditionalDiscounts}{additionalDiscounts.ProductName}";
             return View(additionalDiscounts);
         }
 
@@ -79,7 +79,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> AdditionalCosts(int id, long productPriceId)
         {
             var additionalCosts = await _pricingService.GetAdditionalCosts(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value, productPriceId);
-            additionalCosts.ContentKey = $"Pricing-AdditionalCosts-{additionalCosts.ProductName}";
+            additionalCosts.ContentKey = $"{AnalyticConstants.PricingAdditionalCosts}{additionalCosts.ProductName}";
             return View(additionalCosts);
         }
 
@@ -87,7 +87,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> ProductPricing(int id)
         {
             var productPriceDetails = await _pricingService.GetAllProductPrices(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            productPriceDetails.ContentKey = $"Pricing-ProductPricing-{productPriceDetails.ProductName}";
+            productPriceDetails.ContentKey = $"{AnalyticConstants.PricingProductPricing}{productPriceDetails.ProductName}";
             return View(productPriceDetails);
         }
     }

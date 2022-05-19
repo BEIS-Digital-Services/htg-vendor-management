@@ -166,7 +166,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(users);
             users.Any().Should().BeTrue();
             users.Single(r => r.PrimaryContact).PrimaryContact.Should().BeTrue();
-            model.ContentKey.Should().Be("ManageUsers-ManageUsersHome");
+            model.ContentKey.Should().Be(AnalyticConstants.ManageUsersManageUsersHome);
         }
 
         [Fact]
@@ -185,7 +185,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.UserId.Should().BeGreaterThan(0);
             model.FullName.Should().NotBeNullOrWhiteSpace();
             model.HasToBeRemoved.Should().BeTrue();
-            model.ContentKey.Should().Be("ManageUsers-RemoveUser");
+            model.ContentKey.Should().Be(AnalyticConstants.ManageUsersRemove);
         }
 
         [Fact]
@@ -255,7 +255,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.FullName.Should().BeNullOrWhiteSpace();
             model.CompanyId.Should().BeGreaterThan(0);
             model.BackPage.Should().Be(BackPagesEnum.ManageUsers);
-            model.ContentKey.Should().Be("ManageUsers-User-Add");
+            model.ContentKey.Should().Be(AnalyticConstants.ManageUsersAdd);
         }
 
         [Fact]
@@ -274,7 +274,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.UserId.Should().BeGreaterThan(0);
             model.FullName.Should().NotBeNullOrWhiteSpace();
             model.CompanyId.Should().BeGreaterThan(0);
-            model.ContentKey.Should().Be("ManageUsers-User-Edit");
+            model.ContentKey.Should().Be(AnalyticConstants.ManageUsersEdit);
         }
 
         [Fact]

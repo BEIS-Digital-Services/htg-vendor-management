@@ -26,7 +26,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<IActionResult> ProductSummary(int id)
         {
             var summaryViewModel = await _productService.GetProduct<SummaryViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-            summaryViewModel.ContentKey = $"Product-ProductSummary-{summaryViewModel.ProductName}";
+            summaryViewModel.ContentKey = $"{AnalyticConstants.ProductSummary}{summaryViewModel.ProductName}";
             return View(summaryViewModel);
         }
 
@@ -35,7 +35,7 @@ namespace Beis.VendorManagement.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                summaryViewModel.ContentKey = $"Product-ProductSummary-error-{summaryViewModel.ProductName}";
+                summaryViewModel.ContentKey = $"{AnalyticConstants.ProductSummaryError}{summaryViewModel.ProductName}";
                 return View(summaryViewModel);
             }
 

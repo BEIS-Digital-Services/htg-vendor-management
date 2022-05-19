@@ -59,7 +59,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<ActionResult> TermsAndConditionsAsync(long id)
         {
             var user = await _service.GetUserById(id);
-            user.ContentKey = "ActivateAccount-TermsAndConditions";
+            user.ContentKey = AnalyticConstants.ActivateAccountTermsAndConditions;
             return View(user);
         }
 

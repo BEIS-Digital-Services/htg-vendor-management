@@ -147,7 +147,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(result);
             var model = result.Model as VendorCompanyUserViewModel;
             Assert.NotNull(model);
-            model.ContentKey.Should().Be("ActivateAccount-TermsAndConditions");
+            model.ContentKey.Should().Be(AnalyticConstants.ActivateAccountTermsAndConditions);
         }
 
         [Fact]

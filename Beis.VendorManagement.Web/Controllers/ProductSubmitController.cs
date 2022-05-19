@@ -51,7 +51,7 @@ namespace Beis.VendorManagement.Web.Controllers
             }
 
             productSubmitConfirmationViewModel.Email = email;
-            productSubmitConfirmationViewModel.ContentKey = $"Product-ProductSubmitConfirmation-{productSubmitConfirmationViewModel.ProductName}";
+            productSubmitConfirmationViewModel.ContentKey = $"{AnalyticConstants.ProductSubmitConfirmation}{productSubmitConfirmationViewModel.ProductName}";
             return View(productSubmitConfirmationViewModel);
         }
     }

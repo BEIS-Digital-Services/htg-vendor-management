@@ -1,4 +1,5 @@
-﻿using Beis.VendorManagement.Web.Controllers;
+﻿using Beis.VendorManagement.Web.Constants;
+using Beis.VendorManagement.Web.Controllers;
 using Beis.VendorManagement.Web.Models.Pricing;
 using Beis.VendorManagement.Web.Services.Interface;
 using FluentAssertions;
@@ -44,7 +45,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductId.Should().BeGreaterThan(0);
             model.ProductPriceId.Should().Be(TestProductPriceId);
             model.ProductName.Should().NotBeNullOrWhiteSpace();
-            model.ContentKey.Should().Contain("Pricing-Home-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingHome);
         }
 
         [Fact]
@@ -77,7 +78,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.SecondaryMetricDetails.All(r => !string.IsNullOrWhiteSpace(r.Description)).Should().BeTrue();
             model.SecondaryMetricDetails.All(r => r.MetricNumber > 0).Should().BeTrue();
             model.SecondaryMetricDetails.All(r => !string.IsNullOrWhiteSpace(r.MetricUnit)).Should().BeTrue();
-            model.ContentKey.Should().Contain("Pricing-Metric-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingMetric);
         }
 
         [Fact]
@@ -103,7 +104,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.CommitmentUnit.Should().NotBeNullOrWhiteSpace();
             model.CommitmentNo.Should().BeGreaterThan(0);
             model.MinNoUsers.Should().BeGreaterThan(0);
-            model.ContentKey.Should().Contain("Pricing-MinimumCommitment-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingMinimumCommitment);
         }
 
         [Fact]
@@ -130,7 +131,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.FreeTrialTermUnit.Should().NotBeNullOrWhiteSpace();
             model.FreeTrialPaymentUpfront.Should().As<bool>();
             model.FreeTrialEndActionDescription.Should().NotBeNullOrWhiteSpace();
-            model.ContentKey.Should().Contain("Pricing-FreeTrial-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingFreeTrial);
         }
 
         [Fact]
@@ -152,7 +153,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.FreeTrialTermNo.Should().Be(0);
             model.FreeTrialTermUnit.Should().BeNull();
-            model.ContentKey.Should().Contain("Pricing-FreeTrial-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingFreeTrial);
         }
 
         [Fact]
@@ -180,7 +181,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.DiscountPrice.Should().BeGreaterThan(0);
             model.DiscountPercentage.Should().BeGreaterThan(0);
             model.DiscountApplicationDescription.Should().NotBeNullOrWhiteSpace();
-            model.ContentKey.Should().Contain("Pricing-DiscountPeriod-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingDiscountPeriod);
         }
 
         [Fact]
@@ -222,7 +223,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.UserDiscounts.All(r => r.DiscountPrice > 0).Should().BeTrue();
             model.UserDiscounts.All(r => r.DiscountPercentage > 0).Should().BeTrue();
             model.UserDiscounts.All(r => !string.IsNullOrWhiteSpace(r.DiscountSku)).Should().BeTrue();
-            model.ContentKey.Should().Contain("Pricing-AdditionalDiscounts-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingAdditionalDiscounts);
         }
 
         [Fact]
@@ -248,7 +249,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.Type)).Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.CostAndFrequency)).Should().BeTrue();
             Assert.IsType<bool>(model.AdditionalCosts.All(r => r.IsMandatory));
-            model.ContentKey.Should().Contain("Pricing-AdditionalCosts-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingAdditionalCosts);
         }
 
         [Fact]
@@ -273,7 +274,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             model.ProductPrices.All(r => !string.IsNullOrWhiteSpace(r.VoucherUrl)).Should().BeTrue();
             model.ProductPrices.All(r => !string.IsNullOrWhiteSpace(r.ProductPriceSku)).Should().BeTrue();
             model.ProductPrices.All(r => r.ProductPriceId > 0).Should().BeTrue();
-            model.ContentKey.Should().Contain("Pricing-ProductPricing-");
+            model.ContentKey.Should().Contain(AnalyticConstants.PricingProductPricing);
         }
     }
 }
