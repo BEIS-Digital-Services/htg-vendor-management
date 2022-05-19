@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class AdditionalDiscountsViewModel
+    public class AdditionalDiscountsViewModel : BaseViewModel
     {
         public AdditionalDiscountsViewModel()
         {

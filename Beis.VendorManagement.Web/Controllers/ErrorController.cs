@@ -13,7 +13,7 @@ namespace Beis.VendorManagement.Web.Controllers
     {
         [HttpGet("Error", Name = RouteNameConstants.ErrorGet)]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, ContentKey = AnalyticConstants.Error });
 
         [HttpGet("Error/LocalDevelopmentError", Name = RouteNameConstants.ErrorLocalDevelopmentGet)]
         public IActionResult ErrorLocalDevelopment([FromServices] IWebHostEnvironment webHostEnvironment)

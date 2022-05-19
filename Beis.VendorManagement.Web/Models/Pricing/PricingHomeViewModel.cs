@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class PricingHomeViewModel
+    public class PricingHomeViewModel: BaseViewModel
     {
         public long ProductId { get; set; }
      

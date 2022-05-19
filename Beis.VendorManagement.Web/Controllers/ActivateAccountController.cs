@@ -35,6 +35,7 @@ namespace Beis.VendorManagement.Web.Controllers
 
             var company = await _service.GetCompanyByUserIdAsync(user.UserId);
             company.PrimaryUserId = user.UserId;
+            company.ContentKey = "ActivateAccount-CheckCompanyDetails";
 
             //Pass the activate account guid 
             TempData[ApplicationConstants.AccessLinkGuid] = id;
@@ -58,6 +59,7 @@ namespace Beis.VendorManagement.Web.Controllers
         public async Task<ActionResult> TermsAndConditionsAsync(long id)
         {
             var user = await _service.GetUserById(id);
+            user.ContentKey = AnalyticConstants.ActivateAccountTermsAndConditions;
             return View(user);
         }
 

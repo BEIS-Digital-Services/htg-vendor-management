@@ -2,7 +2,7 @@
 
 namespace Beis.VendorManagement.Web.Models.Pricing
 {
-    public class AdditionalCostsViewModel
+    public class AdditionalCostsViewModel : BaseViewModel
     {
         public AdditionalCostsViewModel()
         {

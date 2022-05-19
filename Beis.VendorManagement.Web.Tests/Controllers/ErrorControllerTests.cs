@@ -1,4 +1,5 @@
-﻿using Beis.VendorManagement.Web.Controllers;
+﻿using Beis.VendorManagement.Web.Constants;
+using Beis.VendorManagement.Web.Controllers;
 using Beis.VendorManagement.Web.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Diagnostics;
@@ -41,6 +42,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(model);
             model.RequestId.Should().NotBeNullOrWhiteSpace();
             model.ShowRequestId.Should().BeTrue();
+            model.ContentKey.Should().Be(AnalyticConstants.Error);
         }
 
         [Theory]

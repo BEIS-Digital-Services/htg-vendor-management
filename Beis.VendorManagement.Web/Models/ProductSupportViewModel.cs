@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Beis.VendorManagement.Web.Models
 {
-    public class ProductSupportViewModel
+    public class ProductSupportViewModel : BaseViewModel
     {
         public ProductSupportViewModel()
         {

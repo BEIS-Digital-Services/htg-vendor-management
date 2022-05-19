@@ -1,6 +1,6 @@
 ﻿namespace Beis.VendorManagement.Web.Models
 {
-    public class ProductCategoryViewModel
+    public class ProductCategoryViewModel : BaseViewModel
     {
         public ProductViewModel Product { get; set; }
 

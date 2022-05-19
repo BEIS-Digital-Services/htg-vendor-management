@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Beis.VendorManagement.Web.Constants;
 
 namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
 {
@@ -102,6 +103,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
 
             await AddOtherItems(productSubmitReviewDetails, request.ProductId);
 
+            productSubmitReviewDetails.ContentKey = $"{AnalyticConstants.ProductSubmitReviewDetails}{productSubmitReviewDetails.ProductName}";
             return productSubmitReviewDetails;
         }
 

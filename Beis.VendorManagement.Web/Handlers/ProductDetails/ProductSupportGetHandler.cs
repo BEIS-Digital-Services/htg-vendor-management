@@ -1,4 +1,5 @@
 ﻿using Beis.VendorManagement.Repositories.Interface;
+using Beis.VendorManagement.Web.Constants;
 using Beis.VendorManagement.Web.Models;
 using Beis.VendorManagement.Web.Models.Enums;
 using MediatR;
@@ -84,6 +85,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
                 });
             }
 
+            productSupportViewModel.ContentKey = $"{AnalyticConstants.ProductSupport}{productSupportViewModel.ProductName}";
             return productSupportViewModel;
         }
 

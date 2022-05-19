@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Beis.VendorManagement.Web.Constants;
 
 namespace Beis.VendorManagement.Web.Handlers.Home
 {
@@ -74,7 +75,8 @@ namespace Beis.VendorManagement.Web.Handlers.Home
                     CompanyId = company.vendorid,
                     CompanyName = company.vendor_company_name,
                     Adb2CId = user.adb2c,
-                    ApiKey = accessSecret
+                    ApiKey = accessSecret,
+                    ContentKey = AnalyticConstants.HomeIndex
                 }
             };
         }

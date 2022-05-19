@@ -1,7 +1,7 @@
 ﻿
 namespace Beis.VendorManagement.Web.Models
 {
-    public class RangesViewModel
+    public class RangesViewModel : BaseViewModel
     {
         public string Adb2CId { get; set; }
      

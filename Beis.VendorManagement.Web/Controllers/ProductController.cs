@@ -44,6 +44,7 @@ namespace Beis.VendorManagement.Web.Controllers
                 return RedirectToRoute(RouteNameConstants.ProductErrorGet);
             }
 
+            redemptionUrlViewModel.ContentKey = $"{AnalyticConstants.ProductRedemptionUrl}{redemptionUrlViewModel.ProductName}";
             return View(redemptionUrlViewModel);
         }
 
@@ -54,6 +55,7 @@ namespace Beis.VendorManagement.Web.Controllers
             {
                 redemptionUrlViewModel = await _productService.GetProduct<RedemptionUrlViewModel>(redemptionUrlViewModel.ProductId, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
                 redemptionUrlViewModel.ShowValidationError = true;
+                redemptionUrlViewModel.ContentKey = $"{AnalyticConstants.ProductRedemptionUrlError}{redemptionUrlViewModel.ProductName}";
                 return View(redemptionUrlViewModel);
             }
 
@@ -75,7 +77,8 @@ namespace Beis.VendorManagement.Web.Controllers
             {
                 return RedirectToRoute(RouteNameConstants.ProductErrorGet);
             }
-            
+
+            skuViewModel.ContentKey = $"{AnalyticConstants.ProductSku}{skuViewModel.ProductName}";
             return View(skuViewModel);
         }
 
@@ -103,6 +106,7 @@ namespace Beis.VendorManagement.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                productLogoViewModel.ContentKey = $"{AnalyticConstants.ProductLogoError}{productLogoViewModel.ProductName}";
                 return View(productLogoViewModel);
             }
 

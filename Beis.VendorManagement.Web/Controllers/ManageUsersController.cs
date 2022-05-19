@@ -44,13 +44,15 @@ namespace Beis.VendorManagement.Web.Controllers
                 return View(new UserViewModel
                 {
                     BackPage = pagesEnum,
-                    CompanyId = loggedInUser.CompanyId
+                    CompanyId = loggedInUser.CompanyId,
+                    ContentKey = AnalyticConstants.ManageUsersAdd
                 });
             }
             
             var existingUser = await _manageUsersService.GetUser(userId);
             if (existingUser != null)
             {
+                existingUser.ContentKey = AnalyticConstants.ManageUsersEdit;
                 return View(existingUser);
             }
 
@@ -86,6 +88,7 @@ namespace Beis.VendorManagement.Web.Controllers
             var existingUser = await _manageUsersService.GetUser(userId);
             if (existingUser != null)
             {
+                existingUser.ContentKey = AnalyticConstants.ManageUsersRemove;
                 return View(existingUser);
             }
 
@@ -120,6 +123,7 @@ namespace Beis.VendorManagement.Web.Controllers
             var existingUser = await _manageUsersService.GetUser(userId);
             if (existingUser != null)
             {
+                existingUser.ContentKey = "ManageUsers-PrimaryUserChange";
                 return View(existingUser);
             }
 
