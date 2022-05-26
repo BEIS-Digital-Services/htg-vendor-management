@@ -32,8 +32,10 @@
                     {
                         @Html.Raw("<div class='govuk-form-group'><div class='govuk-checkboxes' data-module='govuk-checkboxes'><div class='govuk-checkboxes__item'>")
                         <input type="hidden" asp-for="@Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Value" />
-                        <input asp-for="@Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Selected" class="govuk-checkboxes__input @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" />
-                        @Html.Label("name", @Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Text, new { @class = "formgovuk-label govuk-checkboxes__label" })
+                        <input asp-for="@Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Selected" id="@($"PlatformDetails-{j}")" class="govuk-checkboxes__input @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" />
+                        <label for="@($"PlatformDetails-{j}")" class="formgovuk-label govuk-checkboxes__label">
+                            @Model.SettingsProductFiltersCategory.SettingsProductFilters[j].Text
+                        </label>
                         @Html.Raw("</div></div></div>")
                     }
 
