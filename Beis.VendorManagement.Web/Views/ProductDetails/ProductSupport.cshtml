@@ -18,7 +18,7 @@
     <div class="govuk-grid-column-two-thirds">
         <form class="form" method="post">
             <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset" aria-describedby="product-details-hint">
+                <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                         <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-5">
                             Product support details
@@ -35,8 +35,8 @@
                         {
                             @Html.Raw("<div class='govuk-form-group'><div class='govuk-checkboxes' data-module='govuk-checkboxes'><div class='govuk-checkboxes__item'>")
                             <input type="hidden" asp-for="@Model.SettingsProductFiltersCategories[i].SettingsProductFilters[j].Value" />
-                            <input asp-for="@Model.SettingsProductFiltersCategories[i].SettingsProductFilters[j].Selected" id="@($"Support-{j}")" class="govuk-checkboxes__input @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" />
-                            <label for="@($"Support-{j}")" class="formgovuk-label govuk-checkboxes__label">
+                            <input asp-for="@Model.SettingsProductFiltersCategories[i].SettingsProductFilters[j].Selected" id="@($"{Model.SettingsProductFiltersCategories[i].ItemName}-{j}")" class="govuk-checkboxes__input @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : "")" />
+                            <label for="@($"{Model.SettingsProductFiltersCategories[i].ItemName}-{j}")" class="formgovuk-label govuk-checkboxes__label">
                                 @Model.SettingsProductFiltersCategories[i].SettingsProductFilters[j].Text
                             </label>
                             @Html.Raw("</div></div></div>")
