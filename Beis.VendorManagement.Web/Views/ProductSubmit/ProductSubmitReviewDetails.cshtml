@@ -4,13 +4,13 @@
     ViewData["Title"] = "Review details to submit";
 }
 
-@section Authentication {
-    <partial name="_Authentication" />
+@section BackNavigation {
+    <div class="govuk-clearfix">
+        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
+            Back
+        </a>
+    </div>
 }
-
-<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
-    Back
-</a>
 
 <div class="govuk-grid-row">
     <form class="form" method="post">
