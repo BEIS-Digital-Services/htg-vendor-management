@@ -33,8 +33,7 @@
                         <li>what makes it stand out from the crowd</li>
                         <li>don't add a list of specific product features: you can do this in the next screen.</li>
                     </ul>
-                    <p class="govuk-body">Keep your summary factual and objective, and do not make any claims that you can't back up. </p>
-
+                    <label class="govuk-body" for="@nameof(Model.DraftProductDescription)">Keep your summary factual and objective, and do not make any claims that you can't back up. </label>
                     <div class="govuk-character-count @(Model.ProductStatus == ProductStatus.InReview  ? "disabled" : string.Empty)" data-module="govuk-character-count" data-maxlength="5000">
                         <div class="@String.Format("govuk-form-group {0}", !ViewData.ModelState.IsValid ? "govuk-form-group--error" : string.Empty)">
                             <span id="name-of-error-error" class="govuk-error-message">
