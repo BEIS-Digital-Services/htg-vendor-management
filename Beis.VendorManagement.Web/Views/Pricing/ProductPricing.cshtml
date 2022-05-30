@@ -5,11 +5,7 @@
 }
 
 @section BackNavigation {
-    <div class="govuk-clearfix">
-        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
-            Back
-        </a>
-    </div>
+    <partial name="_BackToSoftwareHome" model="Model.ProductId" />
 }
 
 <div class="govuk-grid-row">

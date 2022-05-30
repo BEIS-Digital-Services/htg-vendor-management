@@ -5,11 +5,7 @@
 }
 
 @section BackNavigation {
-    <div class="govuk-clearfix">
-        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.ManageUsersHomeGet, default, @Context.Request.Scheme)">
-            Back
-        </a>
-    </div>
+    <partial name="_BackToManageUsersHome" />
 }
 
 @using (Html.BeginRouteForm(RouteNameConstants.RemoveUserPost, new { userId = Model.UserId, hasToBeRemoved = Model.HasToBeRemoved }, FormMethod.Post))

@@ -1,15 +1,10 @@
-@using Beis.VendorManagement.Web.Constants
 @model Beis.VendorManagement.Web.Models.Pricing.AdditionalDiscountsViewModel;
 @{
     ViewData["Title"] = "Additional discounts";
 }
 
 @section BackNavigation {
-    <div class="govuk-clearfix">
-        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.PricingHomeGet, new { id = Model.ProductId, productPriceId = Model.ProductPriceId }, @Context.Request.Scheme)">
-            Back
-        </a>
-    </div>
+    <partial name="_BackToPricingHome" model="@(Model.ProductId, Model.ProductPriceId)"/>
 }
 
 <div class="govuk-grid-row">

@@ -1,16 +1,11 @@
-﻿@using Beis.VendorManagement.Web.Constants
-@using Beis.VendorManagement.Web.Models.Enums
+﻿@using Beis.VendorManagement.Web.Models.Enums
 @model Beis.VendorManagement.Web.Models.SummaryViewModel
 @{
     ViewData["Title"] = "Product summary";
 }
 
 @section BackNavigation {
-    <div class="govuk-clearfix">
-        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
-            Back
-        </a>
-    </div>
+    <partial name="_BackToSoftwareHome" model="Model.ProductId" />
 }
 
 <div class="govuk-grid-row">
