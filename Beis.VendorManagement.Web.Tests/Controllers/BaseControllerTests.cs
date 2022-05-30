@@ -1,6 +1,7 @@
 ﻿using AutoFixture;
 using Beis.Htg.VendorSme.Database;
 using Beis.Htg.VendorSme.Database.Models;
+using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +11,6 @@ using Microsoft.Extensions.Logging;
 using MockQueryable.Moq;
 using Moq;
 using Notify.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -25,7 +24,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
 
         protected Mock<ILogger<IndexGetHandler>> MockIndexGetLogger { get; }
 
-        protected Mock<HttpContext> MockHttpContext { get; private set; }
+        protected Mock<HttpContext> MockHttpContext { get; }
 
         protected ServiceProvider ServiceProvider { get; }
 
@@ -49,6 +48,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
 
         protected BaseControllerTests()
         {
+            MockHttpContext = new Mock<HttpContext>();
             MockHtgVendorSmeDbContext = new Mock<HtgVendorSmeDbContext>();
             MockNotificationClient = new Mock<IAsyncNotificationClient>();
             AutoFixture = new Fixture();
@@ -68,19 +68,17 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
                 })
                 .Build();
 
-            var startUp = new Startup(configuration, true);
             var serviceCollection = new ServiceCollection();
+            serviceCollection.RegisterAllServices(configuration, Guid.NewGuid().ToString(), true);
             serviceCollection.AddScoped(options => MockHtgVendorSmeDbContext.Object);
             serviceCollection.AddScoped(options => MockNotificationClient.Object);
             MockIndexGetLogger = new Mock<ILogger<IndexGetHandler>>();
             serviceCollection.AddScoped(options => MockIndexGetLogger.Object);
-            startUp.ConfigureServices(serviceCollection);
             ServiceProvider = serviceCollection.BuildServiceProvider();
         }
 
         protected void SetHttpContext(ControllerContext controllerContext)
         {
-            MockHttpContext = new Mock<HttpContext>();
             var mockHttpRequest = new Mock<HttpRequest>();
             mockHttpRequest.Setup(x => x.Scheme).Returns("http");
             mockHttpRequest.Setup(x => x.Host).Returns(new HostString("localhost"));

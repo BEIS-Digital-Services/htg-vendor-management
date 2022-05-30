@@ -1,5 +1,9 @@
 ﻿@using Beis.VendorManagement.Web.Constants
+@using Beis.VendorManagement.Web.Options
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Options
+@inject IOptions<LayoutOptions> _options
+
 <!DOCTYPE html>
 <html lang="en" class="govuk-template ">
 
@@ -12,7 +16,7 @@
     }
     @if (contentKey != null)
     {
-        <script nonce="@Startup.Nonce">
+        <script nonce="@_options.Value.Nonce">
             tagOptions.contentKey = "@contentKey";
         </script>
     }
@@ -127,14 +131,14 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/govuk-frontend/govuk-frontend-3.13.1.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @if (this.User.Identity.IsAuthenticated && @Startup.AutoLogoutDurationInSeconds > 0)
+    @if (this.User.Identity.IsAuthenticated && @_options.Value.AutoLogoutDuration > 0)
     {
         <script src="~/js/autoLogout.js" asp-append-version="true"></script>
-        <script nonce="@Startup.Nonce">
-            options.autoLogoutDurationInMilliSeconds = @Startup.AutoLogoutDurationInSeconds * 1000;
+        <script nonce="@_options.Value.Nonce">
+            options.autoLogoutDurationInMilliSeconds = @_options.Value.AutoLogoutDuration * 1000;
         </script>
         <noscript>
-            <meta http-equiv="refresh" content="@Startup.AutoLogoutDurationInSeconds;URL='/MicrosoftIdentity/Account/SignOut'"/>
+            <meta http-equiv="refresh" content="@_options.Value.AutoLogoutDuration;URL='/MicrosoftIdentity/Account/SignOut'"/>
         </noscript>
     }
 
