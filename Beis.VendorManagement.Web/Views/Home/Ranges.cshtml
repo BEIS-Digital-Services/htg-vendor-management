@@ -1,17 +1,12 @@
-﻿@using Beis.VendorManagement.Web.Constants
-@model Beis.VendorManagement.Web.Models.RangesViewModel
+﻿@model Beis.VendorManagement.Web.Models.RangesViewModel
 
 @{
     ViewData["Title"] = "IP Addresses";
 }
 
-@section Authentication {
-    <partial name="_Authentication" />
+@section BackNavigation {
+    <partial name="_BackToHome" />
 }
-
-<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.HomeIndexGet)">
-    Back
-</a>
 
 @using (Html.BeginForm(FormMethod.Post))
 {

@@ -6,19 +6,15 @@
     ViewData["Title"] = "User details";
 }
 
-@section Authentication {
-    <partial name="_Authentication" />
+@section BackNavigation {
+    @if (Model.BackPage == BackPagesEnum.ManageUsers)
+    {
+        <partial name="_BackToManageUsersHome" />
+    }
 }
 
 @using (Html.BeginRouteForm(RouteNameConstants.UserPost, FormMethod.Post))
 {
-    @if (Model.BackPage == BackPagesEnum.ManageUsers)
-    {
-        <a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.ManageUsersHomeGet, default, @Context.Request.Scheme)">
-            Back
-        </a>
-    }
-
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 

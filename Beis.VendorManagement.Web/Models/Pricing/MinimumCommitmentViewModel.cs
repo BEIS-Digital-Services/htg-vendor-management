@@ -2,7 +2,7 @@
 {
     public class MinimumCommitmentViewModel : BaseViewModel
     {
-        public int ProductPriceId { get; set; }
+        public long ProductPriceId { get; set; }
 
         public long ProductId { get; set; }
 

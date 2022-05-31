@@ -4,13 +4,9 @@
     ViewData["Title"] = "Redemption URL";
 }
 
-@section Authentication {
-    <partial name="_Authentication" />
+@section BackNavigation {
+    <partial name="_BackToSoftwareHome" model="Model.ProductId" />
 }
-
-<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.SoftwareHomeGet, new { id = Model.ProductId }, @Context.Request.Scheme)">
-    Back
-</a>
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

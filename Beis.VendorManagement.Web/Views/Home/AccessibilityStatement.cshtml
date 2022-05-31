@@ -4,12 +4,9 @@
     ViewData["Title"] = "Accessibility Statement";
     var webUrl = $"https://{Model}";
 }
-<a class="govuk-back-link" href="@Url.RouteUrl(RouteNameConstants.HomeIndexGet)">
-    Back
-</a>
 
-@section Authentication {
-    <partial name="_Authentication" />
+@section BackNavigation {
+   <partial name="_BackToHome" />
 }
 
 <div class="govuk-grid-row">
