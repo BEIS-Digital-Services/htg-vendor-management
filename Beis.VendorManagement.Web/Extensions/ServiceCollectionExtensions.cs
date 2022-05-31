@@ -34,21 +34,7 @@ namespace Beis.VendorManagement.Web.Extensions
                 {
                     configuration.Bind("AzureAdB2C", options);
                     options.Events ??= new OpenIdConnectEvents();
-                    options.Events.OnRedirectToIdentityProvider += RedirectToIdentityProvider;
-
-                    if (configuration["Environment"].Equals(Environments.Production, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        static Task RedirectToIdentityProvider(RedirectContext ctx)
-                        {
-                            ctx.ProtocolMessage.RedirectUri = "https://www.manage-your-technology-vendor-account.service.gov.uk/signin-oidc";
-                            return Task.FromResult(0);
-                        }
-
-                        options.Events = new OpenIdConnectEvents
-                        {
-                            OnRedirectToIdentityProvider = RedirectToIdentityProvider
-                        };
-                    }
+                    options.Events.OnRedirectToIdentityProvider += UpdateRedirectUri;
                 });
             services.AddControllersWithViews().AddMicrosoftIdentityUI();
             services.AddControllers(options =>
@@ -90,14 +76,13 @@ namespace Beis.VendorManagement.Web.Extensions
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
-        static async Task RedirectToIdentityProvider(RedirectContext context)
+        private static Task UpdateRedirectUri(RedirectContext context)
         {
             // check if http has found in RedirectUri and replace it with https 
-            if (context.ProtocolMessage.RedirectUri.Contains("http:"))
-                context.ProtocolMessage.RedirectUri = context.ProtocolMessage.RedirectUri.Replace("http:", "https:");
+            context.ProtocolMessage.RedirectUri = context.ProtocolMessage.RedirectUri.Replace("http:", "https:");
 
             // Don't remove this line
-            await Task.CompletedTask.ConfigureAwait(false);
+            return Task.FromResult(0);
         }
 
         private static void RegisterServices(this IServiceCollection services, bool callMockNotifyApi)
