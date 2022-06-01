@@ -5,7 +5,7 @@
 	  <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
 	  <UserSecretsId>6aa91649-feea-4d79-87fa-b6bcdaf617d6</UserSecretsId>
 	  <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-	  <Nullable>enable</Nullable>
+	  <Nullable>disable</Nullable>
 	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
