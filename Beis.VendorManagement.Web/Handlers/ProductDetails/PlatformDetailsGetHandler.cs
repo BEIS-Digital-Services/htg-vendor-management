@@ -1,16 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.ProductDetails
+﻿namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
     public class PlatformDetailsGetHandler : IRequestHandler<PlatformDetailsGetHandler.Context, Optional<PlatformDetailsViewModel>>
     {

@@ -1,10 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Repositories
+﻿namespace Beis.VendorManagement.Repositories
 {
     public class VendorCompanyRepository : IVendorCompanyRepository
     {

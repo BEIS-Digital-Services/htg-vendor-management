@@ -1,16 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using MediatR;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Beis.VendorManagement.Web.Constants;
-
-namespace Beis.VendorManagement.Web.Handlers.Home
+﻿namespace Beis.VendorManagement.Web.Handlers.Home
 {
     public class IndexGetHandler : IRequestHandler<IndexGetHandler.Context, Optional<IndexGetHandler.Result>>
     {

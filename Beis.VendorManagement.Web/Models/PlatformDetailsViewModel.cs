@@ -1,6 +1,4 @@
-﻿using Beis.VendorManagement.Web.Models.Enums;
-
-namespace Beis.VendorManagement.Web.Models
+﻿namespace Beis.VendorManagement.Web.Models
 {
     public class PlatformDetailsViewModel : BaseViewModel
     {

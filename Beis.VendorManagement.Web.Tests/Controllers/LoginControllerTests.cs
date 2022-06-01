@@ -1,8 +1,4 @@
-﻿using Beis.VendorManagement.Web.Controllers;
-using Microsoft.AspNetCore.Mvc;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class LoginControllerTests
     {

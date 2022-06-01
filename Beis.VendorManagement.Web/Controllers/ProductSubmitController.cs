@@ -1,14 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Handlers.ProductSubmit;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Controllers
+﻿namespace Beis.VendorManagement.Web.Controllers
 {
     [Authorize]
     public class ProductSubmitController : Controller

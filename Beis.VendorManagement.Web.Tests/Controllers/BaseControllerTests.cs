@@ -1,17 +1,9 @@
 ﻿using AutoFixture;
 using Beis.Htg.VendorSme.Database;
-using Beis.Htg.VendorSme.Database.Models;
 using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using MockQueryable.Moq;
-using Moq;
-using Notify.Interfaces;
-using System.Security.Claims;
 using System.Text;
 
 namespace Beis.VendorManagement.Web.Tests.Controllers

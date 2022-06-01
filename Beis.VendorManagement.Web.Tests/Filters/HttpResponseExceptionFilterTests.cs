@@ -1,12 +1,4 @@
-﻿using Beis.VendorManagement.Web.Filters;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
-using System.Collections.Generic;
-using Xunit;
+﻿using Microsoft.AspNetCore.Mvc.Abstractions;
 
 namespace Beis.VendorManagement.Web.Tests.Filters
 {

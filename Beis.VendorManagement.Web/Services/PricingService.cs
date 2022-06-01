@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models.Pricing;
-using Beis.VendorManagement.Web.Services.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Services
+﻿namespace Beis.VendorManagement.Web.Services
 {
     public class PricingService : IPricingService
     {

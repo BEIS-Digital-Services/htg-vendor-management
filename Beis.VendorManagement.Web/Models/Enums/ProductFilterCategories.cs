@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Beis.VendorManagement.Web.Models.Enums
+﻿namespace Beis.VendorManagement.Web.Models.Enums
 {
     public enum ProductFilterCategories
     {

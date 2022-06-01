@@ -1,19 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using Beis.VendorManagement.Web.Options;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Beis.VendorManagement.Web.Constants;
-
-namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
+﻿namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
 {
     public class ProductSubmitReviewDetailsGetHandler : IRequestHandler<ProductSubmitReviewDetailsGetHandler.Context, Optional<ProductSubmitReviewDetailsViewModel>>
     {

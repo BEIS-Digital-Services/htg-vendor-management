@@ -1,9 +1,5 @@
 ﻿using Beis.VendorManagement.Web.Models;
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Beis.VendorManagement.Web.Validators
 {

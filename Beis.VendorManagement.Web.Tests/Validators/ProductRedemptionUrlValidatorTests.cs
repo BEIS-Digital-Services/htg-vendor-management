@@ -1,10 +1,4 @@
-﻿using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Validators;
-using FluentAssertions;
-using System.Linq;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Validators
+﻿namespace Beis.VendorManagement.Web.Tests.Validators
 {
     public class ProductRedemptionUrlValidatorTests
     {

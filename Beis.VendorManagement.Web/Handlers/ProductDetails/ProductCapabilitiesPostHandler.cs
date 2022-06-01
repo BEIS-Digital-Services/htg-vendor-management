@@ -1,15 +1,4 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.ProductDetails
+﻿namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
     public class ProductCapabilitiesPostHandler : IRequestHandler<ProductCapabilitiesPostHandler.Context>
     {

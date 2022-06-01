@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Beis.VendorManagement.Web.Models
+﻿namespace Beis.VendorManagement.Web.Models
 {
     public class ManageUsersHomeViewModel : BaseViewModel
     {

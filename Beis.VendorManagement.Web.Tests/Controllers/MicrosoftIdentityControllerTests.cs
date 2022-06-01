@@ -1,12 +1,4 @@
-﻿using Beis.VendorManagement.Web.Controllers;
-using FluentAssertions;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using System.Linq;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class MicrosoftIdentityControllerTests
     {

@@ -1,23 +1,13 @@
 ﻿using Beis.Htg.VendorSme.Database;
 using Beis.VendorManagement.Repositories;
-using Beis.VendorManagement.Repositories.Interface;
 using Beis.VendorManagement.Web.Filters;
-using Beis.VendorManagement.Web.Handlers.ManageUsers;
-using Beis.VendorManagement.Web.Handlers.ProductSubmit;
-using Beis.VendorManagement.Web.Options;
 using Beis.VendorManagement.Web.Services;
-using Beis.VendorManagement.Web.Services.Interface;
 using FluentValidation.AspNetCore;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
-using Notify.Interfaces;
 using System.Net.Mime;
 
 namespace Beis.VendorManagement.Web.Extensions

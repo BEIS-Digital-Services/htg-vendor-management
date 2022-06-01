@@ -1,10 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Services.Interface;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Controllers
+﻿namespace Beis.VendorManagement.Web.Controllers
 {
     public class ActivateAccount : Controller
     {

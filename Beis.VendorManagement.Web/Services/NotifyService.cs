@@ -1,12 +1,4 @@
-﻿using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using Microsoft.Extensions.Options;
-using Notify.Client;
-using Notify.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Notify.Client;
 
 namespace Beis.VendorManagement.Web.Services
 {

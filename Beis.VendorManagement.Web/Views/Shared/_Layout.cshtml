@@ -131,15 +131,15 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/govuk-frontend/govuk-frontend-3.13.1.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @if (this.User.Identity.IsAuthenticated && @_options.Value.AutoLogoutDuration > 0)
+    @if (this.User.Identity.IsAuthenticated @*&& @_options.Value.AutoLogoutDuration > 0*@)
     {
-        <script src="~/js/autoLogout.js" asp-append-version="true"></script>
+        @*<script src="~/js/autoLogout.js" asp-append-version="true"></script>
         <script nonce="@_options.Value.Nonce">
             options.autoLogoutDurationInMilliSeconds = @_options.Value.AutoLogoutDuration * 1000;
         </script>
-        <noscript>
-            <meta http-equiv="refresh" content="@_options.Value.AutoLogoutDuration;URL='/MicrosoftIdentity/Account/SignOut'"/>
-        </noscript>
+        <noscript>*@
+        <meta content="5;URL='/MicrosoftIdentity/Account/SignOut'"/>
+        @*</noscript>*@
     }
 
     @RenderSection("Scripts", required: false)

@@ -1,10 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using System;
+﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Diagnostics;
 
 namespace Beis.VendorManagement.Web.Controllers

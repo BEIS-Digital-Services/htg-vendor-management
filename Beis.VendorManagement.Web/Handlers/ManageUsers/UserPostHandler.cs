@@ -1,17 +1,7 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using MediatR;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.ManageUsers
+﻿namespace Beis.VendorManagement.Web.Handlers.ManageUsers
 {
     public class UserPostHandler : IRequestHandler<UserPostHandler.Context, bool>
     {
-
         private readonly IManageUsersRepository _manageUsersRepository;
         private readonly IMapper _mapper;
 

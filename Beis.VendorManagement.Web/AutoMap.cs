@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using Beis.VendorManagement.Web.Models.Pricing;
-
-namespace Beis.VendorManagement.Web
+﻿namespace Beis.VendorManagement.Web
 {
     public class AutoMap : Profile
     {

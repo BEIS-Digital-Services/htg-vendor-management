@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Beis.VendorManagement.Web.Models.Enums
+﻿namespace Beis.VendorManagement.Web.Models.Enums
 {
     public class EnumDisplayNameAttribute : Attribute
     {

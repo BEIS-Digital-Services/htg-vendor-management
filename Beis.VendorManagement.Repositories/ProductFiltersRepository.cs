@@ -1,12 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database;
-using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Repositories
+﻿namespace Beis.VendorManagement.Repositories
 {
     public class ProductFiltersRepository : IProductFiltersRepository
     {
