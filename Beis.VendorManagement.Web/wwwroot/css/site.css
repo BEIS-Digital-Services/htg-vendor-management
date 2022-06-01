@@ -236,3 +236,7 @@
     height: 100% !important;
     width: 100% !important;
 }
+
+.container-overflow {
+    overflow-x: auto;
+}
