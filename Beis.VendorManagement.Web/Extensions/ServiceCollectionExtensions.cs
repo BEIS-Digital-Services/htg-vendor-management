@@ -27,11 +27,7 @@ namespace Beis.VendorManagement.Web.Extensions
         internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce, bool callMockApi = false)
         {
             services.AddSession(options => options.Cookie.IsEssential = false);
-            services.AddLogging(options =>
-            {
-                options.AddConsole();
-                options.SetMinimumLevel(LogLevel.Information);
-            });
+            services.AddLogging(options => options.AddConsole());
             services.AddApplicationInsightsTelemetry(configuration["AzureMonitorInstrumentationKey"]);
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApp(options =>
