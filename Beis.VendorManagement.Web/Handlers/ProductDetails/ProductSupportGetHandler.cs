@@ -1,4 +1,6 @@
-﻿namespace Beis.VendorManagement.Web.Handlers.ProductDetails
+﻿using Beis.VendorManagement.Web.Extensions;
+
+namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
     public class ProductSupportGetHandler : IRequestHandler<ProductSupportGetHandler.Context, Optional<ProductSupportViewModel>>
     {
@@ -43,33 +45,7 @@
             };
 
             var productFilters = await _productFiltersRepository.GetProductFilters(request.ProductId);
-
-            foreach (var settingsProductFiltersCategory in settingsProductFiltersCategories)
-            {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategory.id).ToList();
-                var items = temp.Select(x => new SelectListItem
-                {
-                    Text = x.filter_name,
-                    Value = x.filter_id.ToString()
-                });
-
-                //Assign existing filters
-                var lstItems = items.ToList();
-                foreach (var productFilter in productFilters)
-                {
-                    foreach (var lstItem in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()))
-                    {
-                        lstItem.Selected = true;
-                    }
-                }
-
-                productSupportViewModel.SettingsProductFiltersCategories.Add(new SettingsProductFiltersCategory
-                {
-                    ItemName = settingsProductFiltersCategory.item_name,
-                    SettingsProductFilters = lstItems
-                });
-            }
-
+            productSupportViewModel.SettingsProductFiltersCategories = settingsProductFiltersCategories.GetSettingsProductFilterCategory(settingsProductFilters, productFilters);
             productSupportViewModel.ContentKey = $"{AnalyticConstants.ProductSupport}{productSupportViewModel.ProductName}";
             return productSupportViewModel;
         }

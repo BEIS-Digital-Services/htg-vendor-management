@@ -97,29 +97,29 @@
             var settingsProductFilters = await _settingsProductFiltersRepository.GetSettingsProductFilters(0);
             var productFilters = await _productFiltersRepository.GetProductFilters(productId);
 
-            foreach (var settingsProductFiltersCategory in settingsProductFiltersCategories)
+            foreach (var settingsProductFiltersCategoryId in settingsProductFiltersCategories.Select(s => s.id))
             {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategory.id).ToList();
+                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategoryId).ToList();
                 var items = temp.Select(x => new SelectListItem { Text = x.filter_name, Value = x.filter_id.ToString() });
 
                 var lstItems = items.ToList();
                 foreach (var productFilter in productFilters)
                 {
-                    foreach (var lstItem in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()))
+                    foreach (var filterName in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()).Select(i => i.Text))
                     {
-                        switch (settingsProductFiltersCategory.id)
+                        switch (settingsProductFiltersCategoryId)
                         {
                             case (int)ProductFilterCategories.Support:
                                 productDetails.SupportItems ??= new List<string>();
-                                productDetails.SupportItems.Add(lstItem.Text);
+                                productDetails.SupportItems.Add(filterName);
                                 break;
                             case (int)ProductFilterCategories.Training:
                                 productDetails.TrainingItems ??= new List<string>();
-                                productDetails.TrainingItems.Add(lstItem.Text);
+                                productDetails.TrainingItems.Add(filterName);
                                 break;
                             case (int)ProductFilterCategories.Platform:
                                 productDetails.PlatformItems ??= new List<string>();
-                                productDetails.PlatformItems.Add(lstItem.Text);
+                                productDetails.PlatformItems.Add(filterName);
                                 break;
                         }
                     }

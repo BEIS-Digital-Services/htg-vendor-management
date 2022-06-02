@@ -1,4 +1,6 @@
-﻿namespace Beis.VendorManagement.Web.Handlers.ProductDetails
+﻿using Beis.VendorManagement.Web.Extensions;
+
+namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
     public class PlatformDetailsGetHandler : IRequestHandler<PlatformDetailsGetHandler.Context, Optional<PlatformDetailsViewModel>>
     {
@@ -33,7 +35,7 @@
                                                     .Where(x => filterTypes.Contains(x.id)).OrderBy(x => x.id).ToList();
             var settingsProductFilters = await _settingsProductFiltersRepository.GetSettingsProductFilters(0);
 
-            var platformDetailsVM = new PlatformDetailsViewModel
+            var platformDetailsVm = new PlatformDetailsViewModel
             {
                 ProductId = product.product_id,
                 ProductName = product.product_name,
@@ -46,38 +48,9 @@
             };
 
             var productFilters = await _productFiltersRepository.GetProductFilters(request.ProductId);
-
-            foreach (var settingsProductFiltersCategory in settingsProductFiltersCategories)
-            {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategory.id).ToList();
-                var items = temp.Select(x => new SelectListItem
-                {
-                    Text = x.filter_name,
-                    Value = x.filter_id.ToString()
-                });
-
-                //Assign existing filters
-                var lstItems = items.ToList();
-                foreach (var productFilter in productFilters)
-                {
-                    foreach (var lstItem in lstItems)
-                    {
-                        if (lstItem.Value == productFilter.filter_id.ToString())
-                        {
-                            lstItem.Selected = true;
-                        }
-                    }
-                }
-
-                platformDetailsVM.SettingsProductFiltersCategory = new SettingsProductFiltersCategory
-                {
-                    ItemName = settingsProductFiltersCategory.item_name,
-                    SettingsProductFilters = lstItems,
-                };
-            }
-
-            platformDetailsVM.ContentKey = $"{AnalyticConstants.ProductPlatformDetails}{platformDetailsVM.ProductName}";
-            return platformDetailsVM;
+            platformDetailsVm.SettingsProductFiltersCategory = settingsProductFiltersCategories.GetSettingsProductFilterCategory(settingsProductFilters, productFilters).First();
+            platformDetailsVm.ContentKey = $"{AnalyticConstants.ProductPlatformDetails}{platformDetailsVm.ProductName}";
+            return platformDetailsVm;
         }
 
         public struct Context : IRequest<Optional<PlatformDetailsViewModel>>
