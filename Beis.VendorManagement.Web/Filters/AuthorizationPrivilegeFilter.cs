@@ -63,8 +63,8 @@ namespace Beis.VendorManagement.Web.Filters
 
         private static long ParseToLong(string value)
         {
-            long.TryParse(value, out var convertedValue);
-            return convertedValue;
+            var result = long.TryParse(value, out var convertedValue);
+            return result ? convertedValue : 0;
         }
     }
 }

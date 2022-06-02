@@ -76,7 +76,7 @@
             // Assert
             Assert.NotNull(result);
             result.RouteName.Should().Be(RouteNameConstants.ProductErrorGet);
-            VerifyLogger($"There is not an user in the database for the logged Microsoft ADB2C account id: {TestUserId}");
+            VerifyLogger($"No user in database for the logged Microsoft ADB2C account id: {TestUserId}");
         }
 
         [Fact]

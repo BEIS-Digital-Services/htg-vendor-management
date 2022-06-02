@@ -44,9 +44,9 @@
 
             var productFilters = await _productFiltersRepository.GetProductFilters(request.ProductId);
 
-            for (var i = 0; i < settingsProductFiltersCategories.Count(); i++)
+            foreach (var settingsProductFiltersCategory in settingsProductFiltersCategories)
             {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategories[i].id).ToList();
+                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategory.id).ToList();
                 var items = temp.Select(x => new SelectListItem
                 {
                     Text = x.filter_name,
@@ -57,18 +57,15 @@
                 var lstItems = items.ToList();
                 foreach (var productFilter in productFilters)
                 {
-                    for (var j = 0; j < lstItems.Count(); j++)
+                    foreach (var lstItem in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()))
                     {
-                        if (lstItems[j].Value == productFilter.filter_id.ToString())
-                        {
-                            lstItems[j].Selected = true;
-                        }
+                        lstItem.Selected = true;
                     }
                 }
 
                 productSupportViewModel.SettingsProductFiltersCategories.Add(new SettingsProductFiltersCategory
                 {
-                    ItemName = settingsProductFiltersCategories[i].item_name,
+                    ItemName = settingsProductFiltersCategory.item_name,
                     SettingsProductFilters = lstItems
                 });
             }

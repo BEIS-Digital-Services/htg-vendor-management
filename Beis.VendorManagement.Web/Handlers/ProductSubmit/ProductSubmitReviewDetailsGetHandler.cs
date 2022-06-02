@@ -52,13 +52,7 @@
             var lstItems = items.ToList();
             foreach (var existingProductCapability in existingProductCapabilities)
             {
-                for (int j = 0; j < lstItems.Count(); j++)
-                {
-                    if (lstItems[j].Value == existingProductCapability.capability_id.ToString())
-                    {
-                        productCapabilities.Add(lstItems[j].Text);
-                    }
-                }
+                productCapabilities.AddRange(from lstItem in lstItems where lstItem.Value == existingProductCapability.capability_id.ToString() select lstItem.Text);
             }
 
             if (!string.IsNullOrWhiteSpace(product.draft_other_capabilities))
@@ -103,33 +97,30 @@
             var settingsProductFilters = await _settingsProductFiltersRepository.GetSettingsProductFilters(0);
             var productFilters = await _productFiltersRepository.GetProductFilters(productId);
 
-            for (int i = 0; i < settingsProductFiltersCategories.Count(); i++)
+            foreach (var settingsProductFiltersCategory in settingsProductFiltersCategories)
             {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategories[i].id).ToList();
-                var items = temp.Select(x => new SelectListItem() { Text = x.filter_name, Value = x.filter_id.ToString() });
+                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategory.id).ToList();
+                var items = temp.Select(x => new SelectListItem { Text = x.filter_name, Value = x.filter_id.ToString() });
 
                 var lstItems = items.ToList();
                 foreach (var productFilter in productFilters)
                 {
-                    for (int j = 0; j < lstItems.Count(); j++)
+                    foreach (var lstItem in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()))
                     {
-                        if (lstItems[j].Value == productFilter.filter_id.ToString())
+                        switch (settingsProductFiltersCategory.id)
                         {
-                            if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Support)
-                            {
+                            case (int)ProductFilterCategories.Support:
                                 productDetails.SupportItems ??= new List<string>();
-                                productDetails.SupportItems.Add(lstItems[j].Text);
-                            }
-                            else if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Training)
-                            {
+                                productDetails.SupportItems.Add(lstItem.Text);
+                                break;
+                            case (int)ProductFilterCategories.Training:
                                 productDetails.TrainingItems ??= new List<string>();
-                                productDetails.TrainingItems.Add(lstItems[j].Text);
-                            }
-                            else if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Platform)
-                            {
+                                productDetails.TrainingItems.Add(lstItem.Text);
+                                break;
+                            case (int)ProductFilterCategories.Platform:
                                 productDetails.PlatformItems ??= new List<string>();
-                                productDetails.PlatformItems.Add(lstItems[j].Text);
-                            }
+                                productDetails.PlatformItems.Add(lstItem.Text);
+                                break;
                         }
                     }
                 }

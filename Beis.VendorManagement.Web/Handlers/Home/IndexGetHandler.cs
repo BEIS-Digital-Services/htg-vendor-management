@@ -27,7 +27,7 @@
                 return default;
             }
 
-            _logger.LogInformation($"The logged Microsoft ADB2C account id is: {request.UserId}");
+            _logger.LogInformation("The logged Microsoft ADB2C account id is: {RequestUserId}", request.UserId);
 
             if (request.Email == null)
             {
@@ -35,12 +35,12 @@
                 return default;
             }
 
-            _logger.LogInformation($"Authenticated user id is {request.UserId}");
+            _logger.LogInformation("Authenticated user id is {RequestUserId}", request.UserId);
 
             var user = await GetUser(request.UserId, request.AccessLinkId);
             if (user == null)
             {
-                _logger.LogError($"There is not an user in the database for the logged Microsoft ADB2C account id: {request.UserId}");
+                _logger.LogError("No user in database for the logged Microsoft ADB2C account id: {RequestUserId}", request.UserId);
                 return default;
             }
 

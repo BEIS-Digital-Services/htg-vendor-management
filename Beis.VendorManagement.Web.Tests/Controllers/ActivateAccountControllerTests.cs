@@ -47,7 +47,7 @@
             Assert.NotNull(result);
             result.RouteName.Should().Be(RouteNameConstants.ActivatedUserErrorGet);
             _logger.Verify(x =>
-                x.Log(LogLevel.Error, It.IsAny<EventId>(), It.Is<It.IsAnyType>((m, c) => m.ToString() == "There is not an user with that guid: access_link"), null,
+                x.Log(LogLevel.Error, It.IsAny<EventId>(), It.Is<It.IsAnyType>((m, c) => m.ToString() == "No user with that guid: access_link"), null,
                     (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()), Times.Once);
         }
 

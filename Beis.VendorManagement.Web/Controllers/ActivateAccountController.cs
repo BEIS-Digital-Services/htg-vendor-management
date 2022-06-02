@@ -22,7 +22,8 @@
             var user = await _service.GetUserByAccessLink(id);
             if (user == null)
             {
-                _logger.LogError($"There is not an user with that guid: {id}");
+                _logger.LogError("No user with that guid: {id}", id);
+
                 return RedirectToRoute(RouteNameConstants.ActivatedUserErrorGet);
             }
 
