@@ -48,7 +48,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
             };
 
             var productFilters = await _productFiltersRepository.GetProductFilters(request.ProductId);
-            platformDetailsVm.SettingsProductFiltersCategory = settingsProductFiltersCategories.GetSettingsProductFilterCategory(settingsProductFilters, productFilters).First();
+            platformDetailsVm.SettingsProductFiltersCategory = settingsProductFiltersCategories.GetSettingsProductFilterCategory(settingsProductFilters, productFilters).FirstOrDefault();
             platformDetailsVm.ContentKey = $"{AnalyticConstants.ProductPlatformDetails}{platformDetailsVm.ProductName}";
             return platformDetailsVm;
         }
