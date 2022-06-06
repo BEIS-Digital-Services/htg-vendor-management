@@ -1,15 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Options;
-using MediatR;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.Product
+﻿namespace Beis.VendorManagement.Web.Handlers.Product
 {
     public class ProductLogoGetHandler : IRequestHandler<ProductLogoGetHandler.Context, Optional<ProductLogoViewModel>>
     {

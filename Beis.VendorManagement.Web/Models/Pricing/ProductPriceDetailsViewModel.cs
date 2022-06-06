@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Beis.VendorManagement.Web.Models.Pricing
+﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
     public class ProductPriceDetailsViewModel : BaseViewModel
     {

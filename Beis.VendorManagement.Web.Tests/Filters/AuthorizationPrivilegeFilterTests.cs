@@ -1,20 +1,6 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Filters;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using Beis.VendorManagement.Web.Tests.Controllers;
-using FluentAssertions;
+﻿using Beis.VendorManagement.Web.Tests.Controllers;
 using FluentAssertions.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace Beis.VendorManagement.Web.Tests.Filters
 {

@@ -1,16 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using MediatR;
-using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.Product
+﻿namespace Beis.VendorManagement.Web.Handlers.Product
 {
     public class SoftwareHomeGetHandler : IRequestHandler<SoftwareHomeGetHandler.Context, Optional<SoftwareHomeViewModel>>
     {

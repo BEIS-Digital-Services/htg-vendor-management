@@ -1,20 +1,8 @@
-﻿using System;
-
-namespace Beis.VendorManagement.Web.Models.Enums
+﻿namespace Beis.VendorManagement.Web.Models.Enums
 {
+    [AttributeUsage(AttributeTargets.Field)]
     public class EnumDisplayNameAttribute : Attribute
     {
-        private string _displayName;
-        public string DisplayName
-        {
-            get
-            {
-                return _displayName;
-            }
-            set
-            {
-                _displayName = value;
-            }
-        }
+        public string DisplayName { get; set; }
     }
 }

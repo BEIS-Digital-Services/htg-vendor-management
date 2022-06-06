@@ -1,15 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace Beis.VendorManagement.Web.Filters
 {
@@ -74,8 +63,8 @@ namespace Beis.VendorManagement.Web.Filters
 
         private static long ParseToLong(string value)
         {
-            long.TryParse(value, out var convertedValue);
-            return convertedValue;
+            var result = long.TryParse(value, out var convertedValue);
+            return result ? convertedValue : 0;
         }
     }
 }

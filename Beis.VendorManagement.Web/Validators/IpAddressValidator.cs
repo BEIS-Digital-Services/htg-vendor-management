@@ -1,8 +1,4 @@
-﻿using Beis.VendorManagement.Web.Models;
-using FluentValidation;
-using System.Linq;
-
-namespace Beis.VendorManagement.Web.Validators
+﻿namespace Beis.VendorManagement.Web.Validators
 {
     public class IpAddressValidator : AbstractValidator<RangesViewModel>
     {

@@ -1,20 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Controllers;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Moq;
-using System;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class ActivateAccountControllerTests : BaseControllerTests
     {
@@ -63,7 +47,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             Assert.NotNull(result);
             result.RouteName.Should().Be(RouteNameConstants.ActivatedUserErrorGet);
             _logger.Verify(x =>
-                x.Log(LogLevel.Error, It.IsAny<EventId>(), It.Is<It.IsAnyType>((m, c) => m.ToString() == "There is not an user with that guid: access_link"), null,
+                x.Log(LogLevel.Error, It.IsAny<EventId>(), It.Is<It.IsAnyType>((m, c) => m.ToString() == "No user with that guid: access_link"), null,
                     (Func<It.IsAnyType, Exception, string>)It.IsAny<object>()), Times.Once);
         }
 

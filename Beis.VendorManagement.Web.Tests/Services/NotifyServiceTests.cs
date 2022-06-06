@@ -1,9 +1,4 @@
 ﻿using Beis.VendorManagement.Web.Services;
-using FluentAssertions;
-using Moq;
-using Notify.Interfaces;
-using System;
-using Xunit;
 
 namespace Beis.VendorManagement.Web.Tests.Services
 {

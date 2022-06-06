@@ -1,17 +1,4 @@
-﻿using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Controllers;
-using Beis.VendorManagement.Web.Models.Pricing;
-using Beis.VendorManagement.Web.Services.Interface;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class PricingControllerTests : BaseControllerTests
     {

@@ -1,23 +1,81 @@
-﻿using Beis.VendorManagement.Repositories;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Handlers.ManageUsers;
-using Beis.VendorManagement.Web.Handlers.ProductSubmit;
-using Beis.VendorManagement.Web.Options;
+﻿using Beis.Htg.VendorSme.Database;
+using Beis.VendorManagement.Repositories;
+using Beis.VendorManagement.Web.Filters;
 using Beis.VendorManagement.Web.Services;
-using Beis.VendorManagement.Web.Services.Interface;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Notify.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Web.UI;
+using System.Net.Mime;
 
 namespace Beis.VendorManagement.Web.Extensions
 {
     internal static class ServiceCollectionExtensions
     {
-        internal static void RegisterServices(this IServiceCollection services, bool callMockNotifyApi)
+        internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce, bool callMockApi = false)
+        {
+            services.AddSession(options => options.Cookie.IsEssential = false);
+            services.AddLogging(options => options.AddConsole());
+            services.AddApplicationInsightsTelemetry(configuration["AzureMonitorInstrumentationKey"]);
+            services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApp(options =>
+                {
+                    configuration.Bind("AzureAdB2C", options);
+                    options.Events ??= new OpenIdConnectEvents();
+                    options.Events.OnRedirectToIdentityProvider += UpdateRedirectUri;
+                });
+            services.AddControllersWithViews().AddMicrosoftIdentityUI();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(new HttpResponseExceptionFilter());
+                options.Filters.Add<AuthorizationPrivilegeFilter>();
+            }).AddFluentValidation(fv =>
+            {
+                fv.DisableDataAnnotationsValidation = true;
+                fv.ImplicitlyValidateChildProperties = true;
+                fv.RegisterValidatorsFromAssemblyContaining<Program>();
+            })
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.InvalidModelStateResponseFactory = context =>
+                    {
+                        var result = new BadRequestObjectResult(context.ModelState);
+
+                        result.ContentTypes.Add(MediaTypeNames.Application.Json);
+                        result.ContentTypes.Add(MediaTypeNames.Application.Xml);
+
+                        return result;
+                    };
+                });
+            services.AddHsts(options =>
+            {
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
+            services.AddDbContext<HtgVendorSmeDbContext>(options => options.UseNpgsql(configuration["HelpToGrowDbConnectionString"]));
+            services.AddDataProtection().PersistKeysToDbContext<HtgVendorSmeDbContext>();
+            services.RegisterServices(callMockApi);
+            services.RegisterRepositories();
+            services.AddRazorPages();
+            services.AddOptions();
+            services.RegisterOptions(configuration, nonce);
+            services.AddMediatR(typeof(Program));
+            services.AddAutoMapper(c => c.AddProfile<AutoMap>(), typeof(Program));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        }
+
+        private static Task UpdateRedirectUri(RedirectContext context)
+        {
+            // check if http has found in RedirectUri and replace it with https 
+            context.ProtocolMessage.RedirectUri = context.ProtocolMessage.RedirectUri.Replace("http:", "https:");
+
+            // Don't remove this line
+            return Task.FromResult(0);
+        }
+
+        private static void RegisterServices(this IServiceCollection services, bool callMockNotifyApi)
         {
             services.AddScoped<IActivateAccountService, ActivateAccountService>();
             services.AddScoped<IAccountHomeService, AccountHomeService>();
@@ -43,7 +101,7 @@ namespace Beis.VendorManagement.Web.Extensions
 
         }
 
-        internal static void RegisterRepositories(this IServiceCollection services)
+        private static void RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICompanyUserRepository, CompanyUserRepository>();
@@ -58,8 +116,13 @@ namespace Beis.VendorManagement.Web.Extensions
             services.AddScoped<IPricingRepository, PricingRepository>();
         }
 
-        internal static void RegisterOptions(this IServiceCollection services, IConfiguration configuration)
+        private static void RegisterOptions(this IServiceCollection services, IConfiguration configuration, string nonce = "")
         {
+            services.Configure<LayoutOptions>(o =>
+            {
+                o.AutoLogoutDuration = configuration.GetValue<int>("AutoLogoutDurationInSeconds", 0);
+                o.Nonce = nonce;
+            });
             services.Configure<ProductLogoOptions>(o => o.LogoPath = configuration["ProductLogoPath"]);
             services.Configure<ProductSubmitReviewDetailsPostHandler.ProductSubmitReviewDetailsPostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<RemoveUserPostHandler.RemoveUserPostHandlerOptions>(configuration.GetSection("EmailConfig"));

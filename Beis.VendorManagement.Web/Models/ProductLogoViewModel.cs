@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
-
-namespace Beis.VendorManagement.Web.Models
+﻿namespace Beis.VendorManagement.Web.Models
 {
     public class ProductLogoViewModel : BaseViewModel
     {

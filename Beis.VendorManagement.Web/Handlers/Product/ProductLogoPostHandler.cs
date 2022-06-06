@@ -1,12 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Handlers.Product
+﻿namespace Beis.VendorManagement.Web.Handlers.Product
 {
     public class ProductLogoPostHandler : IRequestHandler<ProductLogoPostHandler.Context>
     {

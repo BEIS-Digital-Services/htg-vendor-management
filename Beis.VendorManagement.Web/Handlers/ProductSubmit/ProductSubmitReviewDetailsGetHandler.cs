@@ -1,19 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using Beis.VendorManagement.Web.Options;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Beis.VendorManagement.Web.Constants;
-
-namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
+﻿namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
 {
     public class ProductSubmitReviewDetailsGetHandler : IRequestHandler<ProductSubmitReviewDetailsGetHandler.Context, Optional<ProductSubmitReviewDetailsViewModel>>
     {
@@ -67,13 +52,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
             var lstItems = items.ToList();
             foreach (var existingProductCapability in existingProductCapabilities)
             {
-                for (int j = 0; j < lstItems.Count(); j++)
-                {
-                    if (lstItems[j].Value == existingProductCapability.capability_id.ToString())
-                    {
-                        productCapabilities.Add(lstItems[j].Text);
-                    }
-                }
+                productCapabilities.AddRange(from lstItem in lstItems where lstItem.Value == existingProductCapability.capability_id.ToString() select lstItem.Text);
             }
 
             if (!string.IsNullOrWhiteSpace(product.draft_other_capabilities))
@@ -118,33 +97,30 @@ namespace Beis.VendorManagement.Web.Handlers.ProductSubmit
             var settingsProductFilters = await _settingsProductFiltersRepository.GetSettingsProductFilters(0);
             var productFilters = await _productFiltersRepository.GetProductFilters(productId);
 
-            for (int i = 0; i < settingsProductFiltersCategories.Count(); i++)
+            foreach (var settingsProductFiltersCategoryId in settingsProductFiltersCategories.Select(s => s.id))
             {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategories[i].id).ToList();
-                var items = temp.Select(x => new SelectListItem() { Text = x.filter_name, Value = x.filter_id.ToString() });
+                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategoryId).ToList();
+                var items = temp.Select(x => new SelectListItem { Text = x.filter_name, Value = x.filter_id.ToString() });
 
                 var lstItems = items.ToList();
                 foreach (var productFilter in productFilters)
                 {
-                    for (int j = 0; j < lstItems.Count(); j++)
+                    foreach (var filterName in lstItems.Where(lstItem => lstItem.Value == productFilter.filter_id.ToString()).Select(i => i.Text))
                     {
-                        if (lstItems[j].Value == productFilter.filter_id.ToString())
+                        switch (settingsProductFiltersCategoryId)
                         {
-                            if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Support)
-                            {
+                            case (int)ProductFilterCategories.Support:
                                 productDetails.SupportItems ??= new List<string>();
-                                productDetails.SupportItems.Add(lstItems[j].Text);
-                            }
-                            else if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Training)
-                            {
+                                productDetails.SupportItems.Add(filterName);
+                                break;
+                            case (int)ProductFilterCategories.Training:
                                 productDetails.TrainingItems ??= new List<string>();
-                                productDetails.TrainingItems.Add(lstItems[j].Text);
-                            }
-                            else if (settingsProductFiltersCategories[i].id == (int)ProductFilterCategories.Platform)
-                            {
+                                productDetails.TrainingItems.Add(filterName);
+                                break;
+                            case (int)ProductFilterCategories.Platform:
                                 productDetails.PlatformItems ??= new List<string>();
-                                productDetails.PlatformItems.Add(lstItems[j].Text);
-                            }
+                                productDetails.PlatformItems.Add(filterName);
+                                break;
                         }
                     }
                 }

@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Services.Interface;
-using System.Threading.Tasks;
-
-namespace Beis.VendorManagement.Web.Services
+﻿namespace Beis.VendorManagement.Web.Services
 {
     public class ProductService : IProductService
     {

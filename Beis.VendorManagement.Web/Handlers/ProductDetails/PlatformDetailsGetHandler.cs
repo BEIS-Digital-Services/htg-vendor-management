@@ -1,14 +1,4 @@
-﻿using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Beis.VendorManagement.Web.Extensions;
 
 namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
@@ -45,7 +35,7 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
                                                     .Where(x => filterTypes.Contains(x.id)).OrderBy(x => x.id).ToList();
             var settingsProductFilters = await _settingsProductFiltersRepository.GetSettingsProductFilters(0);
 
-            var platformDetailsVM = new PlatformDetailsViewModel
+            var platformDetailsVm = new PlatformDetailsViewModel
             {
                 ProductId = product.product_id,
                 ProductName = product.product_name,
@@ -58,38 +48,9 @@ namespace Beis.VendorManagement.Web.Handlers.ProductDetails
             };
 
             var productFilters = await _productFiltersRepository.GetProductFilters(request.ProductId);
-
-            for (var i = 0; i < settingsProductFiltersCategories.Count(); i++)
-            {
-                var temp = settingsProductFilters.Where(x => x.filter_type == settingsProductFiltersCategories[i].id).ToList();
-                var items = temp.Select(x => new SelectListItem()
-                {
-                    Text = x.filter_name,
-                    Value = x.filter_id.ToString()
-                });
-
-                //Assign existing filters
-                var lstItems = items.ToList();
-                foreach (var productFilter in productFilters)
-                {
-                    for (var j = 0; j < lstItems.Count(); j++)
-                    {
-                        if (lstItems[j].Value == productFilter.filter_id.ToString())
-                        {
-                            lstItems[j].Selected = true;
-                        }
-                    }
-                }
-
-                platformDetailsVM.SettingsProductFiltersCategory = new SettingsProductFiltersCategory
-                {
-                    ItemName = settingsProductFiltersCategories[i].item_name,
-                    SettingsProductFilters = lstItems,
-                };
-            }
-
-            platformDetailsVM.ContentKey = $"{AnalyticConstants.ProductPlatformDetails}{platformDetailsVM.ProductName}";
-            return platformDetailsVM;
+            platformDetailsVm.SettingsProductFiltersCategory = settingsProductFiltersCategories.GetSettingsProductFilterCategory(settingsProductFilters, productFilters).FirstOrDefault();
+            platformDetailsVm.ContentKey = $"{AnalyticConstants.ProductPlatformDetails}{platformDetailsVm.ProductName}";
+            return platformDetailsVm;
         }
 
         public struct Context : IRequest<Optional<PlatformDetailsViewModel>>

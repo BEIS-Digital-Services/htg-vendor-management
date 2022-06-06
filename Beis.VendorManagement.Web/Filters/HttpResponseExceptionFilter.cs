@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-
-namespace Beis.VendorManagement.Web.Filters
+﻿namespace Beis.VendorManagement.Web.Filters
 {
     public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
     {

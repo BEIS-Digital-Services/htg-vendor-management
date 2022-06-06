@@ -1,23 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Web.Constants;
-using Beis.VendorManagement.Web.Controllers;
-using Beis.VendorManagement.Web.Models;
-using Beis.VendorManagement.Web.Models.Enums;
-using Beis.VendorManagement.Web.Services.Interface;
-using FluentAssertions;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Xunit;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class ManageUsersControllerTests : BaseControllerTests
     {

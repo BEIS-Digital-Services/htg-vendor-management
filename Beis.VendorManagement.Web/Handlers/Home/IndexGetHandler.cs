@@ -1,16 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database.Models;
-using Beis.VendorManagement.Repositories.Interface;
-using Beis.VendorManagement.Web.Models;
-using MediatR;
-using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Beis.VendorManagement.Web.Constants;
-
-namespace Beis.VendorManagement.Web.Handlers.Home
+﻿namespace Beis.VendorManagement.Web.Handlers.Home
 {
     public class IndexGetHandler : IRequestHandler<IndexGetHandler.Context, Optional<IndexGetHandler.Result>>
     {
@@ -39,7 +27,7 @@ namespace Beis.VendorManagement.Web.Handlers.Home
                 return default;
             }
 
-            _logger.LogInformation($"The logged Microsoft ADB2C account id is: {request.UserId}");
+            _logger.LogInformation("The logged Microsoft ADB2C account id is: {RequestUserId}", request.UserId);
 
             if (request.Email == null)
             {
@@ -47,12 +35,12 @@ namespace Beis.VendorManagement.Web.Handlers.Home
                 return default;
             }
 
-            _logger.LogInformation($"Authenticated user id is {request.UserId}");
+            _logger.LogInformation("Authenticated user id is {RequestUserId}", request.UserId);
 
             var user = await GetUser(request.UserId, request.AccessLinkId);
             if (user == null)
             {
-                _logger.LogError($"There is not an user in the database for the logged Microsoft ADB2C account id: {request.UserId}");
+                _logger.LogError("No user in database for the logged Microsoft ADB2C account id: {RequestUserId}", request.UserId);
                 return default;
             }
 
