@@ -127,6 +127,7 @@ namespace Beis.VendorManagement.Web.Extensions
             services.Configure<ProductSubmitReviewDetailsPostHandler.ProductSubmitReviewDetailsPostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<RemoveUserPostHandler.RemoveUserPostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<ConfirmPrimaryUserChangePostHandler.PrimaryUserChangePostHandlerOptions>(configuration.GetSection("EmailConfig"));
+            services.Configure<PrimaryUserChangePostHandler.PrimaryUserChangePostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<NotifyService.NotifyServiceOptions>(configuration.GetSection("NotifyServiceConfig"));
             services.Configure<CookiePolicyOptions>(options =>
             {
