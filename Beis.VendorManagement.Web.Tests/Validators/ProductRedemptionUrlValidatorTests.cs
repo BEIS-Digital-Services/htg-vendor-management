@@ -28,9 +28,7 @@
         }
 
         [Theory]
-        [InlineData("image1.bmp")]
         [InlineData("image1")]
-        [InlineData("www.image1.html")]
         [InlineData("https://select*fromTable")]
         public void ShouldAddErrorMessageToResultWhenRedemptionUrlIsInValid(string redemptionUrl)
         {
@@ -48,9 +46,9 @@
 
         [Theory]
         [InlineData("http://abc.co.uk")]
-        [InlineData("http://abc.com")]
+        [InlineData("abc.com")]
         [InlineData("https://abc.io")]
-        [InlineData("https://www.abc.org")]
+        [InlineData("www.abc.org")]
         public void ShouldNotAddErrorMessageToResultWhenRedemptionUrlIsInCorrectFormat(string redemptionUrl)
         {
             // Arrange
