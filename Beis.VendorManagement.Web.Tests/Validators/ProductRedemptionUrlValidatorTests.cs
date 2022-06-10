@@ -24,7 +24,7 @@
             result.Should().NotBeNull();
             result.IsValid.Should().BeFalse();
             result.Errors.Count.Should().Be(1);
-            result.Errors.First().ErrorMessage.Should().Be("Enter a URL, like http(s)://example.com/redeem123");
+            result.Errors.First().ErrorMessage.Should().Be("Enter a URL, like example.com/redeem123");
         }
 
         [Theory]
@@ -43,7 +43,7 @@
             result.Should().NotBeNull();
             result.IsValid.Should().BeFalse();
             result.Errors.Count.Should().Be(1);
-            result.Errors.First().ErrorMessage.Should().Be("Enter a URL in the correct format, like http(s)://example.com/redeem123");
+            result.Errors.First().ErrorMessage.Should().Be("Enter a URL in the correct format, like example.com/redeem123");
         }
 
         [Theory]
