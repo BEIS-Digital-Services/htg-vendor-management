@@ -1,5 +1,4 @@
 ﻿using AutoFixture;
-using Beis.Htg.VendorSme.Database;
 using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
 using Microsoft.Extensions.Configuration;

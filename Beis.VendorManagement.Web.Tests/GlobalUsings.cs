@@ -1,4 +1,5 @@
-﻿global using Beis.Htg.VendorSme.Database.Models;
+﻿global using Beis.HelpToGrow.Persistence;
+global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.VendorManagement.Web.Constants;
 global using Beis.VendorManagement.Web.Controllers;
 global using Beis.VendorManagement.Web.Filters;

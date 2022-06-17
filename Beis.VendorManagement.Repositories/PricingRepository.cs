@@ -52,7 +52,9 @@
 
         public async Task<IEnumerable<additional_cost>> GetAdditionalCostsByProductPriceId(long productPriceId)
         {
-            return await _context.additional_costs.Where(x => x.product_price_id == productPriceId).ToListAsync();
+            return await _context.additional_costs.Where(x => x.product_price_id == productPriceId)
+                .Include(x => x.additional_cost_type)
+                .ToListAsync();
         }
 
         public async Task<IList<additional_cost_desc>> GetAllAdditionalCostDescriptions()
