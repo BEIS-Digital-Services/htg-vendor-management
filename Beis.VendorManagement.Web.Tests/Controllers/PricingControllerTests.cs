@@ -235,6 +235,7 @@
             model.AdditionalCosts.Any().Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.Type)).Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.CostAndFrequency)).Should().BeTrue();
+            model.AdditionalCosts.All(r => r.AdditionalCostType.HasValue).Should().BeTrue();
             Assert.IsType<bool>(model.AdditionalCosts.All(r => r.IsMandatory));
             model.ContentKey.Should().Contain(AnalyticConstants.PricingAdditionalCosts);
         }

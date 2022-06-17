@@ -352,6 +352,19 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
                 AutoFixture.Build<additional_cost>()
                     .With(x => x.additional_cost_id, 1)
                     .With(x => x.additional_cost_desc_id, 1)
+                    .With(x => x.additional_cost_type_id, 1)
+                    .With(x => x.product_price_id, TestProductPriceId)
+                    .Create(),
+                AutoFixture.Build<additional_cost>()
+                    .With(x => x.additional_cost_id, 2)
+                    .With(x => x.additional_cost_desc_id, 1)
+                    .With(x => x.additional_cost_type_id, 2)
+                    .With(x => x.product_price_id, TestProductPriceId)
+                    .Create(),
+                AutoFixture.Build<additional_cost>()
+                    .With(x => x.additional_cost_id, 2)
+                    .With(x => x.additional_cost_desc_id, 1)
+                    .With(x => x.additional_cost_type_id, 3)
                     .With(x => x.product_price_id, TestProductPriceId)
                     .Create()
             };
