@@ -234,8 +234,11 @@
             model.ProductName.Should().NotBeNullOrWhiteSpace();
             model.AdditionalCosts.Any().Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.Type)).Should().BeTrue();
-            model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.CostAndFrequency)).Should().BeTrue();
+            model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.CostAndFrequency)).Should().BeTrue();            
             model.AdditionalCosts.All(r => r.AdditionalCostType.HasValue).Should().BeTrue();
+            model.GetAdditionalCostsByType(EnumAdditionalCostType.General).Should().HaveCount(1);
+            model.GetAdditionalCostsByType(EnumAdditionalCostType.ThirdPartyFee).Should().HaveCount(1);
+            model.GetAdditionalCostsByType(EnumAdditionalCostType.TransactionFee).Should().HaveCount(1);
             Assert.IsType<bool>(model.AdditionalCosts.All(r => r.IsMandatory));
             model.ContentKey.Should().Contain(AnalyticConstants.PricingAdditionalCosts);
         }
