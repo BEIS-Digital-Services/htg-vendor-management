@@ -1,6 +1,4 @@
-﻿using Beis.VendorManagement.Web.Extensions;
-
-namespace Beis.VendorManagement.Web.Models.Pricing
+﻿namespace Beis.VendorManagement.Web.Models.Pricing
 {
     public class AdditionalCostsViewModel : BaseViewModel
     {
@@ -18,13 +16,6 @@ namespace Beis.VendorManagement.Web.Models.Pricing
         public string ProductName { get; set; }
         
         public IList<AdditionalCostDetail> AdditionalCosts { get; set; }
-
-        public IEnumerable<AdditionalCostDetail> GetAdditionalCostsByType(EnumAdditionalCostType additionalCostType)
-        {
-            return this.AdditionalCosts
-                .Where(x => x.AdditionalCostType == additionalCostType)
-                .ToList(); // View enumerates this several times
-        }
     }
 
     public class AdditionalCostDetail
@@ -35,6 +26,6 @@ namespace Beis.VendorManagement.Web.Models.Pricing
         
         public bool IsMandatory { get; set; }
 		
-        public EnumAdditionalCostType? AdditionalCostType { get; set; }
+        public EnumAdditionalCostType AdditionalCostType { get; set; }
 	}
 }

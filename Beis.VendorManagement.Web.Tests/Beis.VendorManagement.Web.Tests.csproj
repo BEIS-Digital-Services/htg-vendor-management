@@ -45,10 +45,4 @@
 		<ProjectReference Include="..\Beis.VendorManagement.Web\Beis.VendorManagement.Web.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Reference Include="Beis.Htg.VendorSme.Database">
-			<HintPath>..\Beis.VendorManagement.Repositories\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-		</Reference>
-	</ItemGroup>
-
 </Project>

@@ -1,3 +1,5 @@
+@using Beis.VendorManagement.Web.Extensions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Beis.VendorManagement.Web.Models.Pricing.AdditionalCostsViewModel;
 @{
     ViewData["Title"] = "Additional costs";
@@ -33,10 +35,8 @@
             </tbody>
         </table>
 
-        <partial name="AdditionalCostList" model="(string.Empty, Model.GetAdditionalCostsByType(EnumAdditionalCostType.General))"/>
-        <partial name="AdditionalCostList" model="(headerTransactionFee, Model.GetAdditionalCostsByType(EnumAdditionalCostType.TransactionFee))"/>        
-        <partial name="AdditionalCostList" model="(headerThirdPartyFee, Model.GetAdditionalCostsByType(EnumAdditionalCostType.ThirdPartyFee))"/>
-        
-
+        <partial name="AdditionalCostList" model="(string.Empty, Model.FilterAdditionalCosts(EnumAdditionalCostType.General))"/>
+        <partial name="AdditionalCostList" model="(headerTransactionFee, Model.FilterAdditionalCosts(EnumAdditionalCostType.TransactionFee))"/>        
+        <partial name="AdditionalCostList" model="(headerThirdPartyFee, Model.FilterAdditionalCosts(EnumAdditionalCostType.ThirdPartyFee))"/>
     </div>
 </div>
