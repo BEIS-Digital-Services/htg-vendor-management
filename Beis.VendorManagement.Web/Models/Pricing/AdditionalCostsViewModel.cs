@@ -25,5 +25,7 @@
         public string CostAndFrequency { get; set; }
         
         public bool IsMandatory { get; set; }
-    }
+		
+        public EnumAdditionalCostType AdditionalCostType { get; set; }
+	}
 }

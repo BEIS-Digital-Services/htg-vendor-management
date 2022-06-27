@@ -1,5 +1,4 @@
-﻿using Beis.Htg.VendorSme.Database;
-using Beis.VendorManagement.Repositories;
+﻿using Beis.VendorManagement.Repositories;
 using Beis.VendorManagement.Web.Filters;
 using Beis.VendorManagement.Web.Services;
 using FluentValidation.AspNetCore;

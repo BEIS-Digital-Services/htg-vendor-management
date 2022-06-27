@@ -24,6 +24,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
+		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="2.1.8" />
 		<PackageReference Include="FluentAssertions.AspNetCore.Mvc" Version="4.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.5" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
@@ -42,12 +43,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Beis.VendorManagement.Web\Beis.VendorManagement.Web.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="Beis.Htg.VendorSme.Database">
-			<HintPath>..\Beis.VendorManagement.Repositories\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 
 </Project>

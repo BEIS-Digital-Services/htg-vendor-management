@@ -1,0 +1,38 @@
+@model (string Header, IEnumerable<AdditionalCostDetail> AdditionalCosts)
+@if (!Model.AdditionalCosts.Any())
+{
+    return;
+}
+
+@if(!string.IsNullOrEmpty(Model.Header))
+{
+    <h2 class="govuk-heading-m">@Model.Header</h2>
+}
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Type of cost</th>
+            <th scope="col" class="govuk-table__header">Cost and frequency</th>
+            <th scope="col" class="govuk-table__header">Optional or mandatory</th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        @foreach (var item in Model.AdditionalCosts)
+        {
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">@item.Type</td>
+                <td class="govuk-table__cell">@item.CostAndFrequency</td>
+                <td class="govuk-table__cell">
+                    @if (item.IsMandatory)
+                    {
+                        @Html.Raw("Mandatory")
+                    }
+                    else
+                    {
+                        @Html.Raw("Optional")
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

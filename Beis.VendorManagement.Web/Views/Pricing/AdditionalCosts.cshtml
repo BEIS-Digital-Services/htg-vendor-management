@@ -1,6 +1,10 @@
+@using Beis.VendorManagement.Web.Extensions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Beis.VendorManagement.Web.Models.Pricing.AdditionalCostsViewModel;
 @{
     ViewData["Title"] = "Additional costs";
+    var headerTransactionFee = "Transaction fees";
+    var headerThirdPartyFee = "Third-party payment fees";
 }
 
 @section BackNavigation {
@@ -18,7 +22,7 @@
                 <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Are there additional costs?</th>
                     <td class="govuk-table__cell">
-                        @if (Model.AdditionalCosts.ToList().Count > 0)
+                        @if (Model.AdditionalCosts.Any())
                         {
                             @Html.Raw("Yes")
                         }
@@ -31,45 +35,8 @@
             </tbody>
         </table>
 
-        <table class="govuk-table">
-            <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">Type of cost</th>
-                    <th scope="col" class="govuk-table__header">Cost and frequency</th>
-                    <th scope="col" class="govuk-table__header">Optional or mandatory</th>
-                </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-                @if (Model.AdditionalCosts.ToList().Count == 0)
-                {
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell" colspan="">
-                            @Html.Raw("No data available")
-                        </td>
-                    </tr>
-                }
-                else
-                {
-                    @foreach (var item in Model.AdditionalCosts)
-                    {
-                        <tr class="govuk-table__row">
-                            <td class="govuk-table__cell">@item.Type</td>
-                            <td class="govuk-table__cell">@item.CostAndFrequency</td>
-                            <td class="govuk-table__cell">
-                                @if (item.IsMandatory)
-                                {
-                                    @Html.Raw("Mandatory")
-                                }
-                                else
-                                {
-                                    @Html.Raw("Optional")
-                                }
-                            </td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-
+        <partial name="AdditionalCostList" model="(string.Empty, Model.FilterAdditionalCosts(EnumAdditionalCostType.General))"/>
+        <partial name="AdditionalCostList" model="(headerTransactionFee, Model.FilterAdditionalCosts(EnumAdditionalCostType.TransactionFee))"/>        
+        <partial name="AdditionalCostList" model="(headerThirdPartyFee, Model.FilterAdditionalCosts(EnumAdditionalCostType.ThirdPartyFee))"/>
     </div>
 </div>

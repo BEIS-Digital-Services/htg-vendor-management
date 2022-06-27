@@ -1,4 +1,6 @@
-﻿namespace Beis.VendorManagement.Web.Services
+﻿using Beis.VendorManagement.Web.Extensions;
+
+namespace Beis.VendorManagement.Web.Services
 {
     public class PricingService : IPricingService
     {
@@ -165,12 +167,13 @@
             };
 
             foreach (var item in additionalCosts)
-            {
+            {                
                 var additionalCostDetail = new AdditionalCostDetail
                 {
                     IsMandatory = item.additional_cost_mandatory_flag,
                     Type = additionalCostDescriptions.FirstOrDefault(x => x.additional_cost_desc_id == item.additional_cost_desc_id)?.additional_costDesc,
-                    CostAndFrequency = $"£{item.additionalCost} {item.additional_cost_freq}"
+                    CostAndFrequency = item.additional_cost_display_value,
+                    AdditionalCostType = item.GetAdditionalCostType()
                 };
                 additionalCostsViewModel.AdditionalCosts.Add(additionalCostDetail);
             }

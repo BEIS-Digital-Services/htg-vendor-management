@@ -1,4 +1,6 @@
-﻿namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿using Beis.VendorManagement.Web.Extensions;
+
+namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class PricingControllerTests : BaseControllerTests
     {
@@ -235,6 +237,9 @@
             model.AdditionalCosts.Any().Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.Type)).Should().BeTrue();
             model.AdditionalCosts.All(r => !string.IsNullOrWhiteSpace(r.CostAndFrequency)).Should().BeTrue();
+            model.FilterAdditionalCosts(EnumAdditionalCostType.General).Count().Should().Be(1);
+            model.FilterAdditionalCosts(EnumAdditionalCostType.ThirdPartyFee).Count().Should().Be(1);
+            model.FilterAdditionalCosts(EnumAdditionalCostType.TransactionFee).Count().Should().Be(1);
             Assert.IsType<bool>(model.AdditionalCosts.All(r => r.IsMandatory));
             model.ContentKey.Should().Contain(AnalyticConstants.PricingAdditionalCosts);
         }
