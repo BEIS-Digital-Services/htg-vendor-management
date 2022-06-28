@@ -117,7 +117,7 @@
             result.RouteValues.ContainsKey("email").Should().BeTrue();
             MockHtgVendorSmeDbContext.Verify(r => r.products.Update(It.Is<product>(p => p.product_id == 1)), Times.Once);
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Once);
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Exactly(2));
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Exactly(2));
         }
 
         [Fact]

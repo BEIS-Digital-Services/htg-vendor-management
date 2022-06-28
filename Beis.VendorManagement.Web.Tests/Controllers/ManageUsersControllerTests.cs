@@ -64,7 +64,7 @@
             result.RouteName.Should().Be(RouteNameConstants.PrimaryUserChangeGet);
             result.RouteValues.Count.Should().Be(1);
             result.RouteValues.ContainsKey(ApplicationConstants.UserId).Should().BeTrue();
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Never);
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Never);
         }
 
         [Fact]
@@ -79,7 +79,7 @@
             // Assert
             Assert.NotNull(result);
             result.RouteName.Should().Be(RouteNameConstants.HomeIndexGet);
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Exactly(2));
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Exactly(2));
         }
 
         [Fact]
@@ -127,7 +127,7 @@
             result.RouteName.Should().Be(RouteNameConstants.HomeIndexGet);
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Once);
             MockHtgVendorSmeDbContext.Object.vendor_company_users.First(r => r.primary_contact).userid.Should().Be(TestUserId);
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Exactly(2));
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Exactly(2));
         }
 
         [Fact]
@@ -199,7 +199,7 @@
             result.RouteName.Should().Be(RouteNameConstants.ManageUsersHomeGet);
             result.RouteValues.Should().BeNull();
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Once);
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Once);
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Once);
         }
 
         [Fact]
@@ -215,7 +215,7 @@
             result.RouteName.Should().Be(RouteNameConstants.ManageUsersHomeGet);
             result.RouteValues.Should().BeNull();
             MockHtgVendorSmeDbContext.Verify(r => r.SaveChangesAsync(default), Times.Never);
-            MockNotificationClient.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>(), default, default), Times.Never);
+            MockEmailClientService.Verify(r => r.SendEmailAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, object>>()), Times.Never);
         }
 
         [Fact]

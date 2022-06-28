@@ -1,4 +1,6 @@
-﻿using Beis.VendorManagement.Repositories;
+﻿using Beis.HelpToGrow.Common.Config;
+using Beis.HelpToGrow.Common.Services;
+using Beis.VendorManagement.Repositories;
 using Beis.VendorManagement.Web.Filters;
 using Beis.VendorManagement.Web.Services;
 using FluentValidation.AspNetCore;
@@ -13,7 +15,7 @@ namespace Beis.VendorManagement.Web.Extensions
 {
     internal static class ServiceCollectionExtensions
     {
-        internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce, bool callMockApi = false)
+        internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce)
         {
             services.AddSession(options => options.Cookie.IsEssential = false);
             services.AddLogging(options => options.AddConsole());
@@ -55,7 +57,7 @@ namespace Beis.VendorManagement.Web.Extensions
             });
             services.AddDbContext<HtgVendorSmeDbContext>(options => options.UseNpgsql(configuration["HelpToGrowDbConnectionString"]));
             services.AddDataProtection().PersistKeysToDbContext<HtgVendorSmeDbContext>();
-            services.RegisterServices(callMockApi);
+            services.RegisterServices();
             services.RegisterRepositories();
             services.AddRazorPages();
             services.AddOptions();
@@ -74,7 +76,7 @@ namespace Beis.VendorManagement.Web.Extensions
             return Task.FromResult(0);
         }
 
-        private static void RegisterServices(this IServiceCollection services, bool callMockNotifyApi)
+        private static void RegisterServices(this IServiceCollection services)
         {
             services.AddScoped<IActivateAccountService, ActivateAccountService>();
             services.AddScoped<IAccountHomeService, AccountHomeService>();
@@ -82,22 +84,8 @@ namespace Beis.VendorManagement.Web.Extensions
             services.AddScoped<IManageUsersService, ManageUsersService>();
             services.AddScoped<IVendorCompanyService, VendorCompanyService>();
             services.AddScoped<IPricingService, PricingService>();
-
-            // Added for unit test support as the actual notify email service shouldn't be triggered. The IAsyncNotificationClient is mocked for unit tests
-            if (callMockNotifyApi)
-            {
-                services.AddScoped<INotifyService>(ctx => new NotifyService(
-                    ctx.GetRequiredService<IVendorCompanyService>(),
-                    ctx.GetRequiredService<IAsyncNotificationClient>(),
-                    ctx.GetRequiredService<IOptions<NotifyService.NotifyServiceOptions>>()));
-            }
-            else
-            {
-                services.AddScoped<INotifyService>(ctx => new NotifyService(
-                    ctx.GetRequiredService<IVendorCompanyService>(),
-                    ctx.GetRequiredService<IOptions<NotifyService.NotifyServiceOptions>>()));
-            }
-
+            services.AddScoped<IEmailClientService, EmailClientService>();
+            services.AddScoped<INotifyService, NotifyService>();
         }
 
         private static void RegisterRepositories(this IServiceCollection services)
@@ -127,7 +115,7 @@ namespace Beis.VendorManagement.Web.Extensions
             services.Configure<RemoveUserPostHandler.RemoveUserPostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<ConfirmPrimaryUserChangePostHandler.PrimaryUserChangePostHandlerOptions>(configuration.GetSection("EmailConfig"));
             services.Configure<PrimaryUserChangePostHandler.PrimaryUserChangePostHandlerOptions>(configuration.GetSection("EmailConfig"));
-            services.Configure<NotifyService.NotifyServiceOptions>(configuration.GetSection("NotifyServiceConfig"));
+            services.Configure<NotifyService.NotifyServiceOptions>(configuration.Bind);
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.Secure = CookieSecurePolicy.Always;
@@ -140,6 +128,7 @@ namespace Beis.VendorManagement.Web.Extensions
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+            services.Configure<NotifyServiceSettings>(configuration.Bind);
         }
     }
 }
