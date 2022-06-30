@@ -1,4 +1,7 @@
-﻿using Beis.VendorManagement.Web.Extensions;
+﻿using Beis.HelpToGrow.Common.Helpers;
+using Beis.HelpToGrow.Common.Services.HealthChecks;
+using Beis.VendorManagement.Web.Extensions;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddMvc(o => o.EnableEndpointRouting = false);
 var nonce = Guid.NewGuid().ToString();
 // Add services to the container.
 builder.Services.RegisterAllServices(builder.Configuration, nonce);
+builder.Services.AddHealthChecks()
+.AddDbContextCheck<HtgVendorSmeDbContext>("VendorSme Database")
+.AddCheck<DependencyInjectionHealthCheckService>("Dependency Injection");
 
 var app = builder.Build();
 app.UseForwardedHeaders();
@@ -50,4 +56,9 @@ app.Use(async (context, next) =>
     await next();
 });
 app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
+app.MapHealthChecks("/healthz", new HealthCheckOptions
+{
+    ResponseWriter = HealthCheckJsonResponseWriter.Write
+});
+
 app.Run();

@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using Beis.HelpToGrow.Common.Interfaces;
 using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +12,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
     {
         protected Mock<HtgVendorSmeDbContext> MockHtgVendorSmeDbContext { get; }
 
-        protected Mock<IAsyncNotificationClient> MockNotificationClient { get; }
+        protected Mock<IEmailClientService> MockEmailClientService { get; }
 
         protected Mock<ILogger<IndexGetHandler>> MockIndexGetLogger { get; }
 
@@ -41,7 +42,7 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
         {
             MockHttpContext = new Mock<HttpContext>();
             MockHtgVendorSmeDbContext = new Mock<HtgVendorSmeDbContext>();
-            MockNotificationClient = new Mock<IAsyncNotificationClient>();
+            MockEmailClientService = new Mock<IEmailClientService>();
             AutoFixture = new Fixture();
             AutoFixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
@@ -60,9 +61,9 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
                 .Build();
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.RegisterAllServices(configuration, Guid.NewGuid().ToString(), true);
+            serviceCollection.RegisterAllServices(configuration, Guid.NewGuid().ToString());
             serviceCollection.AddScoped(options => MockHtgVendorSmeDbContext.Object);
-            serviceCollection.AddScoped(options => MockNotificationClient.Object);
+            serviceCollection.AddScoped(options => MockEmailClientService.Object);
             MockIndexGetLogger = new Mock<ILogger<IndexGetHandler>>();
             serviceCollection.AddScoped(options => MockIndexGetLogger.Object);
             ServiceProvider = serviceCollection.BuildServiceProvider();

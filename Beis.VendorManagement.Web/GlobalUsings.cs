@@ -1,4 +1,5 @@
 ﻿global using AutoMapper;
+global using Beis.HelpToGrow.Common.Interfaces;
 global using Beis.HelpToGrow.Persistence;
 global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.VendorManagement.Repositories.Interface;
@@ -19,7 +20,6 @@ global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Mvc.Rendering;
 global using Microsoft.CodeAnalysis;
 global using Microsoft.Extensions.Options;
-global using Notify.Interfaces;
 global using System.ComponentModel.DataAnnotations;
 global using System.Security.Claims;
 global using System.Text.RegularExpressions;

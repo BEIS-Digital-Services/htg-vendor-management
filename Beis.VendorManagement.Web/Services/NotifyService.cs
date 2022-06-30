@@ -1,27 +1,16 @@
-﻿using Notify.Client;
-
-namespace Beis.VendorManagement.Web.Services
+﻿namespace Beis.VendorManagement.Web.Services
 {
     public class NotifyService : INotifyService
     {
         private readonly IVendorCompanyService _vendorCompanyService;
-        private readonly IAsyncNotificationClient _notificationClient;
+        private readonly IEmailClientService _emailClientService;
         private readonly NotifyServiceOptions _options;
 
-        public NotifyService(IVendorCompanyService vendorCompanyService, IOptions<NotifyServiceOptions> options)
-            : this(vendorCompanyService, null, options)
-        {
-        }
-
-        internal NotifyService(IVendorCompanyService vendorCompanyService, IAsyncNotificationClient notificationClient, IOptions<NotifyServiceOptions> options)
+        public NotifyService(IVendorCompanyService vendorCompanyService, IEmailClientService emailClientService, IOptions<NotifyServiceOptions> options)
         {
             _vendorCompanyService = vendorCompanyService;
+            _emailClientService = emailClientService;
             _options = options.Value;
-
-            if (string.IsNullOrWhiteSpace(_options.NotifyEmailKey))
-                throw new ArgumentNullException(nameof(_options.NotifyEmailKey), "Cannot create notification client as api key is null");
-
-            _notificationClient = notificationClient ?? new NotificationClient(_options.NotifyEmailKey);
         }
 
         public async Task SendEmailNotification(long userId, IList<VendorCompanyUserViewModel> users, string templateId)
@@ -44,7 +33,7 @@ namespace Beis.VendorManagement.Web.Services
 
             foreach (var user in users)
             {
-                await _notificationClient.SendEmailAsync(user.Email, templateId, personalisation, default, default);
+                await _emailClientService.SendEmailAsync(user.Email, templateId, personalisation);
             }
         }
 
@@ -59,7 +48,7 @@ namespace Beis.VendorManagement.Web.Services
                                             {"full name" , user.FullName},
                                             {"unique link" , $"{accessLink}{user.AccessLink}" }
                                         };
-                await _notificationClient.SendEmailAsync(user.Email, templateId, personalisation, default, default);
+                await _emailClientService.SendEmailAsync(user.Email, templateId, personalisation);
             }
         }
 
@@ -75,14 +64,12 @@ namespace Beis.VendorManagement.Web.Services
 
             foreach (var emailAddress in emailAddresses)
             {
-                await _notificationClient.SendEmailAsync(emailAddress, templateId, personalisation, default, default);
+                await _emailClientService.SendEmailAsync(emailAddress, templateId, personalisation);
             }
         }
 
         public class NotifyServiceOptions
         {
-            public string NotifyEmailKey { get; set; }
-
             public string EmailVerificationLink { get; set; }
         }
     }

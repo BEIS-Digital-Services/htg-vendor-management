@@ -13,9 +13,8 @@
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-		<PackageReference Include="Beis.HelpToGrow.Persistence" Version="2.1.8" />
+		<PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.14" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
-		<PackageReference Include="GovukNotify" Version="6.0.0" />
 		<PackageReference Include="MediatR" Version="9.0.0" />
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
 		<PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.19.0" />
@@ -28,6 +27,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="6.0.5" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
 		<PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
 		<PackageReference Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
@@ -50,11 +50,6 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Beis.VendorManagement.Repositories\Beis.VendorManagement.Repositories.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="Beis.Htg.VendorSme.Database">
-			<HintPath>..\Beis.VendorManagement.Repositories\Library\Beis.Htg.VendorSme.Database.dll</HintPath>
-		</Reference>
 	</ItemGroup>
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
