@@ -1,0 +1,24 @@
+trigger:
+- main
+
+resources:
+  repositories:
+    - repository: template
+      type: git
+      name: DevOps
+      ref: releases/1.0.0
+
+pool:
+  vmImage: Ubuntu-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+extends:
+  template: dotnet6/build-and-deploy.yml@template
+  parameters:
+    solutionToBuild: 'Beis.VendorManagement.sln'
+    projectToPublish: 'Beis.VendorManagement.Web.csproj'
+    webApplicationNameSuffix: 'vendor-management-app'
+    webApplicationResourceGroupFormat: 'vendor-management'
+    
