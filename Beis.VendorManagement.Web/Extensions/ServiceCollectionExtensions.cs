@@ -17,7 +17,6 @@ namespace Beis.VendorManagement.Web.Extensions
     {
         internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce)
         {
-            services.AddSession(options => options.Cookie.IsEssential = false);
             services.AddLogging(options => options.AddConsole());
             services.AddApplicationInsightsTelemetry(configuration["AzureMonitorInstrumentationKey"]);
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
