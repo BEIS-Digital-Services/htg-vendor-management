@@ -1,6 +1,5 @@
 ﻿using AutoFixture;
 using Beis.HelpToGrow.Common.Interfaces;
-using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
 using Microsoft.Extensions.Configuration;
 using MockQueryable.Moq;

@@ -4,15 +4,13 @@
     {
         private readonly IManageUsersRepository _manageUsersRepository;
         private readonly INotifyService _notifyService;
-        private readonly IMapper _mapper;
         private readonly PrimaryUserChangePostHandlerOptions _options;
 
         public ConfirmPrimaryUserChangePostHandler(INotifyService notifyService, IManageUsersRepository manageUsersRepository, 
-            IMapper mapper, IOptions<PrimaryUserChangePostHandlerOptions> options)
+            IOptions<PrimaryUserChangePostHandlerOptions> options)
         {
             _notifyService = notifyService;
             _manageUsersRepository = manageUsersRepository;
-            _mapper = mapper;
             _options = options.Value;
         }
 
@@ -29,7 +27,7 @@
 
             //Send Notify email
             var emailPendingUsers = users.Where(x => !string.IsNullOrEmpty(x.access_link));
-            var emailPendingUsersVm = _mapper.Map<IList<VendorCompanyUserViewModel>>(emailPendingUsers);
+            var emailPendingUsersVm = VendorCompanyUserMapper.Map(emailPendingUsers);
             await _notifyService.SendEmailNotificationToAdditionalUsers(request.ChangeUserId, emailPendingUsersVm, _options.VendorAdditionalUserTemplateId);
 
             result.PrimaryContactSameAsChangeUserId = true;

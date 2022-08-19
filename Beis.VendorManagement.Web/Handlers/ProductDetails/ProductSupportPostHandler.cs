@@ -3,14 +3,10 @@
     public class ProductSupportPostHandler : IRequestHandler<ProductSupportPostHandler.Context>
     {
         private readonly IProductFiltersRepository _productFiltersRepository;
-        private readonly IMapper _mapper;
 
-        public ProductSupportPostHandler(
-            IProductFiltersRepository productFiltersRepository,
-            IMapper mapper)
+        public ProductSupportPostHandler(IProductFiltersRepository productFiltersRepository)
         {
             _productFiltersRepository = productFiltersRepository;
-            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(Context request, CancellationToken cancellationToken)
@@ -45,7 +41,7 @@
             await _productFiltersRepository.DeleteAllProductFilters(request.ProductId, filterTypes);
             if (productFilters.ToList().Count > 0)
             {
-                await _productFiltersRepository.AddProductFilters(_mapper.Map<IEnumerable<product_filter>>(productFilters));
+                await _productFiltersRepository.AddProductFilters(ProductMapper.MapProductFilterDetails(productFilters));
             }
 
             return Unit.Value;

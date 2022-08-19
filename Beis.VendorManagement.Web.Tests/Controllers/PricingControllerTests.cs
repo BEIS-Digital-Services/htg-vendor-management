@@ -1,6 +1,4 @@
-﻿using Beis.VendorManagement.Web.Extensions;
-
-namespace Beis.VendorManagement.Web.Tests.Controllers
+﻿namespace Beis.VendorManagement.Web.Tests.Controllers
 {
     public class PricingControllerTests : BaseControllerTests
     {

@@ -62,7 +62,6 @@ namespace Beis.VendorManagement.Web.Extensions
             services.AddOptions();
             services.RegisterOptions(configuration, nonce);
             services.AddMediatR(typeof(Program));
-            services.AddAutoMapper(c => c.AddProfile<AutoMap>(), typeof(Program));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

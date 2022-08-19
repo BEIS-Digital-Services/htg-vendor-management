@@ -4,16 +4,13 @@
     {
         private readonly IProductRepository _productRepository;
         private readonly IProductCapabilitiesRepository _productCapabilitiesRepository;
-        private readonly IMapper _mapper;
 
         public ProductCapabilitiesPostHandler(
             IProductRepository productRepository,
-            IProductCapabilitiesRepository productCapabilitiesRepository,
-            IMapper mapper)
+            IProductCapabilitiesRepository productCapabilitiesRepository)
         {
             _productRepository = productRepository;
             _productCapabilitiesRepository = productCapabilitiesRepository;
-            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(Context request, CancellationToken cancellationToken)
@@ -44,7 +41,7 @@
             await _productCapabilitiesRepository.DeleteAllProductCapabilitiesFilters(request.ProductId, request.ProductTypeId);
             if (productFilters.ToList().Count > 0)
             {
-                await _productCapabilitiesRepository.AddProductCapabilitiesFilters(_mapper.Map<IEnumerable<product_capability>>(productFilters));
+                await _productCapabilitiesRepository.AddProductCapabilitiesFilters(ProductMapper.MapProductCapabilityDetails(productFilters));
             }
 
             var product = await _productRepository.GetProductSingle(request.ProductId, request.Adb2CId);

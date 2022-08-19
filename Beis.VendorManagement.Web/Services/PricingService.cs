@@ -1,16 +1,12 @@
-﻿using Beis.VendorManagement.Web.Extensions;
-
-namespace Beis.VendorManagement.Web.Services
+﻿namespace Beis.VendorManagement.Web.Services
 {
     public class PricingService : IPricingService
     {
         private readonly IPricingRepository _pricingRepository;
         private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
 
-        public PricingService(IMapper mapper, IProductRepository productRepository, IPricingRepository pricingRepository)
+        public PricingService(IProductRepository productRepository, IPricingRepository pricingRepository)
         {
-            _mapper = mapper;
             _productRepository = productRepository;
             _pricingRepository = pricingRepository;
         }
@@ -18,7 +14,8 @@ namespace Beis.VendorManagement.Web.Services
         public async Task<ProductPriceDetailsViewModel> GetAllProductPrices(long productId, string adb2CId)
         {
             var product = await _productRepository.GetProductSingle(productId, adb2CId);
-            var productPrices = _mapper.Map<IList<ProductPriceViewModel>>(await _pricingRepository.GetAllProductPricesForProductId(productId));
+            var productPrices = ProductPricingMapper.MapProductPriceDetails(
+                await _pricingRepository.GetAllProductPricesForProductId(productId));
 
             foreach (var item in productPrices)
             {
@@ -37,7 +34,7 @@ namespace Beis.VendorManagement.Web.Services
         public async Task<AdditionalDiscountsViewModel> GetAdditionalDiscountsForPriceId(long productId, string adb2CId, long productPriceId)
         {
             var productPrice = await _pricingRepository.GetAllProductPricesForProductIdAndPriceId(productId, productPriceId);
-            var additionalDiscounts = _mapper.Map<AdditionalDiscountsViewModel>(productPrice);
+            var additionalDiscounts = ProductPricingMapper.MapAdditionalDiscountDetails(productPrice);
 
             if (additionalDiscounts == null) return default;
 
@@ -51,10 +48,9 @@ namespace Beis.VendorManagement.Web.Services
         public async Task<IEnumerable<UserDiscountViewModel>> GetUserDiscountByProductPriceId(long productPriceId)
         {
             var userDiscount = await _pricingRepository.GetUserDiscountByProductPriceId(productPriceId);
-            var userDiscountVm = _mapper.Map<IEnumerable<UserDiscountViewModel>>(userDiscount);
+            var userDiscountVm = ProductPricingMapper.MapUserDiscountDetails(userDiscount);
             return userDiscountVm;
         }
-
 
         public async Task<MetricDetailsViewModel> GetMetricDetails(int productId, string adb2CId, long productPriceId)
         {
@@ -105,7 +101,7 @@ namespace Beis.VendorManagement.Web.Services
         public async Task<MinimumCommitmentViewModel> GetMinimumCommitment(long productId, string adb2CId, long productPriceId)
         {
             var productPrice = await _pricingRepository.GetAllProductPricesForProductIdAndPriceId(productId, productPriceId);
-            var minimumCommitmentViewModel = _mapper.Map<MinimumCommitmentViewModel>(productPrice);
+            var minimumCommitmentViewModel = ProductPricingMapper.MapMinimumCommitmentDetails(productPrice);
 
             if (productPrice == null) return default;
 
@@ -147,7 +143,7 @@ namespace Beis.VendorManagement.Web.Services
         public async Task<DiscountPeriodViewModel> GetDiscountPeriod(long productId, string adb2CId, long productPriceId)
         {
             var productPrice = await _pricingRepository.GetAllProductPricesForProductIdAndPriceId(productId, productPriceId);
-            var discountPeriodViewModel = _mapper.Map<DiscountPeriodViewModel>(productPrice);
+            var discountPeriodViewModel = ProductPricingMapper.MapDiscountPeriodDetails(productPrice);
             discountPeriodViewModel.Adb2CId = adb2CId;
             var product = await _productRepository.GetProductSingle(productId, adb2CId);
             discountPeriodViewModel.ProductName = product.product_name;
