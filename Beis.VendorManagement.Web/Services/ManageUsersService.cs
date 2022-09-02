@@ -1,32 +1,32 @@
-﻿namespace Beis.VendorManagement.Web.Services
+﻿using Beis.VendorManagement.Web.Mappers;
+
+namespace Beis.VendorManagement.Web.Services
 {
     public class ManageUsersService : IManageUsersService
     {
         private readonly IManageUsersRepository _manageUsersRepository;
-        private readonly IMapper _mapper;
 
-        public ManageUsersService(IManageUsersRepository manageUsersRepository, IMapper mapper)
+        public ManageUsersService(IManageUsersRepository manageUsersRepository)
         {
             _manageUsersRepository = manageUsersRepository;
-            _mapper = mapper;
         }
 
         public async Task<IList<VendorCompanyUserViewModel>> GetAllUsers(string adb2CId)
         {
             var users = await _manageUsersRepository.GetAllUsers(adb2CId);
-            return _mapper.Map<IList<VendorCompanyUserViewModel>>(users);
+            return (IList<VendorCompanyUserViewModel>)VendorCompanyUserMapper.Map(users);
         }
 
         public async Task<VendorCompanyUserViewModel> GetUser(string adb2CId)
         {
             var existingUser = await _manageUsersRepository.GetUserSingle(adb2CId);
-            return _mapper.Map<VendorCompanyUserViewModel>(existingUser);
+            return VendorCompanyUserMapper.Map(existingUser);
         }
 
         public async Task<VendorCompanyUserViewModel> GetUser(long userId)
         {
             var existingUser = await _manageUsersRepository.GetUserSingle(userId);
-            return _mapper.Map<VendorCompanyUserViewModel>(existingUser);
+            return VendorCompanyUserMapper.Map(existingUser);
         }
     }
 }

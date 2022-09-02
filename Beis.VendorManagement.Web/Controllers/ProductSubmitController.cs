@@ -34,7 +34,7 @@
         [HttpGet("Product/ProductSubmitConfirmation", Name = RouteNameConstants.ProductSubmitConfirmationGet)]
         public async Task<IActionResult> ProductSubmitConfirmation(int id, string email)
         {
-            var productSubmitConfirmationViewModel = await _productService.GetProduct<ProductSubmitConfirmationViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var productSubmitConfirmationViewModel = await _productService.GetProductSubmitConfirmationDetails(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             if (productSubmitConfirmationViewModel == null)
             {
                 return RedirectToRoute(RouteNameConstants.ProductErrorGet);

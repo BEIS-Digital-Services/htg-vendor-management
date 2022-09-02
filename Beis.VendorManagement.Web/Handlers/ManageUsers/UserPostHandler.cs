@@ -3,12 +3,10 @@
     public class UserPostHandler : IRequestHandler<UserPostHandler.Context, bool>
     {
         private readonly IManageUsersRepository _manageUsersRepository;
-        private readonly IMapper _mapper;
 
-        public UserPostHandler(IManageUsersRepository manageUsersRepository, IMapper mapper)
+        public UserPostHandler(IManageUsersRepository manageUsersRepository)
         {
             _manageUsersRepository = manageUsersRepository;
-            _mapper = mapper;
         }
 
         public async Task<bool> Handle(Context request, CancellationToken cancellationToken)
@@ -21,7 +19,7 @@
                     return false; 
                 }
 
-                var vendorCompanyUserViewModel = new VendorCompanyUserViewModel
+                var user = VendorCompanyUserMapper.Map(new VendorCompanyUserViewModel
                 {
                     FullName = request.FullName,
                     Email = request.Email.Trim(),
@@ -29,9 +27,7 @@
                     Status = true,
                     PrimaryContact = false,
                     AccessLink = Guid.NewGuid().ToString()
-                };
-
-                var user = _mapper.Map<vendor_company_user>(vendorCompanyUserViewModel);
+                });
                 await _manageUsersRepository.AddUser(user);
                 return true;
             }

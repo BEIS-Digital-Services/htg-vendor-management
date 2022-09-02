@@ -11,8 +11,6 @@
 
 	<PropertyGroup Condition=" '$(RunConfiguration)' == 'WebApp_OpenIDConnect_DotNet' " />
 	<ItemGroup>
-		<PackageReference Include="AutoMapper" Version="10.1.1" />
-		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
 		<PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.14" />
 		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
 		<PackageReference Include="MediatR" Version="9.0.0" />
