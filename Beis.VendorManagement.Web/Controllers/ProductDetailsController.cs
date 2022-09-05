@@ -17,7 +17,7 @@ namespace Beis.VendorManagement.Web.Controllers
         [HttpGet("Product/ProductSummary", Name = RouteNameConstants.ProductSummaryGet)]
         public async Task<IActionResult> ProductSummary(int id)
         {
-            var summaryViewModel = await _productService.GetProduct<SummaryViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var summaryViewModel = await _productService.GetSummaryDetails(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             summaryViewModel.ContentKey = $"{AnalyticConstants.ProductSummary}{summaryViewModel.ProductName}";
             return View(summaryViewModel);
         }

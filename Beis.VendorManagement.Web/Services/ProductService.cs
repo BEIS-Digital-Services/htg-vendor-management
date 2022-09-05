@@ -1,21 +1,38 @@
-﻿namespace Beis.VendorManagement.Web.Services
+﻿using Beis.VendorManagement.Web.Mappers;
+
+namespace Beis.VendorManagement.Web.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
-        private readonly IMapper _mapper;
     
-        public ProductService(IMapper mapper, IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
-            _mapper = mapper;
             _productRepository = productRepository;
         }
 
-        public async Task<T> GetProduct<T>(long productId, string adb2CId)
+        public async Task<RedemptionUrlViewModel> GetRedemptionUrlDetails(long productId, string adb2CId)
         {
             var product = await _productRepository.GetProductSingle(productId, adb2CId);
+            return ProductMapper.MapRedemptionDetails(product);
+        }
 
-            return _mapper.Map<T>(product);
+        public async Task<SkuViewModel> GetSkuDetails(long productId, string adb2CId)
+        {
+            var product = await _productRepository.GetProductSingle(productId, adb2CId);
+            return ProductMapper.MapSkuDetails(product);
+        }
+
+        public async Task<SummaryViewModel> GetSummaryDetails(long productId, string adb2CId)
+        {
+            var product = await _productRepository.GetProductSingle(productId, adb2CId);
+            return ProductMapper.MapSummaryDetails(product);
+        }
+
+        public async Task<ProductSubmitConfirmationViewModel> GetProductSubmitConfirmationDetails(long productId, string adb2CId)
+        {
+            var product = await _productRepository.GetProductSingle(productId, adb2CId);
+            return ProductMapper.MapSubmitConfirmationDetails(product);
         }
 
         public async Task<string> GetProductName(long productId, string adb2CId)
