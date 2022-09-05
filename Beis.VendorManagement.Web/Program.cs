@@ -1,6 +1,5 @@
 ﻿using Beis.HelpToGrow.Common.Helpers;
 using Beis.HelpToGrow.Common.Services.HealthChecks;
-using Beis.VendorManagement.Web.Extensions;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,7 +40,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseCookiePolicy();
 app.UseRouting();
-app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.Use(async (context, next) =>

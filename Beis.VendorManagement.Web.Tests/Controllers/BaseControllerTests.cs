@@ -1,10 +1,8 @@
 ﻿using AutoFixture;
 using Beis.HelpToGrow.Common.Interfaces;
-using Beis.VendorManagement.Web.Extensions;
 using Beis.VendorManagement.Web.Handlers.Home;
 using Microsoft.Extensions.Configuration;
 using MockQueryable.Moq;
-using System.Text;
 
 namespace Beis.VendorManagement.Web.Tests.Controllers
 {
@@ -76,10 +74,6 @@ namespace Beis.VendorManagement.Web.Tests.Controllers
             mockHttpRequest.Setup(x => x.Host).Returns(new HostString("localhost"));
             MockHttpContext.Setup(r => r.Request).Returns(mockHttpRequest.Object);
 
-            var mockSession = new Mock<ISession>();
-            var val = Encoding.UTF8.GetBytes(TestUserId.ToString());
-            mockSession.Setup(r => r.TryGetValue("loggedinUserId", out val)).Returns(true);
-            MockHttpContext.Setup(r => r.Session).Returns(mockSession.Object);
             controllerContext.HttpContext = MockHttpContext.Object;
         }
 

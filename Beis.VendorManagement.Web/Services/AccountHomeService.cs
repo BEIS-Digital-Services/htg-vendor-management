@@ -1,14 +1,14 @@
-﻿namespace Beis.VendorManagement.Web.Services
+﻿using Beis.VendorManagement.Web.Mappers;
+
+namespace Beis.VendorManagement.Web.Services
 {
     public class AccountHomeService : IAccountHomeService
     {
         private readonly ICompanyUserRepository _companyUserRepository;
-        private readonly IMapper _mapper;
 
-        public AccountHomeService(ICompanyUserRepository companyUserRepository, IMapper mapper)
+        public AccountHomeService(ICompanyUserRepository companyUserRepository)
         {
             _companyUserRepository = companyUserRepository;
-            _mapper = mapper;
         }
 
         public async Task<bool> UpdateCompanyIpAddress(string abd2CId, string ipAddresses)
@@ -32,7 +32,7 @@
         {
             var company = await _companyUserRepository.GetCompanyByUserSingle(abd2CId);
 
-            return _mapper.Map<VendorCompanyViewModel>(company);
+            return VendorCompanyMapper.Map(company);
         }
     }
 }

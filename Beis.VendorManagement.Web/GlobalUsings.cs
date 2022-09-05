@@ -1,11 +1,12 @@
-﻿global using AutoMapper;
-global using Beis.HelpToGrow.Common.Interfaces;
+﻿global using Beis.HelpToGrow.Common.Interfaces;
 global using Beis.HelpToGrow.Persistence;
 global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.VendorManagement.Repositories.Interface;
 global using Beis.VendorManagement.Web.Constants;
+global using Beis.VendorManagement.Web.Extensions;
 global using Beis.VendorManagement.Web.Handlers.ManageUsers;
 global using Beis.VendorManagement.Web.Handlers.ProductSubmit;
+global using Beis.VendorManagement.Web.Mappers;
 global using Beis.VendorManagement.Web.Models;
 global using Beis.VendorManagement.Web.Models.Enums;
 global using Beis.VendorManagement.Web.Models.Pricing;

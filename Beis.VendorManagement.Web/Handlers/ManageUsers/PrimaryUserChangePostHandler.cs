@@ -4,14 +4,12 @@
     {
         private readonly IManageUsersRepository _manageUsersRepository;
         private readonly INotifyService _notifyService;
-        private readonly IMapper _mapper;
         private readonly PrimaryUserChangePostHandlerOptions _options;
 
-        public PrimaryUserChangePostHandler(INotifyService notifyService, IManageUsersRepository manageUsersRepository, IMapper mapper, IOptions<PrimaryUserChangePostHandlerOptions> options)
+        public PrimaryUserChangePostHandler(INotifyService notifyService, IManageUsersRepository manageUsersRepository, IOptions<PrimaryUserChangePostHandlerOptions> options)
         {
             _notifyService = notifyService;
             _manageUsersRepository = manageUsersRepository;
-            _mapper = mapper;
             _options = options.Value;
         }
 
@@ -19,7 +17,7 @@
         {
             await _manageUsersRepository.UpdatePrimaryContact(request.UserId, request.CompanyId);
             var users = await _manageUsersRepository.GetAllUsers(request.Adb2CId);
-            var usersVm = _mapper.Map<IEnumerable<VendorCompanyUserViewModel>>(users);
+            var usersVm = VendorCompanyUserMapper.Map(users);
 
             //Send Notify email
             var emailPendingUsers = usersVm.Where(x => x.AccessLink != null).ToList();

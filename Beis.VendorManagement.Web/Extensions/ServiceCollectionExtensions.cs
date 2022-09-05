@@ -17,7 +17,6 @@ namespace Beis.VendorManagement.Web.Extensions
     {
         internal static void RegisterAllServices(this IServiceCollection services, IConfiguration configuration, string nonce)
         {
-            services.AddSession(options => options.Cookie.IsEssential = false);
             services.AddLogging(options => options.AddConsole());
             services.AddApplicationInsightsTelemetry(configuration["AzureMonitorInstrumentationKey"]);
             services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
@@ -63,7 +62,6 @@ namespace Beis.VendorManagement.Web.Extensions
             services.AddOptions();
             services.RegisterOptions(configuration, nonce);
             services.AddMediatR(typeof(Program));
-            services.AddAutoMapper(c => c.AddProfile<AutoMap>(), typeof(Program));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

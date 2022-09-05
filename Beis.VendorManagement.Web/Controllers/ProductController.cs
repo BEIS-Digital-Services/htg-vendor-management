@@ -29,7 +29,7 @@ namespace Beis.VendorManagement.Web.Controllers
         [HttpGet("Product/RedemptionUrl", Name = RouteNameConstants.RedemptionUrlGet)]
         public async Task<IActionResult> RedemptionUrl(int id)
         {
-            var redemptionUrlViewModel = await _productService.GetProduct<RedemptionUrlViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var redemptionUrlViewModel = await _productService.GetRedemptionUrlDetails(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
 
             if (redemptionUrlViewModel == null)
             {
@@ -45,7 +45,7 @@ namespace Beis.VendorManagement.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                redemptionUrlViewModel = await _productService.GetProduct<RedemptionUrlViewModel>(redemptionUrlViewModel.ProductId, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+                redemptionUrlViewModel = await _productService.GetRedemptionUrlDetails(redemptionUrlViewModel.ProductId, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
                 redemptionUrlViewModel.ShowValidationError = true;
                 redemptionUrlViewModel.ContentKey = $"{AnalyticConstants.ProductRedemptionUrlError}{redemptionUrlViewModel.ProductName}";
                 return View(redemptionUrlViewModel);
@@ -64,7 +64,7 @@ namespace Beis.VendorManagement.Web.Controllers
         [HttpGet("Product/Sku", Name = RouteNameConstants.SkuGet)]
         public async Task<IActionResult> Sku(int id)
         {
-            var skuViewModel = await _productService.GetProduct<SkuViewModel>(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var skuViewModel = await _productService.GetSkuDetails(id, User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
             if (skuViewModel == null)
             {
                 return RedirectToRoute(RouteNameConstants.ProductErrorGet);

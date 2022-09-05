@@ -3,19 +3,16 @@
     public class ManageUsersHomeGetHandler : IRequestHandler<ManageUsersHomeGetHandler.Context, Optional<ManageUsersHomeViewModel>>
     {
         private readonly IManageUsersRepository _manageUsersRepository;
-        private readonly IMapper _mapper;
 
-        public ManageUsersHomeGetHandler(IManageUsersRepository manageUsersRepository, IMapper mapper)
+        public ManageUsersHomeGetHandler(IManageUsersRepository manageUsersRepository)
         {
             _manageUsersRepository = manageUsersRepository;
-            _mapper = mapper;
         }
 
         public async Task<Optional<ManageUsersHomeViewModel>> Handle(Context request, CancellationToken cancellationToken)
         {
             var users = await _manageUsersRepository.GetAllUsers(request.Adb2CId);
-            var usersVm = _mapper.Map<IEnumerable<VendorCompanyUserViewModel>>(users).ToList();
-
+            var usersVm = VendorCompanyUserMapper.Map(users).ToList();
             usersVm.Sort((x, y) => x.FullName.CompareTo(y.FullName));
             usersVm.Sort((x, y) => y.PrimaryContact.CompareTo(x.PrimaryContact));
 

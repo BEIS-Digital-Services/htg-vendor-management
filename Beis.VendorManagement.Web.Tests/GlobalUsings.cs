@@ -2,6 +2,7 @@
 global using Beis.HelpToGrow.Persistence.Models;
 global using Beis.VendorManagement.Web.Constants;
 global using Beis.VendorManagement.Web.Controllers;
+global using Beis.VendorManagement.Web.Extensions;
 global using Beis.VendorManagement.Web.Filters;
 global using Beis.VendorManagement.Web.Models;
 global using Beis.VendorManagement.Web.Models.Enums;
@@ -20,6 +21,5 @@ global using Microsoft.AspNetCore.Routing;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Moq;
-global using Notify.Interfaces;
 global using System.Security.Claims;
 global using Xunit;

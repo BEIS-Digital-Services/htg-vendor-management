@@ -1,6 +1,4 @@
-﻿using Beis.VendorManagement.Web.Extensions;
-
-namespace Beis.VendorManagement.Web.Handlers.ProductDetails
+﻿namespace Beis.VendorManagement.Web.Handlers.ProductDetails
 {
     public class ProductSupportGetHandler : IRequestHandler<ProductSupportGetHandler.Context, Optional<ProductSupportViewModel>>
     {

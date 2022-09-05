@@ -1,34 +1,32 @@
-﻿namespace Beis.VendorManagement.Web.Services
+﻿using Beis.VendorManagement.Web.Mappers;
+
+namespace Beis.VendorManagement.Web.Services
 {
     public class ActivateAccountService : IActivateAccountService
     {
         private readonly ICompanyUserRepository _companyUserRepository;
-        private readonly IMapper _mapper;
 
-        public ActivateAccountService(ICompanyUserRepository companyUserRepository, IMapper mapper)
+        public ActivateAccountService(ICompanyUserRepository companyUserRepository)
         {
             _companyUserRepository = companyUserRepository;
-            _mapper = mapper;
         }
 
         public async Task<VendorCompanyViewModel> GetCompanyByUserIdAsync(long userId)
         {
             var company = await _companyUserRepository.GetCompanyByUserSingle(userId);
-
-            return _mapper.Map<VendorCompanyViewModel>(company);
+            return VendorCompanyMapper.Map(company);
         }
 
         public async Task<VendorCompanyUserViewModel> GetUserById(long userId)
         {
             var user = await _companyUserRepository.GetUserByIdSingle(userId);
-
-            return _mapper.Map<VendorCompanyUserViewModel>(user);
+            return VendorCompanyUserMapper.Map(user);
         }
 
         public async Task<VendorCompanyUserViewModel> GetUserByAccessLink(string accessLink)
         {
             var user = await _companyUserRepository.GetUserByAccessLink(accessLink);
-            return _mapper.Map<VendorCompanyUserViewModel>(user);
+            return VendorCompanyUserMapper.Map(user);
         }
     }
 }
