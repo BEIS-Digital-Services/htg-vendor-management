@@ -54,7 +54,7 @@ app.Use(async (context, next) =>
 app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
 app.UseEndpoints(endpoints =>
 {
-    endpoints.MapSMEHealthChecks();
+    endpoints.MapHealthChecks();
 });
 
 app.Run();
