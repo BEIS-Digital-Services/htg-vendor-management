@@ -17,9 +17,7 @@ builder.Services.AddMvc(o => o.EnableEndpointRouting = false);
 var nonce = Guid.NewGuid().ToString();
 // Add services to the container.
 builder.Services.RegisterAllServices(builder.Configuration, nonce);
-builder.Services.AddHealthChecks()
-.AddDbContextCheck<HtgVendorSmeDbContext>("VendorSme Database")
-.AddCheck<DependencyInjectionHealthCheckService>("Dependency Injection");
+builder.Services.RegisterHealthcheckServices();
 
 var app = builder.Build();
 app.UseForwardedHeaders();
@@ -54,9 +52,9 @@ app.Use(async (context, next) =>
     await next();
 });
 app.UseMvc(r => r.MapRoute("default", "{controller=Home}/{action=Index}"));
-app.MapHealthChecks("/healthz", new HealthCheckOptions
+app.UseEndpoints(endpoints =>
 {
-    ResponseWriter = HealthCheckJsonResponseWriter.Write
+    endpoints.MapHealthChecks();
 });
 
 app.Run();
