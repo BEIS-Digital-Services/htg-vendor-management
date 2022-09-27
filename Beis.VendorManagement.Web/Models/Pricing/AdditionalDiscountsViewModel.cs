@@ -23,7 +23,7 @@
 
         public long ContractDurationDiscount { get; set; }
 
-        public long ContractDurationDiscountPercentage { get; set; }
+        public decimal ContractDurationDiscountPercentage { get; set; }
 
         public string ContractDurationDiscountDescription { get; set; }
 

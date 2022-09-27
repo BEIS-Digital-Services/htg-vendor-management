@@ -24,7 +24,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
-		<PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.14" />
+		<PackageReference Include="Beis.HelpToGrow.Common" Version="6.1.33" />
 		<PackageReference Include="FluentAssertions.AspNetCore.Mvc" Version="4.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.TestHost" Version="6.0.5" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
